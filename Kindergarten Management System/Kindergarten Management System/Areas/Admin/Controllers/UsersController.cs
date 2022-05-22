@@ -226,45 +226,5 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
 
             return View();
         }
-
-        //Get Request /admin/users/Employeedelete/id
-        public async Task<IActionResult> EmployeeDelete(AdminEmployeeEdit user, string id)
-        {
-            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
-            AdminEmployeeEdit employeeDelete = new AdminEmployeeEdit(appUser);
-
-            if (employeeDelete == null)
-            {
-                TempData["Error"] = "The user does not exist!";
-            }
-            else
-            {
-
-                await userManager.DeleteAsync(appUser);
-
-                TempData["Success"] = "The user has been deleted!";
-            }
-            return RedirectToAction("Index");
-        }
-
-        //Get Request /admin/users/StudentDelete/id
-        public async Task<IActionResult> StudentDelete(AdminStudentEdit user, string id)
-        {
-            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
-            AdminStudentEdit studentDelete = new AdminStudentEdit(appUser);
-
-            if (studentDelete == null)
-            {
-                TempData["Error"] = "The user does not exist!";
-            }
-            else
-            {
-
-                await userManager.DeleteAsync(appUser);
-
-                TempData["Success"] = "The user has been deleted!";
-            }
-            return RedirectToAction("Index");
-        }
     }
 }
