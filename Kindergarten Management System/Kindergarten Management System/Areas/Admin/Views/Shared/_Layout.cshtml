@@ -11,7 +11,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Kindergarten Management System</a>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Kindergarten</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -23,7 +23,7 @@
                             @if (User.IsInRole("Admin"))
                             {
                                 <li class="nav-item">
-                                    <a class="btn btn-success m-2" asp-area="Admin" asp-controller="Roles" asp-action="Index">
+                                    <a class="btn btn-success m-2" asp-area="Admin" asp-controller="Home" asp-action="Index">
                                         Admin Panel
                                     </a>
                                 </li>
@@ -54,7 +54,7 @@
                             </li>
 
                             <li class="nav-item">
-                                <a class="btn btn-danger m-2" asp-controller="Account" asp-action="Logout">
+                                <a class="btn btn-danger m-2" asp-area="" asp-controller="Account" asp-action="Logout">
                                     Log out
                                 </a>
                             </li>
@@ -62,7 +62,7 @@
                         else
                         {
                             <li class="nav-item ml-1">
-                                <a class="btn btn-success my-2" asp-controller="Account" asp-action="Login">Login</a>
+                                <a class="btn btn-success my-2" asp-area="" asp-controller="Account" asp-action="Login">Login</a>
                             </li>
                         }
 
@@ -71,9 +71,23 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
+
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
+                        <li class="nav-item ml-1">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="RegisterStudent">Register Student</a>
+                        </li>
+
+                        <li class="nav-item ml-1">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="RegisterEmployee">Register Employee</a>
+                        </li>
+
+                        <li class="nav-item ml-1">
+                            <a class="nav-link text-dark"  asp-controller="Users" asp-action="Index">Users</a>
+                        </li>
+
                     </ul>
                 </div>
             </div>
@@ -81,14 +95,25 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_NotificationPartial" />
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2022 - Kindergarten_Management_System - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+        @if(@DateTime.Now.Year == 2022)
+        {
+            <div class="container">
+                &copy; 2022 - Kindergarten Management System - <h6 class="badge badge-secondary">Powered by ASGARD™</h6>
+            </div>
+        }
+        else
+        {
+            <div class="container">
+                &copy; 2022 - @DateTime.Now.Year - Kindergarten Management System - <h6 class="badge badge-secondary">Powered by ASGARD™</h6>
+            </div>
+        }
+        
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
