@@ -37,7 +37,7 @@ namespace Kindergarten_Management_System.Models
         [Display(Name = "Profile picture")]
         public string Image { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "You must choose a teacher!")]
+
         public string TeacherName { get; set; }
 
         [Required, MinLength(3, ErrorMessage = "Minimum length is 3")]
