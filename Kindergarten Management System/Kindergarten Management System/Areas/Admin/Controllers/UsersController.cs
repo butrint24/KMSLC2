@@ -24,7 +24,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
             int pageSize = 6;
-            var users = context.Users.Where(x => x.IsEmployee == true)
+
                                      .Skip((p - 1) * pageSize)
                                      .Take(pageSize);
 
