@@ -226,32 +226,45 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
 
             return View();
         }
-        //GET /admin/employee/details/5
-        public async Task<IActionResult> EmployeeDetails(Employee employee, string id)
+
+        //Get Request /admin/users/Employeedelete/id
+        public async Task<IActionResult> EmployeeDelete(AdminEmployeeEdit user, string id)
         {
             AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            AdminEmployeeEdit employeeDelete = new AdminEmployeeEdit(appUser);
 
-            Employee employeeDetails = new Employee(appUser);
-            if (appUser == null)
+            if (employeeDelete == null)
             {
-                return NotFound();
+                TempData["Error"] = "The user does not exist!";
             }
+            else
+            {
 
-            return View(employeeDetails);
+                await userManager.DeleteAsync(appUser);
+
+                TempData["Success"] = "The user has been deleted!";
+            }
+            return RedirectToAction("Index");
         }
 
-        //GET /admin/student/details/5
-        public async Task<IActionResult> StudentDetails(Student student, string id)
+        //Get Request /admin/users/StudentDelete/id
+        public async Task<IActionResult> StudentDelete(AdminStudentEdit user, string id)
         {
             AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            AdminStudentEdit studentDelete = new AdminStudentEdit(appUser);
 
-            Student studentDetails = new Student(appUser);
-            if (appUser == null)
+            if (studentDelete == null)
             {
-                return NotFound();
+                TempData["Error"] = "The user does not exist!";
             }
+            else
+            {
 
-            return View(studentDetails);
+                await userManager.DeleteAsync(appUser);
+
+                TempData["Success"] = "The user has been deleted!";
+            }
+            return RedirectToAction("Index");
         }
     }
 }
