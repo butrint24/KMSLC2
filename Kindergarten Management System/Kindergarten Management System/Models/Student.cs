@@ -37,7 +37,8 @@ namespace Kindergarten_Management_System.Models
         [Display(Name = "Profile picture")]
         public string Image { get; set; }
 
-
+        [Required]
+        [RegularExpression(@".*\S+.*$", ErrorMessage = "Please choose a teacher!")]
         public string TeacherName { get; set; }
 
         [Required, MinLength(3, ErrorMessage = "Minimum length is 3")]

@@ -49,7 +49,15 @@
                 @item.Title
             </td>
             <td class="d-flex justify-content-center">
-                <img src="~/media/employeepic/@item.TeacherImage"  width="50" height="50" style="border-radius: 100%;"/>
+                @if (item.IsEmployee == true)
+                {
+                    <img src="~/media/employeepic/@item.TeacherImage" width="50" height="50" style="border-radius: 100%;" />
+                }
+                else
+                {
+                    <img src="~/media/studentpic/@item.StudentImage" width="50" height="50" style="border-radius: 100%;" />
+                }
+
             </td>
             <td>
                 @item.Gender
@@ -69,7 +77,15 @@
                 {
                     <a class="btn btn-primary mr-2" asp-action="AdminStudentEdit" asp-route-id="@item.Id">Edit</a>
                 }
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+
+                @if (item.IsEmployee == true)
+                {
+                    <a class="btn btn-info mr-2" asp-action="EmployeeDetails" asp-route-id="@item.Id">Details</a>
+                }
+                else
+                {
+                    <a class="btn btn-info mr-2" asp-action="StudentDetails" asp-route-id="@item.Id">Details</a>
+                }
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>
         </tr>
