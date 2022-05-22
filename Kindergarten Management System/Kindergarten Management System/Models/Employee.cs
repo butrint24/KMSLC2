@@ -72,7 +72,7 @@ namespace Kindergarten_Management_System.Models
             UserName = appUser.UserName;
             Email = appUser.Email;
             Password = appUser.PasswordHash;
-            Image = appUser.TeacherImage;
+            Image = appUser.StudentImage;
             IsEmployee = appUser.IsEmployee;
             ContactNumber = appUser.PhoneNumber;
         }
