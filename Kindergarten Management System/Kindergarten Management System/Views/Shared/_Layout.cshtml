@@ -88,6 +88,20 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+                        @if(User.IsInRole("Employee"))
+                        {
+                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="EmployeeDetails">Details</a>
+                         </li>
+
+                        }
+                        @if(User.IsInRole("Student"))
+                        {
+                             <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="StudentDetails">Details</a>
+                         </li>
+                        }
+
                     </ul>
                 </div>
             </div>

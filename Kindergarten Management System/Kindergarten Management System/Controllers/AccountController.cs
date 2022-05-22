@@ -236,5 +236,49 @@ namespace Kindergarten_Management_System.Controllers
 
             return View();
         }
+        //GET /admin/employee/details/5
+        public async Task<IActionResult> EmployeeDetails(Employee employee, string id)
+        {
+
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
+
+
+            if (User.IsInRole("Employee"))
+            {
+
+                Employee employeeDetails = new Employee(appUser);
+                if (appUser == null)
+                {
+                    return NotFound();
+                }
+
+
+                return View(employeeDetails);
+            }
+           
+            return BadRequest();
+        }
+        //GET /admin/student/details/5
+        public async Task<IActionResult> StudentDetails(Student student, string id)
+        {
+
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
+
+
+            if (User.IsInRole("Student"))
+            {
+
+                Student studentDetails = new Student(appUser);
+                if (appUser == null)
+                {
+                    return NotFound();
+                }
+
+
+                return View(studentDetails);
+            }
+
+            return BadRequest();
+        }
     }
 }
