@@ -72,11 +72,14 @@
                 @if (item.IsEmployee == true)
                 {
                     <a class="btn btn-primary mr-2" asp-action="AdminEmployeeEdit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger confirmDeletion m-2" asp-action="EmployeeDelete" asp-route-Id="@item.Id">Delete</a>
                 }
                 else
                 {
                     <a class="btn btn-primary mr-2" asp-action="AdminStudentEdit" asp-route-id="@item.Id">Edit</a>
+                    <a class="btn btn-danger confirmDeletion m-2" asp-action="StudentDelete" asp-route-Id="@item.Id">Delete</a>
                 }
+
 
                 @if (item.IsEmployee == true)
                 {

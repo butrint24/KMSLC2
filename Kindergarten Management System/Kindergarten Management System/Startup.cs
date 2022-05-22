@@ -47,17 +47,7 @@ namespace Kindergarten_Management_System
                 options.Lockout.MaxFailedAccessAttempts = 3;
             });
 
-            //services.AddIdentity<AppUser, IdentityRole>(options =>
-            //{
-            //    options.Password.RequiredLength = 8;
-            //    options.Password.RequireNonAlphanumeric = false;
-            //    options.Password.RequireDigit = false;
-            //    options.Password.RequireLowercase = false;
-            //    options.Password.RequireUppercase = false;
 
-            //})
-            //    .AddEntityFrameworkStores<ApplicationDbContext>()
-            //    .AddDefaultTokenProviders();
 
 
             services.AddControllersWithViews();
