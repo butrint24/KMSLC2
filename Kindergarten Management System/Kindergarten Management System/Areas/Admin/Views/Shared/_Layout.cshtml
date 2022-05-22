@@ -48,6 +48,12 @@
                             }
 
                             <li class="nav-item">
+                                <a class="btn btn-primary m-2" asp-controller="Account" asp-action="Edit">
+                                    Edit Account
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
                                 <a class="btn btn-danger m-2" asp-area="" asp-controller="Account" asp-action="Logout">
                                     Log out
                                 </a>
@@ -91,9 +97,6 @@
                                 <a class="nav-link text-dark" asp-area="Admin" asp-controller="Account" asp-action="RegisterStudent">Register Student</a>
 
                             </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Admin" asp-controller="Roles" asp-action="Index">Roles</a>
                         </li>
 
                     </ul>

@@ -10,8 +10,9 @@ namespace Kindergarten_Management_System.Data
     public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-            : base(options) 
+            : base(options)
         {
         }
+        public DbSet<Briefing> Briefings { get; set; }
     }
 }
