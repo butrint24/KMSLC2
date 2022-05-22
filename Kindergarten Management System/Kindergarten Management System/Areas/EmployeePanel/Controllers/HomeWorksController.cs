@@ -123,7 +123,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
 
             return View(homeWork);
         }
-        //GET employeepanel/Homework/delete/id
+        //GET employeepanel/Homework/delete/id/
         public async Task<IActionResult> Delete(Guid? id)
         {
             HomeWork homeWork = await context.HomeWorks.FindAsync(id);
