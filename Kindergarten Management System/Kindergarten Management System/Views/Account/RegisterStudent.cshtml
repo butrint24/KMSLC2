@@ -1,0 +1,116 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Register Student";
+}
+
+<h1>Register Student</h1>
+
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="RegisterStudent" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="FullName" class="control-label"></label>
+                <input asp-for="FullName" class="form-control" />
+                <span asp-validation-for="FullName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="BirthDate" class="control-label"></label>
+                <input asp-for="BirthDate" class="form-control" />
+                <span asp-validation-for="BirthDate" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="LegalGuardian" class="control-label"></label>
+                <input asp-for="LegalGuardian" class="form-control" />
+                <span asp-validation-for="LegalGuardian" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ContactNumber" class="control-label"></label>
+                <input asp-for="ContactNumber" class="form-control" />
+                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="GuardianOccupation" class="control-label"></label>
+                <input asp-for="GuardianOccupation" class="form-control" />
+                <span asp-validation-for="GuardianOccupation" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+
+            <label asp-for="Gender" class="control-label"></label>
+            <div class="form-group d-flex offset-1">               
+                <div class="mr-5">
+                    <input class="form-check-input" type="radio" asp-for="Gender" value="M"> Male<br>
+                </div>
+
+                <div>
+                    <input class="form-check-input" type="radio" asp-for="Gender" value="F"> Female<br>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <input asp-for="ImageUpload" class="form-control" /> <br /> <hr />
+                <img src="" id="imgpreview" class="pt-2" />
+                <span asp-validation-for="ImageUpload" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+
+
+            <div class="form-group">
+                <label asp-for="TeacherName" class="control-label"></label>
+                <select asp-for="TeacherName" asp-items="@ViewBag.TeacherName" class="form-control">
+                    <option value="0">Choose a teacher</option>
+                </select>
+                <span asp-validation-for="TeacherName" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+            $("#ImageUpload").change(function () {
+                readURL(this);
+            });
+    </script>
+}
