@@ -20,20 +20,21 @@ namespace Kindergarten_Management_System.Controllers
         private IPasswordHasher<AppUser> passwordHasher;
         private readonly IWebHostEnvironment webHostEnviroment;
 
-
         public AccountController
             (
             ApplicationDbContext context,
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
-
+            IPasswordHasher<AppUser> passwordHasher,
+            IWebHostEnvironment webHostEnviroment
             )
         {
             this.context = context;
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.passwordHasher = passwordHasher;
-
+            this.webHostEnviroment = webHostEnviroment;
+        }
 
         // GET /account/login
         [AllowAnonymous]
@@ -63,7 +64,9 @@ namespace Kindergarten_Management_System.Controllers
                     await signInManager.SignOutAsync();
                     Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(appUser, login.Password, false, true);
                     if (result.Succeeded)
-
+                    {
+                        return Redirect(login.ReturnUrl ?? "/");
+                    }
 
 
                     if (result.IsLockedOut)

@@ -31,7 +31,39 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
             int pageSize = 6;
+            var users = context.Users.OrderByDescending(x => x.Order)
+                                      .Skip((p - 1) * pageSize)
+                                      .Take(pageSize);
 
+
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)context.Users.Count() / pageSize);
+
+            return View(await users.ToListAsync());
+        }
+
+        public async Task<IActionResult> Students(int p = 1)
+        {
+            int pageSize = 6;
+            var users = context.Users.OrderByDescending(x => x.Order)
+                                     .Where(x => x.IsEmployee == false)
+                                     .Skip((p - 1) * pageSize)
+                                     .Take(pageSize);
+
+
+            ViewBag.PageNumber = p;
+            ViewBag.PageRange = pageSize;
+            ViewBag.TotalPages = (int)Math.Ceiling((decimal)context.Users.Where(x => x.IsEmployee == false).Count() / pageSize);
+
+            return View(await users.ToListAsync());
+        }
+
+        public async Task<IActionResult> Employees(int p = 1)
+        {
+            int pageSize = 6;
+            var users = context.Users.OrderByDescending(x => x.Order)
+                                     .Where(x => x.IsEmployee == true)
                                      .Skip((p - 1) * pageSize)
                                      .Take(pageSize);
 
@@ -193,6 +225,33 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             }
 
             return View();
+        }
+        //GET /admin/employee/details/5
+        public async Task<IActionResult> EmployeeDetails(Employee employee, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            Employee employeeDetails = new Employee(appUser);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            return View(employeeDetails);
+        }
+
+        //GET /admin/student/details/5
+        public async Task<IActionResult> StudentDetails(Student student, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            Student studentDetails = new Student(appUser);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            return View(studentDetails);
         }
     }
 }
