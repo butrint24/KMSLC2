@@ -4,14 +4,16 @@ using Kindergarten_Management_System.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Kindergarten_Management_System.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220216095508_AppUserCreate")]
+    partial class AppUserCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -57,9 +59,6 @@ namespace Kindergarten_Management_System.Data.Migrations
                     b.Property<string>("GuardianOccupation")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsEmployee")
-                        .HasColumnType("bit");
-
                     b.Property<string>("LegalGuardian")
                         .HasColumnType("nvarchar(max)");
 
@@ -99,9 +98,6 @@ namespace Kindergarten_Management_System.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TeacherImage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("TeacherName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")
