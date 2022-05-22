@@ -50,7 +50,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
 
             return View(funside);
         }
-        //GET adminpanel/funsides/delete/id
+        //GET adminpanel/funsides/delete/id/
         public async Task<IActionResult> Delete(Guid? id)
         {
             FunSide funSide = await context.FunSides.FindAsync(id);
