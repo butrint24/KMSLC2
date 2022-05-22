@@ -9,14 +9,11 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-responsive-sm table-striped">
+    <thead class="table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FullName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.PersonalNumber)
@@ -25,7 +22,7 @@
                 @Html.DisplayNameFor(model => model.Title)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                @Html.DisplayNameFor(model => model.TeacherImage)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Gender)
@@ -46,16 +43,13 @@
                 @item.FullName
             </td>
             <td>
-                @item.BirthDate.Day/@item.BirthDate.Month/@item.BirthDate.Year
-            </td>
-            <td>
                 @item.PersonalNumber
             </td>
             <td>
                 @item.Title
             </td>
-            <td>
-                @item.City
+            <td class="d-flex justify-content-center">
+                <img src="~/media/employeepic/@item.TeacherImage"  width="50" height="50" style="border-radius: 100%;"/>
             </td>
             <td>
                 @item.Gender
@@ -67,7 +61,14 @@
                 @item.Email
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @if (item.IsEmployee == true)
+                {
+                    <a class="btn btn-primary mr-2" asp-action="AdminEmployeeEdit" asp-route-id="@item.Id">Edit</a>
+                }
+                else
+                {
+                    <a class="btn btn-primary mr-2" asp-action="AdminStudentEdit" asp-route-id="@item.Id">Edit</a>
+                }
                 @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
                 @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
             </td>

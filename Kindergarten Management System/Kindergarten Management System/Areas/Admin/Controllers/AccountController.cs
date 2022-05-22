@@ -176,7 +176,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
                     Gender = employee.Gender,
                     UserName = employee.UserName,
                     Email = employee.Email,
-                    StudentImage = employee.Image,
+                    TeacherImage = employee.Image,
                     IsEmployee = true,
                     Order = DateTime.Now,
                 };

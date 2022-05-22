@@ -91,7 +91,7 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        @if(@DateTime.Now.Year == 2022)
+        @if (@DateTime.Now.Year == 2022)
         {
             <div class="container">
                 &copy; 2022 - Kindergarten Management System - <h6 class="badge badge-secondary">Powered by ASGARD™</h6>
@@ -103,10 +103,11 @@
                 &copy; 2022 - @DateTime.Now.Year - Kindergarten Management System - <h6 class="badge badge-secondary">Powered by ASGARD™</h6>
             </div>
         }
-        
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>

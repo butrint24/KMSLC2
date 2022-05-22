@@ -1,9 +1,11 @@
 ﻿using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -14,11 +16,16 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
     {
         private readonly UserManager<AppUser> userManager;
         private readonly ApplicationDbContext context;
+        private readonly IWebHostEnvironment webHostEnviroment;
+        private IPasswordHasher<AppUser> passwordHasher;
 
-        public UsersController(UserManager<AppUser> userManager, ApplicationDbContext context)
+        public UsersController(UserManager<AppUser> userManager, ApplicationDbContext context, IWebHostEnvironment webHostEnviroment, IPasswordHasher<AppUser> passwordHasher)
         {
             this.userManager = userManager;
             this.context = context;
+            this.webHostEnviroment = webHostEnviroment;
+            this.passwordHasher = passwordHasher;
+
         }
 
         public async Task<IActionResult> Index(int p = 1)
@@ -34,6 +41,158 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             ViewBag.TotalPages = (int)Math.Ceiling((decimal)context.Users.Where(x => x.IsEmployee == true).Count() / pageSize);
 
             return View(await users.ToListAsync());
+        }
+
+
+        // GET /account/AdminEmployeeEdit
+        public async Task<IActionResult> AdminEmployeeEdit(string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            AdminEmployeeEdit adminEmployeeEdit = new AdminEmployeeEdit(appUser);
+
+            return View(adminEmployeeEdit);
+        }
+
+        // Post /account/AdminEmployeeEdit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminEmployeeEdit(AdminEmployeeEdit adminEmployeeEdit, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            adminEmployeeEdit.Image = appUser.TeacherImage;
+            if (ModelState.IsValid)
+            {
+
+                if (adminEmployeeEdit.ImageUpload != null)
+                {
+                    string uploadsDir = Path.Combine(webHostEnviroment.WebRootPath, "media/employeepic");
+
+
+                    if (!string.Equals(adminEmployeeEdit.Image, "noimage.png"))
+                    {
+                        string oldImagePath = Path.Combine(uploadsDir, adminEmployeeEdit.Image);
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+
+                    }
+
+                    string imageName = Guid.NewGuid().ToString() + "_" + adminEmployeeEdit.ImageUpload.FileName;
+
+                    string filePath = Path.Combine(uploadsDir, imageName);
+
+                    FileStream fs = new FileStream(filePath, FileMode.Create);
+
+                    await adminEmployeeEdit.ImageUpload.CopyToAsync(fs);
+
+                    fs.Close();
+
+                    adminEmployeeEdit.Image = imageName;
+                }
+                appUser.FullName = adminEmployeeEdit.FullName;
+                appUser.BirthDate = adminEmployeeEdit.BirthDate;
+                appUser.PersonalNumber = adminEmployeeEdit.PersonalNumber;
+                appUser.City = adminEmployeeEdit.City;
+                appUser.Gender = adminEmployeeEdit.Gender;
+                appUser.Title = adminEmployeeEdit.Title;
+                appUser.Bio = adminEmployeeEdit.Bio;
+                appUser.Email = adminEmployeeEdit.Email;
+                appUser.TeacherImage = adminEmployeeEdit.Image;
+                appUser.PhoneNumber = adminEmployeeEdit.ContactNumber;
+
+                if (adminEmployeeEdit.Password != null)
+                {
+                    appUser.PasswordHash = passwordHasher.HashPassword(appUser, adminEmployeeEdit.Password);
+                }
+
+                IdentityResult result = await userManager.UpdateAsync(appUser);
+                if (result.Succeeded)
+                {
+                    TempData["Success"] = "Your information has been edited!";
+                }
+
+
+            }
+
+            return View();
+        }
+        // GET /account/AdminStudentEdit
+        public async Task<IActionResult> AdminStudentEdit(string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            AdminStudentEdit adminStudentEdit = new AdminStudentEdit(appUser);
+
+            return View(adminStudentEdit);
+        }
+
+        // Post /account/AdminStudentEdit
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminStudentEdit(AdminStudentEdit adminStudentEdit, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            adminStudentEdit.Image = appUser.StudentImage;
+            if (ModelState.IsValid)
+            {
+
+                if (adminStudentEdit.ImageUpload != null)
+                {
+                    string uploadsDir = Path.Combine(webHostEnviroment.WebRootPath, "media/studentpic");
+
+
+                    if (!string.Equals(adminStudentEdit.Image, "noimage.png"))
+                    {
+                        string oldImagePath = Path.Combine(uploadsDir, adminStudentEdit.Image);
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+
+                    }
+
+                    string imageName = Guid.NewGuid().ToString() + "_" + adminStudentEdit.ImageUpload.FileName;
+
+                    string filePath = Path.Combine(uploadsDir, imageName);
+
+                    FileStream fs = new FileStream(filePath, FileMode.Create);
+
+                    await adminStudentEdit.ImageUpload.CopyToAsync(fs);
+
+                    fs.Close();
+
+                    adminStudentEdit.Image = imageName;
+                }
+                    appUser.FullName = adminStudentEdit.FullName;
+                    appUser.BirthDate = adminStudentEdit.BirthDate;
+                    appUser.LegalGuardian = adminStudentEdit.LegalGuardian;
+                    appUser.PhoneNumber = adminStudentEdit.ContactNumber;
+                    appUser.GuardianOccupation = adminStudentEdit.GuardianOccupation;
+                    appUser.City = adminStudentEdit.City;
+                    appUser.Gender = adminStudentEdit.Gender;
+                    appUser.UserName = adminStudentEdit.UserName;
+                    appUser.Email = adminStudentEdit.Email;
+                    appUser.StudentImage = adminStudentEdit.Image;
+                    appUser.TeacherName = adminStudentEdit.TeacherName;
+
+
+                if (adminStudentEdit.Password != null)
+                {
+                    appUser.PasswordHash = passwordHasher.HashPassword(appUser, adminStudentEdit.Password);
+                }
+
+                IdentityResult result = await userManager.UpdateAsync(appUser);
+                if (result.Succeeded)
+                {
+                    TempData["Success"] = "Your information has been edited!";
+                }
+
+
+            }
+
+            return View();
         }
     }
 }

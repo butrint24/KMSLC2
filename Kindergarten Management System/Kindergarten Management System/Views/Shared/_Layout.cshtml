@@ -47,11 +47,25 @@
                                 </li>
                             }
 
-                            <li class="nav-item">
-                                <a class="btn btn-primary m-2" asp-controller="Account" asp-action="Edit">
-                                    Edit Account
-                                </a>
-                            </li>
+                            @if (User.IsInRole("Employee"))
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-primary m-2" asp-controller="Account" asp-action="EmployeeEdit">
+                                        Edit Account
+                                    </a>
+                                </li>
+
+                            }
+
+                            @if (User.IsInRole("Student"))
+                            {
+                                <li class="nav-item">
+                                    <a class="btn btn-primary m-2" asp-controller="Account" asp-action="StudentEdit">
+                                        Edit Account
+                                    </a>
+                                </li>
+
+                            }
 
                             <li class="nav-item">
                                 <a class="btn btn-danger m-2" asp-controller="Account" asp-action="Logout">
@@ -92,6 +106,7 @@
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @RenderSection("Scripts", required: false)
 </body>
