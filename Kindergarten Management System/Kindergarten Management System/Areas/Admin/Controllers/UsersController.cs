@@ -75,6 +75,34 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             return View(await users.ToListAsync());
         }
 
+        //GET /admin/employee/details/5
+        public async Task<IActionResult> EmployeeDetails(Employee employee, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            Employee employeeDetails = new Employee(appUser);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            return View(employeeDetails);
+        }
+
+        //GET /admin/student/details/5
+        public async Task<IActionResult> StudentDetails(Student student, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            Student studentDetails = new Student(appUser);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            return View(studentDetails);
+        }
+
 
         // GET /account/AdminEmployeeEdit
         public async Task<IActionResult> AdminEmployeeEdit(string id)
@@ -225,6 +253,46 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             }
 
             return View();
+        }
+
+        //Get Request /admin/users/Employeedelete/id
+        public async Task<IActionResult> EmployeeDelete(AdminEmployeeEdit user, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            AdminEmployeeEdit employeeDelete = new AdminEmployeeEdit(appUser);
+
+            if (employeeDelete == null)
+            {
+                TempData["Error"] = "The user does not exist!";
+            }
+            else
+            {
+
+                await userManager.DeleteAsync(appUser);
+
+                TempData["Success"] = "The user has been deleted!";
+            }
+            return RedirectToAction("Index");
+        }
+
+        //Get Request /admin/users/StudentDelete/id
+        public async Task<IActionResult> StudentDelete(AdminStudentEdit user, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            AdminStudentEdit studentDelete = new AdminStudentEdit(appUser);
+
+            if (studentDelete == null)
+            {
+                TempData["Error"] = "The user does not exist!";
+            }
+            else
+            {
+
+                await userManager.DeleteAsync(appUser);
+
+                TempData["Success"] = "The user has been deleted!";
+            }
+            return RedirectToAction("Index");
         }
     }
 }
