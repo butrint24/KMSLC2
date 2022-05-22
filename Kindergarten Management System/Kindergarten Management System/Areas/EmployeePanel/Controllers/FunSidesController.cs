@@ -124,7 +124,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
             return View(funSide);
         }
 
-        //GET employeepanel/funsides/delete/id
+        //GET employeepanel/funsides/delete/id/
         public async Task<IActionResult> Delete(Guid? id)
         {
             FunSide funSide = await context.FunSides.FindAsync(id);
