@@ -39,6 +39,18 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
 
             return View(await homeWorks.ToListAsync());
         }
+        //GET student/homework/details/id
+        public async Task<IActionResult> Details(Guid? id)
+        {
+            HomeWork homeWork = await context.HomeWorks.FirstOrDefaultAsync(x => x.HomeWorkId == id);
+
+            if (homeWork == null)
+            {
+                return NotFound();
+            }
+
+            return View(homeWork);
+        }
 
     }
 }
