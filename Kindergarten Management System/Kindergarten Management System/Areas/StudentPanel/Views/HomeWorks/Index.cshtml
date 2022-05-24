@@ -30,9 +30,7 @@
                 @item.Order.Day/@item.Order.Month/@item.Order.Year
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+             <a class="btn btn-info" asp-action="Details" asp-route-id="@item.HomeWorkId">Details</a>
             </td>
         </tr>
 }
