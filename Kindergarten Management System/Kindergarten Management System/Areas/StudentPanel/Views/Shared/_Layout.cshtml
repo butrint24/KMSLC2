@@ -20,17 +20,11 @@
                     <ul class="navbar-nav flex-grow-1 justify-content-end">
                         @if (User?.Identity?.IsAuthenticated ?? false)
                         {
-                           
-
-                            @if (User.IsInRole("Student"))
-                            {
-                                <li class="nav-item">
-                                    <a class="btn btn-primary m-2" asp-area="StudentPanel" asp-controller="Account" asp-action="Edit">
-                                        Edit Account
-                                    </a>
-                                </li>
-
-                            }
+                           <li class="nav-item">
+                                <a class="btn btn-primary m-2" asp-area="StudentPanel" asp-controller="Account" asp-action="Details">
+                                    My Profile
+                                </a>
+                            </li>
 
                             <li class="nav-item">
                                 <a class="btn btn-danger m-2" asp-area="" asp-controller="Account" asp-action="Logout">
@@ -38,17 +32,14 @@
                                 </a>
                             </li>
                         }
-                        else
-                        {
-                            <li class="nav-item ml-1">
-                                <a class="btn btn-success my-2"  asp-controller="Account" asp-action="Login">Login</a>
-                            </li>
-                        }
 
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="StudentPanel" asp-controller="HomeWorks" asp-action="Index">Homework</a>
+                        </li>
+                         <li>
+                            <a class="nav-link text-dark" asp-area="StudentPanel" asp-controller="FunSides" asp-action="Index">Fun Sides</a>
                         </li>
                         
                     </ul>
@@ -58,6 +49,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_NotificationPartial" />
             @RenderBody()
         </main>
     </div>

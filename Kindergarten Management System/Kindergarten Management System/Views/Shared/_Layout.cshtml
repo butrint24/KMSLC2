@@ -32,7 +32,7 @@
                             @if (User.IsInRole("Employee"))
                             {
                                 <li class="nav-item">
-                                    <a class="btn btn-success m-2" asp-area="Employee" asp-controller="Home" asp-action="Index">
+                                    <a class="btn btn-success m-2" asp-area="EmployeePanel" asp-controller="Home" asp-action="Index">
                                         Employee Panel
                                     </a>
                                 </li>
@@ -41,7 +41,7 @@
                             @if (User.IsInRole("Student"))
                             {
                                 <li class="nav-item">
-                                    <a class="btn btn-success m-2" asp-area="Student" asp-controller="Home" asp-action="Index">
+                                    <a class="btn btn-success m-2" asp-area="StudentPanel" asp-controller="Home" asp-action="Index">
                                         Student Panel
                                     </a>
                                 </li>
@@ -50,8 +50,8 @@
                             @if (User.IsInRole("Employee"))
                             {
                                 <li class="nav-item">
-                                    <a class="btn btn-primary m-2" asp-controller="Account" asp-action="EmployeeEdit">
-                                        Edit Account
+                                    <a class="btn btn-primary m-2" asp-area="EmployeePanel" asp-controller="Account" asp-action="Details">
+                                        My Profile
                                     </a>
                                 </li>
 
@@ -60,8 +60,8 @@
                             @if (User.IsInRole("Student"))
                             {
                                 <li class="nav-item">
-                                    <a class="btn btn-primary m-2" asp-controller="Account" asp-action="StudentEdit">
-                                        Edit Account
+                                    <a class="btn btn-primary m-2" asp-area="StudentPanel" asp-controller="Account" asp-action="Details">
+                                        My Profile
                                     </a>
                                 </li>
 
@@ -88,6 +88,7 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
+
                     </ul>
                 </div>
             </div>
@@ -95,6 +96,7 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+            <partial name="_NotificationPartial" />
             @RenderBody()
         </main>
     </div>

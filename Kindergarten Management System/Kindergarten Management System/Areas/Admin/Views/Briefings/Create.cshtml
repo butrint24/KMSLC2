@@ -1,4 +1,4 @@
-@model Briefing
+﻿@model Briefing
 
 @{
     ViewData["Title"] = "Create Briefing";
@@ -22,7 +22,7 @@
 
             <div class="form-group">
                 <label asp-for="Content" class="control-label"></label>
-                <input asp-for="Content" class="form-control" />
+                <textarea asp-for="Content" class="form-control"></textarea>
                 <span asp-validation-for="Content" class="text-danger"></span>
             </div>
 
@@ -41,8 +41,6 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
         <script>
             CKEDITOR.replace("Content");
-            $("#ImageUpload").change(function () {
-                readURL(this);
-            });
+            
     </script>
 }

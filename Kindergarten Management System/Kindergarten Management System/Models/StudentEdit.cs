@@ -10,36 +10,34 @@ namespace Kindergarten_Management_System.Models
 {
     public class StudentEdit
     {
-        [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [StudentDateValidationAttribute(ErrorMessage = "Ky student e ka kaluar moshen e lejuar per regjistrim ne qerdhe")]
+        [Required]
+        [DateValidation(ErrorMessage = "Ju lutem shenoni daten e sakt, nuk mund te jete me e madhe se data momentale")]
+        [StudentMonthValidation(ErrorMessage = " Nuk lejohet me i ri se 5 muaj")]
         public DateTime BirthDate { get; set; }
 
         public string LegalGuardian { get; set; }
 
         [Required, MinLength(12, ErrorMessage = "Minimum length is 12"), MaxLength(12, ErrorMessage = "Maximum length is 12")]
-        [Display(Name = "Contact Number")]
         public string ContactNumber { get; set; }
 
 
         public string GuardianOccupation { get; set; }
 
-        [Required, MinLength(3, ErrorMessage = "Minimum length is 3")]
+        [RegularExpression(@".*\S+.*$", ErrorMessage = "Please choose a City!")]
         public string City { get; set; }
 
         public char Gender { get; set; }
 
-        [Display(Name = "Profile picture")]
         public string Image { get; set; }
 
-        [Required]
-        [Display(Name = "Teacher Name")]
         [RegularExpression(@".*\S+.*$", ErrorMessage = "Please choose a teacher!")]
         public string TeacherName { get; set; }
 
-        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required, EmailAddress]

@@ -2,31 +2,35 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<h1>Dashboard</h1>
+<div class="d-flex justify-content-center">
+    <h1><span class="greenColor">D</span>ash<span class="greenColor">b</span>oard</h1>
+</div>
 
-<div class="row">
+
+
+<div class="row my-4">
   <div class="col-sm-4">
-    <div class="card">
+    <div class="card makeRadius "   >
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Briefing</h5>
+        <p class="card-text">Brief your staff</p>
+        <a asp-controller="Briefings" asp-action="Index" class="btn " style="border-color:black; border:dashed; border-radius:25px;  ">  Briefings</a>
       </div>
     </div>
   </div>
 
   <div class="col-sm-4">
-    <div class="card">
+    <div class="card makeRadius">
       <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Fun Side </h5>
+        <p class="card-text"> Fun activities for kids to enjoy on spare time. Created by their teachers </p>
+         <a asp-controller="FunSides" asp-action="Index" class="btn " style="border-color:black; border:dashed; border-radius:25px;  "> Fun Side</a>
       </div>
     </div>
   </div>
 
   <div class="col-sm-4 my-2">
-    <div class="card">
+    <div class="card makeRadius">
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -38,7 +42,7 @@
 
 <div class="row my-2">
   <div class="col-sm-4">
-    <div class="card">
+    <div class="card makeRadius">
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -48,7 +52,7 @@
   </div>
 
   <div class="col-sm-4">
-    <div class="card">
+    <div class="card makeRadius">
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
@@ -58,7 +62,7 @@
   </div>
 
   <div class="col-sm-4">
-    <div class="card">
+    <div class="card makeRadius">
       <div class="card-body">
         <h5 class="card-title">Special title treatment</h5>
         <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>

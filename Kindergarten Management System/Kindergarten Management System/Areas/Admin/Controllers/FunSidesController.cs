@@ -1,6 +1,5 @@
 using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Area("Admin")]
 
     public class FunSidesController : Controller
@@ -25,7 +23,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
 
-            int pageSize = 3;
+            int pageSize = 6;
             var funSides = context.FunSides.Include(x => x.AppUser).OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);
@@ -50,7 +48,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
 
             return View(funside);
         }
-        //GET adminpanel/funsides/delete/id/
+        //GET adminpanel/funsides/delete/id
         public async Task<IActionResult> Delete(Guid? id)
         {
             FunSide funSide = await context.FunSides.FindAsync(id);

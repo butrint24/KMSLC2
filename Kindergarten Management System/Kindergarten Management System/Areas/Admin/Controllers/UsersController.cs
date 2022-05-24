@@ -3,6 +3,7 @@ using Kindergarten_Management_System.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.IO;
@@ -28,6 +29,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
 
         }
 
+        //GET admin/users
         public async Task<IActionResult> Index(int p = 1)
         {
             int pageSize = 6;
@@ -43,8 +45,11 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             return View(await users.ToListAsync());
         }
 
+
+        //GET admin/users/students
         public async Task<IActionResult> Students(int p = 1)
         {
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
             int pageSize = 6;
             var users = context.Users.OrderByDescending(x => x.Order)
                                      .Where(x => x.IsEmployee == false)
@@ -59,6 +64,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             return View(await users.ToListAsync());
         }
 
+        //GET admin/users/employees
         public async Task<IActionResult> Employees(int p = 1)
         {
             int pageSize = 6;
@@ -73,6 +79,35 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             ViewBag.TotalPages = (int)Math.Ceiling((decimal)context.Users.Where(x => x.IsEmployee == true).Count() / pageSize);
 
             return View(await users.ToListAsync());
+        }
+
+        //GET /admin/employee/details/5
+        public async Task<IActionResult> EmployeeDetails(Employee employee, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            Employee employeeDetails = new Employee(appUser);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            return View(employeeDetails);
+        }
+
+        //GET /admin/student/details/5
+        public async Task<IActionResult> StudentDetails(Student student, string id)
+        {
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+
+            Student studentDetails = new Student(appUser);
+            if (appUser == null)
+            {
+                return NotFound();
+            }
+
+            return View(studentDetails);
         }
 
 
@@ -153,6 +188,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         // GET /account/AdminStudentEdit
         public async Task<IActionResult> AdminStudentEdit(string id)
         {
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
             AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
 
             AdminStudentEdit adminStudentEdit = new AdminStudentEdit(appUser);
@@ -165,6 +201,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AdminStudentEdit(AdminStudentEdit adminStudentEdit, string id)
         {
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
             AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
             adminStudentEdit.Image = appUser.StudentImage;
             if (ModelState.IsValid)
@@ -225,6 +262,46 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             }
 
             return View();
+        }
+
+        //Get Request /admin/users/Employeedelete/id
+        public async Task<IActionResult> EmployeeDelete(AdminEmployeeEdit user, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            AdminEmployeeEdit employeeDelete = new AdminEmployeeEdit(appUser);
+
+            if (employeeDelete == null)
+            {
+                TempData["Error"] = "The user does not exist!";
+            }
+            else
+            {
+
+                await userManager.DeleteAsync(appUser);
+
+                TempData["Success"] = "The user has been deleted!";
+            }
+            return RedirectToAction("Index");
+        }
+
+        //Get Request /admin/users/StudentDelete/id
+        public async Task<IActionResult> StudentDelete(AdminStudentEdit user, string id)
+        {
+            AppUser appUser = await userManager.Users.FirstOrDefaultAsync(x => x.Id == id);
+            AdminStudentEdit studentDelete = new AdminStudentEdit(appUser);
+
+            if (studentDelete == null)
+            {
+                TempData["Error"] = "The user does not exist!";
+            }
+            else
+            {
+
+                await userManager.DeleteAsync(appUser);
+
+                TempData["Success"] = "The user has been deleted!";
+            }
+            return RedirectToAction("Index");
         }
     }
 }

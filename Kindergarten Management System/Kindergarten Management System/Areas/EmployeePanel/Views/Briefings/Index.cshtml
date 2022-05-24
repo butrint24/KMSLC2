@@ -5,31 +5,30 @@
     ViewData["Title"] = "Index";
 }
 
-<link rel="stylesheet" href="~/css/briefing.css" />
+<h1>Index</h1>
 
-<div class="container bootstrap snippets bootdeys">
-    <div class="row d-flex justify-content-center" >
-        @foreach (var item in Model)
-        {
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12 content-card ">
-                <div class="card-big-shadow">
-                    <div class="card card-just-text" data-background="color" data-color="purple" data-radius="none">
-                        <div class="content">
-                            <div class="date p-2">@item.Order.Day/@item.Order.Month/@item.Order.Year</div>
-                            <div class="title p-2">@item.Title</div>
-                            <p class="Button pt-4"><a asp-action="Details" asp-route-id="@item.BriefingId" class="btn btn-primary">View Details</a> </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        }
-    </div>
-    @if (ViewBag.TotalPages > 1)
-    {
-        <div class="d-flex w-100 justify-content-center">
-            <pagination page-count="@ViewBag.TotalPages" page-target="/employeepanel/briefings"
-                        page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
-            </pagination>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div class="row">
+@foreach (var item in Model)
+{
+  <div class="col-sm-6 my-3">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title d-flex justify-content-center">@item.Title</h5>
+        <br/><hr/>
+        <div class="d-flex justify-content-center">
+            <a asp-action="Details" asp-route-id="@item.BriefingId" class="btn btn-outline-primary">View more</a>
         </div>
-    }
+      </div>
+      <div class="card-footer text-muted d-flex justify-content-end">
+        @item.Order.Day/@item.Order.Month/@item.Order.Year
+      </div>
+    </div>
+  </div>
+
+}
+
 </div>

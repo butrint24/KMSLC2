@@ -4,92 +4,141 @@
     ViewData["Title"] = "Employee Edit";
 }
 
-<h1>Employee Edit</h1>
+<section class="h-100 login-bg">
+    <div class="container  h-100 p-5 ">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col">
+                <form asp-action="Edit" enctype="multipart/form-data">
+                    <div class="card card-registration  register-form-bg2">
+                        <div class="row g-0">
+                            <div class="col-xl-6 d-none d-xl-block register-form-bg2">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
+                                     class="img-fluid"
+                                     style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
+                            </div>
+                            <div class="col-xl-6 register-form-bg2">
+                                <div class="card-body p-md-4 text-black">
+                                    <h4 class="m-2 text-uppercase font-h3 ">Employee Edit</h4>
+                                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                    <input type="hidden" asp-for="City" />
 
-<div class="row">
-    <div class="col-md-10">
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            
-            <div class="form-group">
-                <label asp-for="FullName" class="control-label"></label>
-                <input readonly asp-for="FullName" class="form-control" />
-                <span asp-validation-for="FullName" class="text-danger"></span>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline">
+                                                <label asp-for="FullName" class="control-label label-font">Full Name</label>
+                                                <input asp-for="FullName" class="form-control form-border-radius" />
+                                                <span asp-validation-for="FullName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline">
+                                                <label asp-for="BirthDate" class="control-label label-font">Birth Date</label>
+                                                <input readonly asp-for="BirthDate" class="form-control form-border-radius" />
+                                                <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline">
+                                                <label asp-for="ContactNumber" class="control-label label-font">Phone Number</label>
+                                                <input asp-for="ContactNumber" class="form-control form-border-radius" />
+                                                <span asp-validation-for="ContactNumber" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline">
+                                                <label asp-for="PersonalNumber" class="control-label label-font">Personal Number</label>
+                                                <input readonly asp-for="PersonalNumber" class="form-control form-border-radius" />
+                                                <span asp-validation-for="PersonalNumber" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline">
+                                                <label asp-for="Title" class="control-label label-font">Title</label>
+                                                <input asp-for="Title" class="form-control form-border-radius" />
+                                                <span asp-validation-for="Title" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-outline">
+                                                <label asp-for="City" class="control-label label-font">City</label>
+                                                <select disabled asp-for="City" class="form-control form-border-radius">
+                                                    <option value=" ">Choose a City</option>
+                                                    <option value="Ferizaj">Ferizaj</option>
+                                                    <option value="Gjakove">Gjakove</option>
+                                                    <option value="Gjilan">Gjilan</option>
+                                                    <option value="Mitrovice">Mitrovice</option>
+                                                    <option value="Peje">Peje</option>
+                                                    <option value="Prishtine">Prishtine</option>
+                                                    <option value="Prizren">Prizren</option>
+                                                </select>
+                                                <span asp-validation-for="City" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6 mb-0">
+                                            <label asp-for="Gender" class="control-label label-font">Gender</label>
+                                            <div class="form-group d-flex offset-1">
+                                                <div class="mr-5">
+                                                    <input class="form-check-input " type="radio" asp-for="Gender" value="M" id="G-M"><p id="input-male">Male</p>
+                                                </div>
+
+                                                <div>
+                                                    <input class="form-check-input " type="radio" asp-for="Gender" value="F" id="G-F"><p id="input-female">Female</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 mb-0">
+                                            <div class="form-outline">
+                                                <label asp-for="UserName" class="control-label label-font">User Name</label>
+                                                <input disabled asp-for="UserName" class="form-control form-border-radius" />
+                                                <span asp-validation-for="UserName" class="text-danger"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Email" class="control-label label-font">Email</label>
+                                        <input asp-for="Email" class="form-control form-border-radius" />
+                                        <span asp-validation-for="Email" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label asp-for="Password" class="control-label label-font">Password</label>
+                                        <input asp-for="Password" class="form-control form-border-radius" />
+                                        <span asp-validation-for="Password" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        <label asp-for="Image" class="control-label label-font">Teacher Picture</label>
+                                        <input asp-for="ImageUpload" class="form-control" /> <hr />
+                                        <img src="" id="imgpreview" class="pt-2" />
+                                        <span asp-validation-for="ImageUpload" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="register-form-bg2 col-12 ">
+                                <div class="col-12  pl-5 pr-5 form-group ">
+                                    <label asp-for="Bio" class="control-label label-font pt-2"> Teacher Biography</label>
+                                    <textarea asp-for="Bio" class="form-control"></textarea>
+                                    <span asp-validation-for="Bio" class="text-danger"></span>
+                                </div>
+                                <div class="d-flex justify-content-center pb-4">
+                                    <input type="submit" value="Save" class="btn btn-success font-weight-bold text-black " />
+                                    <a class="btn btn-secondary ml-3 font-weight-bold text-black" href="javascript:history.go(-1)">Back To List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="BirthDate" class="control-label"></label>
-                <input readonly asp-for="BirthDate" class="form-control" />
-                <span asp-validation-for="BirthDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PersonalNumber" class="control-label"></label>
-                <input readonly asp-for="PersonalNumber" class="form-control" />
-                <span asp-validation-for="PersonalNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input readonly asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Gender" class="control-label"></label>
-                <input readonly asp-for="Gender" class="form-control" />
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-            
-            
-            
-            <div class="form-group">
-                <label asp-for="ContactNumber" class="control-label"></label>
-                <input asp-for="ContactNumber" class="form-control" />
-                <span asp-validation-for="ContactNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Bio" class="control-label"></label>
-                <textarea asp-for="Bio" class="form-control"></textarea>
-                <span asp-validation-for="Bio" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="Image" class="control-label">Current Image:</label><br />
-                <img src="~/media/employeepic/@Model.Image" alt="" width="200" />
-            </div><br />
-            <hr />*@
-            <div class="form-group">
-                <label asp-for="Image" class="control-label">New Image:</label>
-                <input asp-for="ImageUpload" class="form-control" />
-                <img src="" alt="" id="imgpreview" class="pt-2" />
-                <span asp-validation-for="ImageUpload" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input disabled asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
+</section>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     
@@ -99,6 +148,7 @@
         $("#ImageUpload").change(function () {
             readURL(this);
         });
+    $(':radio:not(:checked)').attr('disabled', true);
 </script>
     
 }
