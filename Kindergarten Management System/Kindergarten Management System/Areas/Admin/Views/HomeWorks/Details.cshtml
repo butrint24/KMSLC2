@@ -1,0 +1,35 @@
+@model HomeWork
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<link rel="stylesheet" href="~/css/homework.css" />
+
+
+<section class=" login-bg mx-5" style="border-radius:1rem;">
+    <div class="container p-3">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-xl-12">
+                <div class="card register-form-bg2" style="border-radius: 1rem;">
+                    <img class="card-img-top p-2" style="border-radius:1rem 1rem 0 0; " src="~/media/Images/banner.jpeg" alt="">
+                    <div class="card-bodyy little-profile text-center">
+                        <div class="pro-img"><img src="~/media/employeepic/@Model.AppUser.TeacherImage"></div>
+                        <hr />
+                        <p class="under-text pt-3">Homework Title</p>
+                        <h3 style=" font-weight:bold;" class=" pb-4 label-font ">@Html.DisplayFor(model => model.Title)</h3>
+
+                        <div class="responsive-photo pb-2"> @Html.Raw(Model.Content)</div>
+
+                        <p class=" label-font" style="font-size:1.3rem;"><i class="far fa-clock"></i> @Model.Order.Day/@Model.Order.Month/@Model.Order.Year</p>
+                        <p class="under-text ">Date Created</p>
+                        <hr>
+                        <a class="btn btn-danger confirmDeletion my-3 p-2" asp-action="Delete" asp-route-Id="@Model.HomeWorkId">Delete<i class="fa-solid fa-trash-can pl-2"></i></a>
+                        <a class="btn btn-info my-3 p-2" asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2"></i></a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
