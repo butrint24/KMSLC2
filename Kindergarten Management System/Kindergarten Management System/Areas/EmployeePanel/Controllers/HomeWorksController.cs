@@ -1,6 +1,5 @@
-using Kindergarten_Management_System.Data;
+﻿using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
 {
-    [Authorize(Roles = "Employee")]
     [Area("EmployeePanel")]
     public class HomeWorksController : Controller
     {
@@ -24,7 +22,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            int pageSize = 3;
+            int pageSize = 6;
             var homeWorks = context.HomeWorks.Where(x => x.TeacherId == userId).OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);
@@ -73,7 +71,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         //GET employeepnael/homeworks/details/id
         public async Task<IActionResult> Details(Guid? id)
         {
-            HomeWork homeWork = await context.HomeWorks.Include(x => x.AppUser).FirstOrDefaultAsync(x => x.HomeWorkId == id);
+            HomeWork homeWork = await context.HomeWorks.FirstOrDefaultAsync(x => x.HomeWorkId == id);
 
             if (homeWork == null)
             {
@@ -123,7 +121,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
 
             return View(homeWork);
         }
-        //GET employeepanel/Homework/delete/id/
+        //GET employeepanel/Homework/delete/id
         public async Task<IActionResult> Delete(Guid? id)
         {
             HomeWork homeWork = await context.HomeWorks.FindAsync(id);

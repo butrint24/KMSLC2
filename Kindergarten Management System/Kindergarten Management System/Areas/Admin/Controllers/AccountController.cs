@@ -40,7 +40,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         //Get /Account/RegisterStudent
         public IActionResult RegisterStudent()
         {
-            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "FullName", "FullName");
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
             return View();
         } 
 
@@ -51,7 +51,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         public async Task<IActionResult> RegisterStudent(Student student)
         {
 
-            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "FullName", "FullName");
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
 
             //Check if Email exists in user db
             var email = await userManager.FindByEmailAsync(student.Email);

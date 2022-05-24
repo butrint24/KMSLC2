@@ -1,4 +1,4 @@
-﻿using Kindergarten_Management_System.Infrastructure;
+using Kindergarten_Management_System.Infrastructure;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.ComponentModel.DataAnnotations;
@@ -9,20 +9,20 @@ namespace Kindergarten_Management_System.Models
     public class AdminEmployeeEdit
     {
         [Required, MinLength(4, ErrorMessage = "Minimum length is 4")]
-        [Display(Name = "Full Name")]
         public string FullName { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
+        [EmployeeDateValidationAttribute(ErrorMessage = "Ju mund te regjistroheni vetem ne listen e penzionereve")]
+        [DateValidation(ErrorMessage = "Ju lutem shenoni daten e sakt, nuk mund te jete me e madhe se data momentale")]
+        [EmployeeYearValidation(ErrorMessage = "Nuk mund te regjistrohet nje employee me i ri se 18vjet")]
         public DateTime BirthDate { get; set; }
 
         [Required, MinLength(10, ErrorMessage = "Minimum length is 4"), MaxLength(12, ErrorMessage = "Maximum length is 10")]
-        [Display(Name = "Personal Number")]
         public string PersonalNumber { get; set; }
 
         [Required, MinLength(12, ErrorMessage = "Minimum length is 12"), MaxLength(12, ErrorMessage = "Maximum length is 12")]
-        [Display(Name = "Contact Number")]
         public string ContactNumber { get; set; }
 
         [Required, MinLength(3, ErrorMessage = "Minimum length is 3")]
@@ -31,16 +31,15 @@ namespace Kindergarten_Management_System.Models
         [Required, MinLength(15, ErrorMessage = "Minimum length is 15")]
         public string Bio { get; set; }
 
-        [Required, MinLength(3, ErrorMessage = "Minimum length is 3")]
+        [Required]
+        [RegularExpression(@".*\S+.*$", ErrorMessage = "Please choose a city!")]
         public string City { get; set; }
 
         public char Gender { get; set; }
 
-        [Display(Name = "Profile picture")]
         public string Image { get; set; }
 
         [Required, MinLength(3, ErrorMessage = "Minimum length is 3")]
-        [Display(Name = "Username")]
         public string UserName { get; set; }
 
         [Required, EmailAddress]

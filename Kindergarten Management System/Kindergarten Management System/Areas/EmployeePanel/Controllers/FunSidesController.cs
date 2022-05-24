@@ -1,6 +1,5 @@
-﻿using Kindergarten_Management_System.Data;
+using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -10,7 +9,6 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
 {
-    [Authorize(Roles = "Employee")]
     [Area("EmployeePanel")]
     public class FunSidesController : Controller
     {
@@ -24,7 +22,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            int pageSize = 3;
+            int pageSize = 6;
             var funSides = context.FunSides.Where(x => x.TeacherId == userId ).OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);
@@ -73,7 +71,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         //GET employeepnael/funside/details/id
         public async Task<IActionResult> Details(Guid? id)
         {
-            FunSide funside = await context.FunSides.Include(x => x.AppUser).FirstOrDefaultAsync(x => x.FunSideId == id);
+            FunSide funside = await context.FunSides.FirstOrDefaultAsync(x => x.FunSideId == id);
 
             if (funside == null)
             {
@@ -124,7 +122,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
             return View(funSide);
         }
 
-        //GET employeepanel/funsides/delete/id/
+        //GET employeepanel/funsides/delete/id
         public async Task<IActionResult> Delete(Guid? id)
         {
             FunSide funSide = await context.FunSides.FindAsync(id);

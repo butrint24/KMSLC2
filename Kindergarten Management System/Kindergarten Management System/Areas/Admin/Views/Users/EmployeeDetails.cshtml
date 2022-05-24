@@ -4,84 +4,132 @@
     ViewData["Title"] = "Employee Details";
 }
 
-<h1>Employee Details</h1>
+<section class="h-100 login-bg p-3" style="border-radius:1rem;">
+    <div class="container rounded register-form-bg2 ">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5 ">
+                    <img class="rounded-circle mt-5" width="250"
+                         src="~/media/employeepic/@Model.Image">
+                    <span class="font-h3" style="font-size:2rem;">
+                        @Html.DisplayFor(model => model.FullName)
+                    </span>
 
-<div>
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FullName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PersonalNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PersonalNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ContactNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ContactNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Bio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.Raw(Model.Bio)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @if (Model.Gender == 'M')
-            {
-            <p>Male</p>
-            }
-            else {
-                <p>Female</p>
-            }
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            <img src="~/media/employeepic/@Model.Image"  width="200" height="300" />
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a class="btn btn-info" asp-action="Index">Back to List</a>
-</div>
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-uppercase font-h3">Employee Details</h4>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12 pt-1">
+                            <label asp-for="FullName" class="control-label details-label ">Full Name</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.FullName)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="BirthDate" class="control-label details-label ">Birth Date</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.BirthDate)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="Gender" class="control-label details-label ">Gender</label>
+                            <div class="d-flex justify-content-start form-display">
+                                @if (Model.Gender == 'M')
+                                {
+                                    <span class="span-text">Male</span>
+                                }
+                                else
+                                {
+                                    <span class="span-text">Female</span>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="PersonalNumber" class="control-label details-label ">Personal Number</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.PersonalNumber)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="ContactNumber" class="control-label details-label ">Contact Number</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.ContactNumber)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="Title" class="control-label details-label ">Title</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.Title)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="City" class="control-label details-label ">City</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.City)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 pt-1">
+                            <label asp-for="Bio" class="control-label details-label ">Bio</label>
+                            <div class="d-flex justify-content-start form-display bio-text">
+                                <span class="p-3">
+                                    @Html.Raw(Model.Bio)
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mt-3">
+
+                    </div>
+                    <div class="mt-5 text-center"> <a class="btn btn-success mr-2" asp-action="AdminEmployeeEdit" asp-route-id="@Model.Id">Edit Employee Account</a></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience">
+                        <span style="font-weight:bold">Account Details</span>
+                        <a class="btn btn-secondary" href="javascript:history.go(-1)">Back</a>
+                    </div>
+                    <br>
+
+                    <div class="col-md-12 pt-1">
+                        <label asp-for="UserName" class="control-label details-label ">Employee Username</label>
+                        <div class="d-flex justify-content-start form-display">
+                            <span class="span-text">
+                                @Html.DisplayFor(model => model.UserName)
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-12 pt-1">
+                        <label asp-for="Email" class="control-label details-label ">Employee Email</label>
+                        <div class="d-flex justify-content-start form-display ">
+                            <span class="span-text" style="text-decoration:none;">
+                                @Html.DisplayFor(model => model.Email)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

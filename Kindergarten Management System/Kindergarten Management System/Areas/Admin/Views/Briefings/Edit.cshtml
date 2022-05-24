@@ -4,55 +4,47 @@
     ViewData["Title"] = "Edit Briefing";
 }
 
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-<link rel="stylesheet" href="~/css/homework.css" />
+<h1>Edit Briefing</h1>
 
 
-<section class="mx-5" style="border-radius:1rem;">
-    <div class="container p-1">
-        <div class="row d-flex justify-content-center align-items-center">
-            <div class="col-12 col-xl-12">
-                <div class="card " style="border-radius: 1rem; background-color:#E1EBEE; ">
-                    <div class="col-md-12 text-center pt-5">
-                        <h4 class="title">
-                            <span class="title-word title-word-1">Edit </span>
-                            <span class="title-word title-word-2">Briefing </span>
-                        </h4>
-                    </div>
-                    <hr>
-                    <div class="card-bodyy little-profile text-center px-5">
+<div class="row">
+    <div class="col-md-10">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-                        <form asp-action="Edit">
-                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                            <input type="hidden" asp-for="BriefingId" />
-                            <input type="hidden" asp-for="Order" />
-                            <div class="form-group">
-                                <label asp-for="Title" class="control-label label-font" style="font-size:1.4rem;"></label>
-                                <input asp-for="Title" class="form-control" />
-                                <span asp-validation-for="Title" class="text-danger"></span>
-                            </div>
-                            <div class="form-group">
-                                <label asp-for="Content" class="control-label label-font" style="font-size:1.4rem;"></label>
-                                <textarea asp-for="Content" class="form-control"></textarea>
-                                <span asp-validation-for="Content" class="text-danger"></span>
-                            </div>
-                            <div class="form-group d-flex justify-content-center">
-                                <input type="submit" value="Save" class="btn btn-primary my-3 p-2 mr-2" />
-                                <a class="btn btn-info my-3 p-2" asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2 "></i></a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+            <input type="hidden" asp-for="BriefingId" />
+            <input type="hidden" asp-for="Order" />
+
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-        </div>
-    </div>
-</section>
 
+            <div class="form-group">
+                <label asp-for="Content" class="control-label"></label>
+                <textarea asp-for="Content" class="form-control"></textarea>
+                <span asp-validation-for="Content" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <script>
-        CKEDITOR.replace("Content");
+            CKEDITOR.replace("Content");
+            $("#ImageUpload").change(function () {
+                readURL(this);
+            });
     </script>
 }

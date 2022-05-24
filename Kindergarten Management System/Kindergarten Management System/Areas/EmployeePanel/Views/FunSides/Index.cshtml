@@ -1,50 +1,52 @@
 @model IEnumerable<Kindergarten_Management_System.Models.FunSide>
 
 
-@{
-    ViewData["Title"] = "Index";
-}
+    @{
+        ViewData["Title"] = "Index";
+    }
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-<link rel="stylesheet" href="~/css/funside.css" />
-<p class="d-flex justify-content-center">
-    <a class="btn btn-primary " asp-action="Create">Create New</a>
-</p>
-<section class="container pt-3">
-    <div class="row ">
-        @foreach (var item in Model)
-        {
-            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                    <div class="card text-white card-has-bg " style="background-image: url('https://images.pexels.com/photos/8422173/pexels-photo-8422173.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); ">
+    <h1>Index</h1>
 
-                        <div class="card-img-overlay d-flex flex-column">
-                            <div class="card-body">
-                                <p class="card-meta mb-2">KinderGarten</p>
-                                <p><i class="far fa-clock"></i> @item.Order.Day/@item.Order.Month/@item.Order.Year</p>
-                                <p class="card-title mt-0 "><span class="title-color7" style="font-size:1.5rem;">@Html.DisplayFor(modelItem => item.Title)</span></p>
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table table-responsive-sm table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    Date Created
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @item.Order.Day/@item.Order.Month/@item.Order.Year
+                </td>
+                <td>
+                    <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@item.FunSideId">Edit</a>
+                    <a class="btn btn-info mr-2" asp-action="Details" asp-route-id="@item.FunSideId">Details</a>
+                    <a class="btn btn-danger confirmDeletion" asp-action="Delete" asp-route-Id="@item.FunSideId">Delete</a>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
 
-                            </div>
-                            <div class="card-footer">
-                                <div class="media">
-                                    <div class="media-body d-flex justify-content-center" >
-                                        <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@item.FunSideId"><i class="fa-solid fa-pen"></i></a>
-                                        <a class="btn btn-success mr-2"  asp-action="Details" asp-route-id="@item.FunSideId"><i class="fa-solid fa-circle-info"></i></a>
-                                        <a class="btn btn-danger confirmDeletion" asp-action="Delete" asp-route-Id="@item.FunSideId"><i class="fa-solid fa-trash-can"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-            </div>
-        }
-
-    </div>
     @if (ViewBag.TotalPages > 1)
     {
         <div class="d-flex w-100 justify-content-center">
             <pagination page-count="@ViewBag.TotalPages" page-target="/employeepanel/funsides"
-                        page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+                page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
             </pagination>
         </div>
+
     }
-</section>

@@ -4,37 +4,28 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1 style="text-align: center;"><span class="greenColor">E</span>mplo<span class="greenColor">y</span>ees</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a  class="btn btn-outline-success" asp-controller="Account" asp-action="RegisterEmployee">Register New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-responsive-sm table-striped my-4">
+    <thead class="table-dark">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FullName)
+                Image
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.BirthDate)
+                Full Name
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.PersonalNumber)
+                City
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Title)
+                Contact Number
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UserName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
+                Email
             </th>
             <th></th>
         </tr>
@@ -43,33 +34,25 @@
 @foreach (var item in Model) {
         <tr>
             <td>
+                <img src="~/media/employeepic/@item.TeacherImage" width="50" height="50" style="border-radius: 100%;" />
+            </td>
+            <td>
                 @item.FullName
-            </td>
-            <td>
-                @item.BirthDate.Day/@item.BirthDate.Month/@item.BirthDate.Year
-            </td>
-            <td>
-                @item.PersonalNumber
-            </td>
-            <td>
-                @item.Title
             </td>
             <td>
                 @item.City
             </td>
             <td>
-                @item.Gender
-            </td>
-            <td>
-                @item.UserName
+                @item.PhoneNumber
             </td>
             <td>
                 @item.Email
             </td>
             <td>
                 <a class="btn btn-primary mr-2" asp-action="AdminEmployeeEdit" asp-route-id="@item.Id">Edit</a>
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                <a class="btn btn-info mr-2" asp-action="EmployeeDetails" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-danger confirmDeletion" asp-action="EmployeeDelete" asp-route-Id="@item.Id">Delete</a>
+
             </td>
         </tr>
 }
@@ -77,8 +60,11 @@
 </table>
 
 
+@if (ViewBag.TotalPages > 1)
+{
     <div class="d-flex w-100 justify-content-center">
-        <pagination page-count="@ViewBag.TotalPages" page-target="/admin/users"
+        <pagination page-count="@ViewBag.TotalPages" page-target="/admin/users/employees"
             page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
         </pagination>
     </div>
+}

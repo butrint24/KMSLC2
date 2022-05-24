@@ -1,0 +1,134 @@
+﻿@model Student
+
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<section class="h-100 login-bg p-3" style="border-radius:1rem;">
+    <div class="container rounded register-form-bg2 ">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5 ">
+                    <img class="rounded-circle mt-5" width="250"
+                         src="~/media/studentpic/@Model.Image">
+                    <span class="font-h3" style="font-size:2rem;">
+                        @Html.DisplayFor(model => model.FullName)
+                    </span>
+
+                </div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-uppercase font-h3">My Details</h4>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-12 pt-1">
+                            <label asp-for="FullName" class="control-label details-label ">Full Name</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.FullName)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="BirthDate" class="control-label details-label ">Birth Date</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.BirthDate)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="Gender" class="control-label details-label ">Gender</label>
+                            <div class="d-flex justify-content-start form-display">
+                                @if (Model.Gender == 'M')
+                                {
+                                    <span class="span-text">Male</span>
+                                }
+                                else
+                                {
+                                    <span class="span-text">Female</span>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="LegalGuardian" class="control-label details-label ">Legal Guardian</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.LegalGuardian)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="ContactNumber" class="control-label details-label ">Contact Number</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.ContactNumber)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="GuardianOccupation" class="control-label details-label ">Guardian Occupation</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.GuardianOccupation)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-6 pt-1">
+                            <label asp-for="City" class="control-label details-label ">City</label>
+                            <div class="d-flex justify-content-start form-display">
+                                <span class="span-text">
+                                    @Html.DisplayFor(model => model.City)
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-12 pt-1">
+                            <label asp-for="TeacherName" class="control-label details-label ">Teacher Name</label>
+                            <div class="d-flex justify-content-start form-display bio-text">
+                                <select disabled style="-webkit-appearance: none; background-color: #fff; border: none" asp-for="TeacherName" asp-items="@ViewBag.TeacherName" class="form-control">
+                                    <option value=" ">Choose a teacher</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row mt-3">
+
+                    </div>
+                    <div class="mt-5 text-center"> <a class="btn btn-success mr-2" asp-area="StudentPanel" asp-controller="Account" asp-action="Edit">Edit My Account</a></div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience">
+                        <span style="font-weight:bold">Account Details</span>
+                        <a class="btn btn-secondary" href="javascript:history.go(-1)">Back</a>
+                    </div>
+                    <br>
+
+                    <div class="col-md-12 pt-1">
+                        <label asp-for="UserName" class="control-label details-label ">My Username</label>
+                        <div class="d-flex justify-content-start form-display">
+                            <span class="span-text">
+                                @Html.DisplayFor(model => model.UserName)
+                            </span>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="col-md-12 pt-1">
+                        <label asp-for="Email" class="control-label details-label ">My Email</label>
+                        <div class="d-flex justify-content-start form-display ">
+                            <span class="span-text" style="text-decoration:none;">
+                                @Html.DisplayFor(model => model.Email)
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

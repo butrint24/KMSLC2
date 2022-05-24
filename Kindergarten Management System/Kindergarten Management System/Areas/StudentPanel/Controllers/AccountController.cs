@@ -3,8 +3,10 @@ using Kindergarten_Management_System.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
@@ -34,9 +36,34 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
             this.webHostEnviroment = webHostEnviroment;
         }
 
+
+        //GET /admin/student/details/5
+        public async Task<IActionResult> Details(Student student, string id)
+        {
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
+
+
+            if (User.IsInRole("Student"))
+            {
+
+                Student studentDetails = new Student(appUser);
+                if (appUser == null)
+                {
+                    return NotFound();
+                }
+
+
+                return View(studentDetails);
+            }
+
+            return BadRequest();
+        }
+
         // GET /account/StudentEdit
         public async Task<IActionResult> Edit()
         {
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
 
             StudentEdit studentEdit = new StudentEdit(appUser);
@@ -50,6 +77,7 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(StudentEdit studentEdit)
         {
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
             AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
             studentEdit.Image = appUser.StudentImage;
             if (ModelState.IsValid)
@@ -102,6 +130,7 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
                 if (result.Succeeded)
                 {
                     TempData["Success"] = "Your information has been edited!";
+                    return RedirectToAction("Details");
                 }
 
 

@@ -150,6 +150,65 @@ namespace Kindergarten_Management_System.Data.Migrations
                     b.ToTable("Briefings");
                 });
 
+            modelBuilder.Entity("Kindergarten_Management_System.Models.FunSide", b =>
+                {
+                    b.Property<Guid>("FunSideId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Order")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("FunSideId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("FunSides");
+                });
+
+            modelBuilder.Entity("Kindergarten_Management_System.Models.HomeWork", b =>
+                {
+                    b.Property<Guid>("HomeWorkId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Order")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Slug")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TeacherId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("HomeWorkId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("HomeWorks");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -279,6 +338,22 @@ namespace Kindergarten_Management_System.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens");
+                });
+
+            modelBuilder.Entity("Kindergarten_Management_System.Models.FunSide", b =>
+                {
+                    b.HasOne("Kindergarten_Management_System.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Kindergarten_Management_System.Models.HomeWork", b =>
+                {
+                    b.HasOne("Kindergarten_Management_System.Models.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

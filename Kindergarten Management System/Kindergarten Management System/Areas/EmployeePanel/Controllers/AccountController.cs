@@ -44,6 +44,30 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
             return View(employeeEdit);
         }
 
+
+        //GET /admin/employee/details/5
+        public async Task<IActionResult> Details(Employee employee, string id)
+        {
+
+            AppUser appUser = await userManager.FindByNameAsync(User.Identity.Name);
+
+
+            if (User.IsInRole("Employee"))
+            {
+
+                Employee employeeDetails = new Employee(appUser);
+                if (appUser == null)
+                {
+                    return NotFound();
+                }
+
+
+                return View(employeeDetails);
+            }
+
+            return BadRequest();
+        }
+
         // Post /account/EmployeeEdit
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -101,11 +125,12 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
                 if (result.Succeeded)
                 {
                     TempData["Success"] = "Your information has been edited!";
+                    return RedirectToAction("Details");
                 }
+                
 
 
             }
-
             return View();
         }
     }
