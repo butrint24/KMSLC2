@@ -185,7 +185,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
 
             return View();
         }
-        // GET /account/AdminStudentEdit
+        /// GET /account/AdminStudentEdit
         public async Task<IActionResult> AdminStudentEdit(string id)
         {
             ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
