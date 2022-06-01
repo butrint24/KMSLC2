@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Kindergarten_Management_System.Models.HomeWork>
+﻿@model IEnumerable<HomeWork>
 
 @{
     ViewData["Title"] = "Index";
@@ -40,3 +40,12 @@
 }
     </tbody>
 </table>
+
+@if (ViewBag.TotalPages > 1)
+{
+    <div class="d-flex w-100 justify-content-center">
+        <pagination page-count="@ViewBag.TotalPages" page-target="/admin/homeworks"
+            page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+        </pagination>
+    </div>
+}
