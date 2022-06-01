@@ -1,0 +1,43 @@
+﻿@model IEnumerable<AppUser>
+
+@{
+    ViewData["Title"] = "Teacher";
+}
+
+<h1>Teacher</h1>
+
+
+<div class="card" style="width: 100%">
+    @foreach (var item in Model)
+    {
+      
+      <div class="d-flex justify-content-center">
+          <img class="card-img-top" style="width: 18rem;" src="~/media/employeepic/@item.TeacherImage" alt="Card image cap">
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"> @item.FullName</h5>
+        <h3 class="card-title">Title: <i>@item.Title</i></h3>
+        <p class="card-text">About: @Html.Raw(item.Bio)</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Birthdate: @item.BirthDate.Day/@item.BirthDate.Month/@item.BirthDate.Year</li>
+        <li class="list-group-item">City: @item.City</li>
+            <li class="list-group-item">
+                @if (item.Gender == 'M')
+                { 
+                    <p>Gender: Male</p> 
+                }
+                else
+                {
+                    <p>Gender: Female</p>
+                }
+                </li>
+        </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">@item.Email</a>
+        <a href="#" class="card-link">@item.PhoneNumber</a>
+      </div>
+    }
+
+
+</div>

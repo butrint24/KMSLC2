@@ -1,4 +1,4 @@
-﻿using Kindergarten_Management_System.Data;
+using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -39,7 +39,6 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         //GET admin/funside/details/id
         public async Task<IActionResult> Details(Guid? id)
         {
-
             FunSide funside = await context.FunSides.Include(x => x.AppUser).FirstOrDefaultAsync(x => x.FunSideId == id);
 
             if (funside == null)

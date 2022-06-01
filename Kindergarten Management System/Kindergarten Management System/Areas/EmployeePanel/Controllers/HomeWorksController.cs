@@ -140,6 +140,5 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
 
             return RedirectToAction("Index");
         }
-
     }
 }
