@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Contact>
+
+@{
+    ViewData["Title"] = "Messages";
+}
+
+<h1>Messages</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Subject)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Subject)
+            </td>
+            <td>
+                <a class="btn btn-info mr-2" asp-action="Details" asp-route-id="@item.ContactId">Details</a>
+                <a class="btn btn-danger confirmDeletion" asp-action="Delete" asp-route-Id="@item.ContactId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@if (ViewBag.TotalPages > 1)
+{
+    <div class="d-flex w-100 justify-content-center">
+        <pagination page-count="@ViewBag.TotalPages" page-target="/admin/contacts"
+            page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+        </pagination>
+    </div>
+}

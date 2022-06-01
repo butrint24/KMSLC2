@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Kindergarten_Management_System.Models.Briefing>
+﻿@model IEnumerable<Briefing>
 
 @{
     ViewData["Title"] = "Index";
@@ -9,8 +9,8 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-responsive-sm table-striped my-4">
+    <thead class="table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
@@ -39,3 +39,11 @@
 }
     </tbody>
 </table>
+@if (ViewBag.TotalPages > 1)
+{
+    <div class="d-flex w-100 justify-content-center">
+        <pagination page-count="@ViewBag.TotalPages" page-target="/admin/briefings"
+            page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+        </pagination>
+    </div>
+}
