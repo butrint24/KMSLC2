@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Mentor Education Bootstrap Theme</title>
+    <title>Kinder Garten</title>
     <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
     <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
@@ -40,7 +40,7 @@
                         @if (User.IsInRole("Admin"))
                         {
                             <li class="nav-item">
-                                <a class="btn btn-success m-2" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                                <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
                                     Admin Panel
                                 </a>
                             </li>
@@ -49,7 +49,7 @@
                         @if (User.IsInRole("Employee"))
                         {
                             <li class="nav-item">
-                                <a class="btn btn-success m-2" asp-area="EmployeePanel" asp-controller="Home" asp-action="Index">
+                                <a  asp-area="EmployeePanel" asp-controller="Home" asp-action="Index">
                                     Employee Panel
                                 </a>
                             </li>
@@ -58,34 +58,14 @@
                         @if (User.IsInRole("Student"))
                         {
                             <li class="nav-item">
-                                <a class="btn btn-success m-2" asp-area="StudentPanel" asp-controller="Home" asp-action="Index">
+                                <a asp-area="StudentPanel" asp-controller="Home" asp-action="Index">
                                     Student Panel
                                 </a>
                             </li>
                         }
 
-                        @if (User.IsInRole("Employee"))
-                        {
-                            <li class="nav-item">
-                                <a class="btn btn-primary m-2" asp-area="EmployeePanel" asp-controller="Account" asp-action="Details">
-                                    My Profile
-                                </a>
-                            </li>
-
-                        }
-
-                        @if (User.IsInRole("Student"))
-                        {
-                            <li class="nav-item">
-                                <a class="btn btn-primary m-2" asp-area="StudentPanel" asp-controller="Account" asp-action="Details">
-                                    My Profile
-                                </a>
-                            </li>
-
-                        }
-
                         <li class="nav-item">
-                            <a class="btn btn-danger m-2" asp-controller="Account" asp-action="Logout">
+                            <a style="color: red;" asp-controller="Account" asp-action="Logout">
                                 Log out
                             </a>
                         </li>
@@ -103,8 +83,11 @@
     <br />
     <br />
     <div class="container">
-        <main role="main" class="pb-3">
-            <partial name="_NotificationPartial" />
+        <main role="main" class="pb-5">
+            <div style="margin-top: 3%;">
+               <partial name="_NotificationPartial" />
+            </div>
+
             @RenderBody()
         </main>
     </div>
