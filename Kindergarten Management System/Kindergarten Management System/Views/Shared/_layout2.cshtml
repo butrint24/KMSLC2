@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mentor Education Bootstrap Theme</title>
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Candal|Alegreya+Sans">
+    <link rel="stylesheet" type="text/css" href="~/try/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/try/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/try/css/imagehover.min.css">
+    <link rel="stylesheet" type="text/css" href="~/try/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="~/try/css/main.css">
+</head>
+
+<body>
+    <!--Navigation bar-->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                    <img src="~/try/images/lgogoogog.png" width="100" height="40" />
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#pricing">Offers</a></li>
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-success m-2" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+                                    Admin Panel
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-success m-2" asp-area="EmployeePanel" asp-controller="Home" asp-action="Index">
+                                    Employee Panel
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Student"))
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-success m-2" asp-area="StudentPanel" asp-controller="Home" asp-action="Index">
+                                    Student Panel
+                                </a>
+                            </li>
+                        }
+
+                        @if (User.IsInRole("Employee"))
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-primary m-2" asp-area="EmployeePanel" asp-controller="Account" asp-action="Details">
+                                    My Profile
+                                </a>
+                            </li>
+
+                        }
+
+                        @if (User.IsInRole("Student"))
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-primary m-2" asp-area="StudentPanel" asp-controller="Account" asp-action="Details">
+                                    My Profile
+                                </a>
+                            </li>
+
+                        }
+
+                        <li class="nav-item">
+                            <a class="btn btn-danger m-2" asp-controller="Account" asp-action="Logout">
+                                Log out
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="btn-trial"><a asp-controller="Account" asp-action="Login">Log in</a></li>
+                    }
+                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!--/ Navigation bar-->
+    <!--Banner-->
+    <br />
+    <br />
+    <div class="container">
+        <main role="main" class="pb-3">
+            <partial name="_NotificationPartial" />
+            @RenderBody()
+        </main>
+    </div>
+    <!--Footer-->
+    <footer id="footer" class="footer">
+        <div class="container text-center">
+            <!-- End newsletter-form -->
+            <ul class="social-links">
+                <li><a href="#link"><i class="fa fa-twitter fa-fw"></i></a></li>
+                <li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
+                <li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
+            </ul>
+            ©2021 - @DateTime.Now.Year All rights reserved
+            <div class="credits">
+                Designed by <b>ASGARD</b> TEAM
+            </div>
+        </div>
+    </footer>
+    <!--/ Footer-->
+
+    <script src="~/try/js/jquery.min.js"></script>
+    <script src="~/try/js/jquery.easing.min.js"></script>
+    <script src="~/try/js/bootstrap.min.js"></script>
+    <script src="~/try/js/custom.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/lib/ckeditor/ckeditor.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+
+</html>

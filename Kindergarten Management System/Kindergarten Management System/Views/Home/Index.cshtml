@@ -1,8 +1,168 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
 }
-
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container3">
+    <div class="carousel">
+        <div class="carousel__face"><span>This is something</span></div>
+        <div class="carousel__face"><span>Very special</span></div>
+        <div class="carousel__face"><span>Special is the key</span></div>
+        <div class="carousel__face"><span>For you</span></div>
+        <div class="carousel__face"><span>Just give it</span></div>
+        <div class="carousel__face"><span>A try</span></div>
+        <div class="carousel__face"><span>And see</span></div>
+        <div class="carousel__face"><span>How IT Works</span></div>
+        <div class="carousel__face"><span>Woow</span></div>
+    </div>
 </div>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div style="margin-top: 15%;">
+    <h3 style="text-align: center;">KINDER GARTEN</h3>
+    <br />
+    <p style="text-align: center;">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula tellus dui, eget ornare odio tempor maximus. Quisque lorem nibh, consectetur ut erat non, efficitur vehicula purus. Quisque est lacus, volutpat quis erat vitae, porta consequat lacus. Maecenas ultricies dapibus bibendum. Suspendisse fringilla nunc vel dictum pharetra. Duis molestie, leo nec hendrerit cursus, nisi purus tristique urna, ac sagittis dui magna porta urna. Phasellus viverra semper lorem, euismod blandit dui dictum vel. Pellentesque vel metus sit amet nisl egestas auctor quis at mauris. Nunc non imperdiet est. Pellentesque imperdiet euismod erat ac posuere. Ut ex ex, efficitur faucibus tellus at, consequat varius magna. Praesent eleifend enim sit amet eros efficitur tincidunt non gravida felis.
+
+        Nulla mollis non erat non lacinia. Donec vitae maximus magna, non pellentesque urna. Etiam lobortis nisl sed semper tristique. Aliquam venenatis neque vitae enim consequat, vel pellentesque libero laoreet. Nam rhoncus accumsan nisi eu tincidunt. Nulla commodo faucibus nibh, at lobortis mi ullamcorper id. Praesent metus nibh, dictum ac vehicula in, facilisis ut leo.
+    </p>
+</div>
+<!--/ Contact-->
+<section id="contact">
+    <div class="contact1">
+        <div class="container-contact1">
+            <div class="contact1-pic js-tilt" data-tilt>
+                <img src="~/try/images/img-01.png" alt="IMG">
+            </div>
+
+            <form class="contact1-form validate-form">
+                <span class="contact1-form-title">
+                    Get in touch
+                </span>
+
+                <div class="wrap-input1 validate-input" data-validate="Name is required">
+                    <input class="input1" type="text" name="name" placeholder="Name">
+                    <span class="shadow-input1"></span>
+                </div>
+
+                <div class="wrap-input1 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                    <input class="input1" type="text" name="email" placeholder="Email">
+                    <span class="shadow-input1"></span>
+                </div>
+
+                <div class="wrap-input1 validate-input" data-validate="Subject is required">
+                    <input class="input1" type="text" name="subject" placeholder="Subject">
+                    <span class="shadow-input1"></span>
+                </div>
+
+                <div class="wrap-input1 validate-input" data-validate="Message is required">
+                    <textarea class="input1" name="message" placeholder="Message"></textarea>
+                    <span class="shadow-input1"></span>
+                </div>
+
+                <div class="container-contact1-form-btn">
+                    <button class="contact1-form-btn">
+                        <span>
+                            Send Email
+                            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+<!--/contact-->
+<!--Pricing-->
+<section id="pricing" class="section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="header-section text-center">
+                <h2>Our Pricing</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem nesciunt vitae,<br> maiores, magni dolorum aliquam.</p>
+                <br />
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="price-table">
+                    <!-- Plan  -->
+                    <div class="pricing-head">
+                        <h4>Monthly Plan</h4>
+                        <span class="fa fa-usd curency"></span> <span class="amount">200</span>
+                    </div>
+
+                    <!-- Plean Detail -->
+                    <div class="price-in mart-15">
+                        <a href="#" class="btn btn-bg green btn-block">PURCHACE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="price-table">
+                    <!-- Plan  -->
+                    <div class="pricing-head">
+                        <h4>Quarterly Plan</h4>
+                        <span class="fa fa-usd curency"></span> <span class="amount">800</span>
+                    </div>
+
+                    <!-- Plean Detail -->
+                    <div class="price-in mart-15">
+                        <a href="#" class="btn btn-bg yellow btn-block">PURCHACE</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="price-table">
+                    <!-- Plan  -->
+                    <div class="pricing-head">
+                        <h4>Year Plan</h4>
+                        <span class="fa fa-usd curency"></span> <span class="amount">1200</span>
+                    </div>
+
+                    <!-- Plean Detail -->
+                    <div class="price-in mart-15">
+                        <a href="#" class="btn btn-bg red btn-block">PURCHACE</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--/ Pricing-->
+<footer id="footer" class="footer">
+    <div class="container text-center">
+
+        <h3>Enter your email for the latest offers!</h3>
+
+        <form class="mc-trial row">
+            <div class="form-group col-md-3 col-md-offset-2 col-sm-4">
+                <div class=" controls">
+                    <input name="name" placeholder="Enter Your Name" class="form-control" type="text">
+                </div>
+            </div>
+            <!-- End email input -->
+            <div class="form-group col-md-3 col-sm-4">
+                <div class=" controls">
+                    <input name="EMAIL" placeholder="Enter Your email" class="form-control" type="email">
+                </div>
+            </div>
+            <!-- End email input -->
+            <div class="col-md-2 col-sm-4">
+                <p>
+                    <button name="submit" type="submit" class="btn btn-block btn-submit">
+                        Submit <i class="fa fa-arrow-right"></i>
+                    </button>
+                </p>
+            </div>
+        </form>
+    </div>
+</footer>
