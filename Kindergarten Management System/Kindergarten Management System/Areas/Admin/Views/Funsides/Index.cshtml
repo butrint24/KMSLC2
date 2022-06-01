@@ -7,13 +7,13 @@
 <h1>Index</h1>
 
 
-
 <table class="table table-responsive-sm table-striped my-4">
     <thead class="table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Title)
             </th>
+
             <th>
                 @Html.DisplayNameFor(model => model.Order)
             </th>
@@ -29,6 +29,8 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
+
+
             <td>
                 @Html.DisplayFor(modelItem => item.Order)
             </td>
@@ -39,7 +41,6 @@
             <td>
                 <a class="btn btn-info" asp-action="Details" asp-route-id="@item.FunSideId">Details</a> 
                 <a class="btn btn-danger confirmDeletion" asp-action="Delete" asp-route-Id="@item.FunSideId">Delete</a>
-
             </td>
         </tr>
 }

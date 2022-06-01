@@ -1,4 +1,5 @@
 ﻿using Kindergarten_Management_System.Data;
+using Kindergarten_Management_System.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -30,6 +31,19 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             ViewBag.TotalPages = (int)Math.Ceiling((decimal)context.Contacts.Count() / pageSize);
 
             return View(await contacts.ToListAsync());
+        }
+
+        //GET admin/contacts/details/id
+        public async Task<IActionResult> Details(Guid? id)
+        {
+            Contact contact = await context.Contacts.FirstOrDefaultAsync(x => x.ContactId == id);
+
+            if (contact == null)
+            {
+                return NotFound();
+            }
+
+            return View(contact);
         }
     }
 }
