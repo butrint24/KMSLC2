@@ -45,24 +45,5 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
 
             return View(contact);
         }
- //GET admin/contacts/delete/id
-        public async Task<IActionResult> Delete(Guid? id)
-        {
-            Contact contact = await context.Contacts.FindAsync(id);
-
-            if (contact == null)
-            {
-                TempData["Error"] = "The briefing does not exist!";
-            }
-            else
-            {
-                context.Contacts.Remove(contact);
-                await context.SaveChangesAsync();
-
-                TempData["Success"] = "The briefing has been deleted successfully!";
-            }
-
-            return RedirectToAction("Index");
-        }
     }
 }
