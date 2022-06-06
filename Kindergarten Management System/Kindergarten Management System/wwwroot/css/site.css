@@ -144,13 +144,13 @@ input[type='radio'] {
     background-color: white;
 }
 
-.span-text {
+.span-text{
     color: black;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     padding: 3px;
     padding-left: 20px;
-    color: darkcyan;
+    color: darkcyan!important;
 }
 
 .details-label {
@@ -460,5 +460,48 @@ input[type='radio'] {
     border-color: #e8eaf6;
 }
 
-/*HomeWork*/
+/*DataTables*/
 
+table.dataTable thead .sorting:after, table.dataTable thead .sorting_asc:after {
+    display:none;
+}
+table.dataTable thead .sorting:before, table.dataTable thead .sorting_asc:before {
+    display:none;
+}
+table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTable thead .sorting_desc, table.dataTable thead .sorting_asc_disabled, table.dataTable thead .sorting_desc_disabled {
+    background-repeat: no-repeat;
+    background-position: center left;
+}
+.dataTables_wrapper .dataTables_filter input {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: white; 
+    margin-left: 3px;
+}
+.dataTables_wrapper .dataTables_length select {
+    border: 1px solid #aaa;
+    border-radius: 3px;
+    padding: 5px;
+    background-color: white;
+    padding: 4px;
+}
+
+.dd-text {
+    font-weight:500;
+}
+
+@media (max-width: 575.98px) {
+    dt, dd {
+        text-align:center !important;
+        padding:5px !important;
+    }
+}
+@media (min-width: 768px) {
+    dt {
+        text-align:right;       
+    }
+    dt, dd {
+        padding: 18px;
+    }
+}

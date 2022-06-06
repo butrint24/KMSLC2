@@ -3,47 +3,48 @@
 @{
     ViewData["Title"] = "Index";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/homework.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="d-flex justify-content-center">
+    <a class="btn btn-primary " asp-action="Create">Create New</a>
 </p>
-<table class="table table-responsive-sm table-striped">
-    <thead class="table-dark">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                Date Created
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @item.Order.Day/@item.Order.Month/@item.Order.Year
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.HomeWorkId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.HomeWorkId">Details</a> |
-                <a asp-action="Delete" class="confirmDeletion" asp-route-id="@item.HomeWorkId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-@if (ViewBag.TotalPages > 1)
-{
-    <div class="d-flex w-100 justify-content-center">
-        <pagination page-count="@ViewBag.TotalPages" page-target="/admin/users"
-            page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
-        </pagination>
+<section class="container pt-3">
+    <div class="row ">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    <div class="card text-white card-has-bg " style="background-image: url('https://images.pexels.com/photos/7014770/pexels-photo-7014770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+
+                        <div class="card-img-overlay d-flex flex-column">
+                            <div class="card-body">
+                                <p class="card-meta mb-2">KinderGarten</p>
+                                <p><i class="far fa-clock"></i> @item.Order.Day/@item.Order.Month/@item.Order.Year</p>
+                                <p class="card-title mt-0 "><span class="title-color7" style="font-size:1.5rem;">@Html.DisplayFor(modelItem => item.Title)</span></p>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="media">
+                                    <div class="media-body d-flex justify-content-center">
+                                        <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@item.HomeWorkId"><i class="fa-solid fa-pen"></i></a>
+                                        <a class="btn btn-success mr-2" asp-action="Details" asp-route-id="@item.HomeWorkId"><i class="fa-solid fa-circle-info"></i></a>
+                                        <a class="btn btn-danger confirmDeletion" asp-action="Delete" asp-route-Id="@item.HomeWorkId"><i class="fa-solid fa-trash-can"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        }
+
     </div>
-}
+    @if (ViewBag.TotalPages > 1)
+    {
+        <div class="d-flex w-100 justify-content-center">
+            <pagination page-count="@ViewBag.TotalPages" page-target="/employeepanel/homeworks"
+                        page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+            </pagination>
+        </div>
+    }
+</section>

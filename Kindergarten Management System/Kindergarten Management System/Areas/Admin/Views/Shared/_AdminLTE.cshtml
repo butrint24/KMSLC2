@@ -10,7 +10,7 @@
 
     <title>@ViewData["Title"] - Kindergarten</title>
 
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="~/css/all.min.css">
     <link rel="stylesheet" href="~/css/adminlte.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
@@ -39,9 +39,7 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="fa-solid fa-chalkboard-user nav-icon"></i>Dashboard</a>
-                        </li>
+
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link ">
                                 <i class="fa-solid fa-user nav-icon"></i>
@@ -60,7 +58,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" asp-controller="Users" asp-action="Employees">
                                         <i class="fa-solid fa-user-tie nav-icon"></i>
-                                            <p>Employees</p>
+                                        <p>Employees</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -83,19 +81,31 @@
                                 </li>
                             </ul>
                         </li>
-                        
+
                         <li class="nav-item">
                             <a class="nav-link " asp-area="Admin" asp-controller="Roles" asp-action="Index"><i class="fa-solid fa-user-gear nav-icon"></i>Roles</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " asp-area="Admin" asp-controller="Contacts" asp-action="Index"><i class="fa-solid fa-message nav-icon"></i>Messages</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="Admin" asp-controller="Applications" asp-action="Index"><i class="fa-solid fa-address-book nav-icon"></i>Applications</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-controller="Briefings" asp-action="Index"><i class="fa-solid fa-bell nav-icon"></i>Briefings</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-controller="Funsides" asp-action="Index"><i class="fa-solid fa-puzzle-piece nav-icon"></i>Funside</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="Admin" asp-controller="Homeworks" asp-action="Index"><i class="fa-solid fa-book nav-icon"></i>Homework</a>
+                        </li>
                     </ul>
                     <ul class="nav nav-pills nav-sidebar flex-column" style="position: absolute; left: 0; width: 100%; bottom: 0; padding: 5px;">
                         @if (User?.Identity?.IsAuthenticated ?? false)
                         {
                             <li style="background-color: #dc3545; border-color: #dc3545; border-radius: 5px;" class="nav-item">
-                                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Logout">
+                                <a class="nav-link p-2" asp-area="" asp-controller="Account" asp-action="Logout">
                                     <i class=" fas fa-sign-out-alt nav-icon"></i>
                                     <p>Log out</p>
                                 </a>
@@ -139,6 +149,22 @@
     <script src="~/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example').DataTable({
+                "lengthMenu": [5, 10, 15],
+                "order": [[6, "desc"]],
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
+
+            });
+
+        });
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

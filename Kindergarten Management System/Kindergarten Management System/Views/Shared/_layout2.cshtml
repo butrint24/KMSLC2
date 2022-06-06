@@ -32,9 +32,21 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
+               
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#pricing">Offers</a></li>
+                    @if (User?.Identity?.IsAuthenticated ?? false)
+                    {
+
+
+                    }
+                    else
+                    {
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#pricing">Offers</a></li>
+                        <li>
+                            <a asp-area="" asp-controller="Applications" asp-action="Index">Applications</a>
+                        </li>
+                    }
                     @if (User?.Identity?.IsAuthenticated ?? false)
                     {
                         @if (User.IsInRole("Admin"))
@@ -49,7 +61,7 @@
                         @if (User.IsInRole("Employee"))
                         {
                             <li class="nav-item">
-                                <a  asp-area="EmployeePanel" asp-controller="Home" asp-action="Index">
+                                <a asp-area="EmployeePanel" asp-controller="Home" asp-action="Index">
                                     Employee Panel
                                 </a>
                             </li>
@@ -74,8 +86,8 @@
                     {
                         <li class="btn-trial"><a asp-controller="Account" asp-action="Login">Log in</a></li>
                     }
-                    </ul>
-            </div>
+                </ul>
+                </div>
         </div>
     </nav>
     <!--/ Navigation bar-->

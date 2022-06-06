@@ -1,90 +1,112 @@
-﻿@model Kindergarten_Management_System.Models.Application
+﻿@model Application
 
 @{
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>Application</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            Full Name:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FullName)
-        </dd>
-        <dt class = "col-sm-2">
-            Birth Date:
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
-        </dd>
-        <dt class = "col-sm-2">
-            Personal Number
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PersonalNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            Legal Guardian
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LegalGuardian)
-        </dd>
-        <dt class = "col-sm-2">
-            Legal Guardian Occ.
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LegalGuardianOcupation)
-        </dd>
-        <dt class = "col-sm-2">
-           Contact Number
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ContactNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt class = "col-sm-2">
-            Application Date
-        </dt>
-        <dd class = "col-sm-10">
-            @Model.Order.ToString("dd.MM.yyyy - HH:mm")
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
-        <dd class = "col-sm-10">
-            @if (Model.Gender == 'M')
-            {
-                <span class="span-text">Male</span>
-            }
-            else
-            {
-                <span class="span-text">Female</span>
-            }
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-        </dt>
-        <dd class = "col-sm-10">
-            <img class="rounded-circle mt-5" width="250" src="~/media/applicationpic/@Model.Image">
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Offer)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Offer)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a class="btn btn-outline-info " asp-action="Index">Back to List</a>
-</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
+
+<section class="mx-5" style="border-radius:1rem;">
+    <div class="container p-1  ">
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-12 col-xl-12 ">
+                <div class="card" style="border-radius: 1rem; background-color:#E1EBEE; ">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Application </span>
+                            <span class="title-word title-word-2">Details </span>
+                        </h4>
+                    </div>
+                    <div class="card-bodyy little-profile  mt-3">
+                        <hr />
+                        <div class="card-bodyy little-profile text-center  pt-5 mt-5">
+                            <div class="pro-img"><img src="~/media/applicationpic/@Model.Image"></div>
+                            </div>
+                        <dl class="row p-2">
+                            <dt class="col-12 col-sm-6  greenColor  ">
+                                Full Name:
+                            </dt>
+                            <dd class="col-12 col-sm-6  dd-text">
+                                @Html.DisplayFor(model => model.FullName)
+                            </dd>
+                            <dt class="col-12 col-sm-6   greenColor ">
+                                Birth Date:
+                            </dt>
+                            <dd class="col-12 col-sm-6  dd-text">
+                                @Html.DisplayFor(model => model.BirthDate)
+                            </dd>
+                            <dt class="col-12 col-sm-6   greenColor">
+                                Personal Number:
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @Html.DisplayFor(model => model.PersonalNumber)
+                            </dd>
+                            <dt class="col-12 col-sm-6   greenColor">
+                                Legal Guardian:
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @Html.DisplayFor(model => model.LegalGuardian)
+                            </dd>
+                            <dt class="col-12 col-sm-6 greenColor">
+                                Legal Guardian Occ.:
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @Html.DisplayFor(model => model.LegalGuardianOcupation)
+                            </dd>
+                            <dt class="col-12 col-sm-6 greenColor">
+                                Contact Number:
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @Html.DisplayFor(model => model.ContactNumber)
+                            </dd>
+                            <dt class="col-12 col-sm-6 greenColor">
+                                @Html.DisplayNameFor(model => model.City):
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @Html.DisplayFor(model => model.City)
+                            </dd>
+                            <dt class="col-12 col-sm-6 greenColor">
+                                @Html.DisplayNameFor(model => model.Gender):
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @if (Model.Gender == 'M')
+                                {
+                                    <span id="input-male" class=" pl-0">Male</span>
+                                }
+                                else
+                                {
+                                    <span id="input-female" class=" pl-0">Female</span>
+                                }
+                            </dd>
+                            <dt class="col-12 col-sm-6 greenColor">
+                                Application Date:
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @Model.Order.ToString("dd.MM.yyyy - HH:mm")
+                            </dd>
+
+                            <dt class="col-12 col-sm-6 greenColor">
+                                Offer:
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @Html.DisplayFor(model => model.Offer)
+                            </dd>
+
+                        </dl>
+                            <hr>
+                            <div class="d-flex justify-content-center">
+                                <a class="btn btn-info my-3 p-2 " asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2"></i></a>
+                            </div>
+
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

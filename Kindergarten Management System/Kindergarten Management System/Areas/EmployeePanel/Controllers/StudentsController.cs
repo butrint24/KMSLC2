@@ -27,7 +27,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            int pageSize = 6;
+            int pageSize = 2;
             var users = context.Users.Where(x => x.TeacherName == userId).OrderByDescending(x => x.Order)
                                      .Skip((p - 1) * pageSize)
                                      .Take(pageSize);

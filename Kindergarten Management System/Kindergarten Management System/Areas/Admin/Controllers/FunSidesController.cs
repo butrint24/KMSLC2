@@ -23,7 +23,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
 
-            int pageSize = 6;
+            int pageSize = 3;
             var funSides = context.FunSides.Include(x => x.AppUser).OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);

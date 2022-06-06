@@ -22,7 +22,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            int pageSize = 6;
+            int pageSize = 3;
             var funSides = context.FunSides.Where(x => x.TeacherId == userId ).OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);
@@ -71,7 +71,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         //GET employeepnael/funside/details/id
         public async Task<IActionResult> Details(Guid? id)
         {
-            FunSide funside = await context.FunSides.FirstOrDefaultAsync(x => x.FunSideId == id);
+            FunSide funside = await context.FunSides.Include(x => x.AppUser).FirstOrDefaultAsync(x => x.FunSideId == id);
 
             if (funside == null)
             {
