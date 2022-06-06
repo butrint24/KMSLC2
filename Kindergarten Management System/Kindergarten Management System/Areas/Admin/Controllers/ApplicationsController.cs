@@ -1,6 +1,5 @@
-using Kindergarten_Management_System.Data;
+﻿using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class ApplicationsController : Controller
     {
@@ -28,7 +26,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
             int pageSize = 6;
-            var applications = context.Applications.OrderBy(x => x.Order)
+            var applications = context.Applications.OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);
 
@@ -43,7 +41,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         //GET admin/applications/details/id
         public async Task<IActionResult> Details(Guid? id)
         {
-            Application application = await context.Applications.FirstOrDefaultAsync(x => x.ApplicationId == id);
+            Application application= await context.Applications.FirstOrDefaultAsync(x => x.ApplicationId == id);
 
             if (application == null)
             {

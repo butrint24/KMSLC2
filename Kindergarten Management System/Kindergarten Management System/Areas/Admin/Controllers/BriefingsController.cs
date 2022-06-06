@@ -139,7 +139,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             }
 
             return RedirectToAction("Index");
-            }
+        }
 
     }
 }

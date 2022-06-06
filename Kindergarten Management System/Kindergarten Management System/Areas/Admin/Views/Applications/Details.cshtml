@@ -1,0 +1,90 @@
+﻿@model Kindergarten_Management_System.Models.Application
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Application</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            Full Name:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt class = "col-sm-2">
+            Birth Date:
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt class = "col-sm-2">
+            Personal Number
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PersonalNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            Legal Guardian
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LegalGuardian)
+        </dd>
+        <dt class = "col-sm-2">
+            Legal Guardian Occ.
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LegalGuardianOcupation)
+        </dd>
+        <dt class = "col-sm-2">
+           Contact Number
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContactNumber)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            Application Date
+        </dt>
+        <dd class = "col-sm-10">
+            @Model.Order.ToString("dd.MM.yyyy - HH:mm")
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Gender)
+        </dt>
+        <dd class = "col-sm-10">
+            @if (Model.Gender == 'M')
+            {
+                <span class="span-text">Male</span>
+            }
+            else
+            {
+                <span class="span-text">Female</span>
+            }
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class = "col-sm-10">
+            <img class="rounded-circle mt-5" width="250" src="~/media/applicationpic/@Model.Image">
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Offer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Offer)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a class="btn btn-outline-info " asp-action="Index">Back to List</a>
+</div>

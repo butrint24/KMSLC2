@@ -35,6 +35,9 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#pricing">Offers</a></li>
+                    <li>
+                        <a asp-area="" asp-controller="Applications" asp-action="Index">Applications</a>
+                    </li>
                     @if (User?.Identity?.IsAuthenticated ?? false)
                     {
                         @if (User.IsInRole("Admin"))

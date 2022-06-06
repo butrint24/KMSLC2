@@ -1,4 +1,4 @@
-using Kindergarten_Management_System.Data;
+﻿using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
