@@ -3,30 +3,88 @@
 @{
     ViewData["Title"] = "Details";
 }
+<section class=" login-bg mx-5" style="border-radius:1rem;">
+    <div class="container p-3">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-xl-12">
+                <div class="card" style="border-radius: 1rem;">
+                    <img class="card-img-top p-2" style="border-radius:1rem 1rem 0 0; " src="~/media/Images/banner.jpeg" alt="">
+                    <div class="card-body little-profile text-center">
+                        <div class="pro-img"><img src="~/media/employeepic/@Model.AppUser.TeacherImage"></div>
+                        <h3 class="m-b-0">@Html.DisplayFor(model => model.Title)</h3>
+                        <p> @Html.Raw(Model.Content)</p>  
 
-<h1>Details</h1>
+                         <p><i class="far fa-clock"></i> @Model.Order.Day/@Model.Order.Month/@Model.Order.Year</p>
+                        
+                        <a class="btn btn-primary" asp-action="Index">Back to List</a>
+                        <div class="row text-center m-t-20">
 
-<div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        </div>
+</section>
 
-    <dl class="row">
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Content)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.Raw(Model.Content)
-        </dd>
-
-        
-    </dl>
-</div>
-<div>
+<style>
     
-    <a asp-action="Index">Back to List</a>
-</div>
+    .card-img-top {
+        height: 280px;
+    }
+
+    .card-no-border .card {
+        border-color: #d7dfe3;
+        border-radius: 4px;
+        margin-bottom: 30px;
+        -webkit-box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.05)
+    }
+
+    .card-body {
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        padding: 1.25rem
+    }
+
+    .pro-img {
+        margin-top: -80px;
+        margin-bottom: 20px
+    }
+
+    .little-profile .pro-img img {
+        width: 128px;
+        height: 128px;
+        -webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        border-radius: 100%
+    }
+
+    .btn-primary,
+    .btn-primary.disabled {
+        background: #7460ee;
+        border: 1px solid #7460ee;
+        -webkit-box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
+        box-shadow: 0 2px 2px 0 rgba(116, 96, 238, 0.14), 0 3px 1px -2px rgba(116, 96, 238, 0.2), 0 1px 5px 0 rgba(116, 96, 238, 0.12);
+        -webkit-transition: 0.2s ease-in;
+        -o-transition: 0.2s ease-in;
+        transition: 0.2s ease-in
+    }
+
+
+    .text-center {
+        text-align: center !important
+    }
+
+    h3{
+        color: #455a64;
+        font-family: "Poppins", sans-serif;
+        font-weight: 400
+    }
+
+    p {
+        margin-top: 0;
+        margin-bottom: 1rem
+    }
+</style>

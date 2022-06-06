@@ -50,3 +50,17 @@ function readURL2(input) {
         reader.readAsDataURL(input.files[0]);
     };
 }
+
+$(function () {
+    $(".material-card > .mc-btn-action").click(function () {
+        var card = $(this).parent(".material-card");
+
+        if (card.hasClass("mc-active")) {
+            card.removeClass("mc-active");
+        } else {
+            card.addClass("mc-active");
+
+
+        }
+    });
+});

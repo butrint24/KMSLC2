@@ -4,19 +4,15 @@
     ViewData["Title"] = "Register Employee";
 }
 
-<section class="h-100 login-bg">
-    <div class="container  h-100 p-5 ">
+<section class="h-100 login-bg p-3 mx-3" style="border-radius:1rem;">
+    <div class="container  h-100 py-3">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col">
                 <form asp-action="RegisterEmployee" enctype="multipart/form-data">
-                    <div class="card card-registration  register-form-bg2">
+                    <div class="card card-registration  register-form-bg2" style="border-radius: 1rem;">
                         <div class="row g-0">
-                            <div class="col-xl-6 d-none d-xl-block register-form-bg2">
-                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img4.webp"
-                                     class="img-fluid"
-                                     style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem;" />
-                            </div>
-                            <div class="col-xl-6 register-form-bg2">
+
+                            <div class="col-xl-6 register-form-bg2" style="border-radius: 1rem 1rem 1rem 0;">
                                 <div class="card-body p-md-4 text-black">
                                     <h4 class="m-2 text-uppercase font-h3 ">Employee registration form</h4>
                                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -117,6 +113,11 @@
                                         <span asp-validation-for="ImageUpload" class="text-danger"></span>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-xl-6 d-none d-xl-block register-form-bg2 pt-2" style="border-radius: 1rem 1rem 0 0;" >
+                                <img src="https://images.pexels.com/photos/8923026/pexels-photo-8923026.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                                     class="img-fluid"
+                                     style="border-radius: 1rem;" />
                             </div>
                             <div class="register-form-bg2 col-12 ">
                                 <div class="col-12  pl-5 pr-5 form-group ">

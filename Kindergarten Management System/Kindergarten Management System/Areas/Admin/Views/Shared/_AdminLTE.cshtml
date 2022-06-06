@@ -10,8 +10,10 @@
 
     <title>@ViewData["Title"] - Kindergarten</title>
 
+
     <link rel="stylesheet" href="~/css/all.min.css">
     <link rel="stylesheet" href="~/css/adminlte.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
     <link rel="stylesheet" href="~/css/dataTables.bootstrap4.min.css" />
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
@@ -36,32 +38,57 @@
                 <hr />
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                        @if (User?.Identity?.IsAuthenticated ?? false)
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" asp-area="StudentPanel" asp-controller="Account" asp-action="Details">
-                                    <i class="fas fa-user-edit nav-icon"></i>
-                                    <p>My Profile</p>
-                                </a>
-                            </li>
-                        }
+
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="StudentPanel" asp-controller="HomeWorks" asp-action="Index">
-                                <i class="fas fa-file-alt nav-icon"></i>
-                                <p>Homeworks</p>
+                            <a class="nav-link " asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="fa-solid fa-chalkboard-user nav-icon"></i>Dashboard</a>
+                        </li>
+                        <li class="nav-item has-treeview menu-open">
+                            <a href="#" class="nav-link ">
+                                <i class="fa-solid fa-user nav-icon"></i>
+                                <p>
+                                    Users
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Users" asp-action="Index">
+                                        <i class="fa-solid fa-users nav-icon"></i>
+                                        <p>All Users</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Users" asp-action="Employees">
+                                        <i class="fa-solid fa-user-tie nav-icon"></i>
+                                            <p>Employees</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="Users" asp-action="Students">
+                                        <i class="fa-solid fa-user-graduate nav-icon"></i>
+                                        <p>Students</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Account" asp-action="RegisterEmployee">
+                                        <i class="fa-solid fa-user-plus nav-icon"></i>
+                                        <p>Register Employee</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="Admin" asp-controller="Account" asp-action="RegisterStudent">
+                                        <i class="fa-solid fa-user-plus nav-icon"></i>
+                                        <p>Register Student</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="Admin" asp-controller="Roles" asp-action="Index"><i class="fa-solid fa-user-gear nav-icon"></i>Roles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" asp-area="StudentPanel" asp-controller="Teacher" asp-action="Index">
-                                <i class="fas fa-user-tie nav-icon"></i>
-                                <p>Teacher</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="StudentPanel" asp-controller="Funsides" asp-action="Index">
-                                <i class="fas fa-paper-plane nav-icon"></i>
-                                <p>Funside</p>
-                            </a>
+                            <a class="nav-link " asp-area="Admin" asp-controller="Contacts" asp-action="Index"><i class="fa-solid fa-message nav-icon"></i>Messages</a>
                         </li>
                     </ul>
                     <ul class="nav nav-pills nav-sidebar flex-column" style="position: absolute; left: 0; width: 100%; bottom: 0; padding: 5px;">
@@ -97,7 +124,7 @@
         </aside>
         <footer class="main-footer">
             <div class="float-right d-none d-sm-inline">
-                EDUKIDS
+                <span>ASGARD</span>
             </div>
             <strong>Copyright &copy; 2021 - @DateTime.Now.Year</strong> All rights reserved.
         </footer>

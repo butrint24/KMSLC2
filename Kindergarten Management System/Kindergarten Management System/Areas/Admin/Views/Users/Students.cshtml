@@ -3,80 +3,85 @@
 @{
     ViewData["Title"] = "Index";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<div class="d-flex justify-content-between">
+    <h1 style="text-align: center;"><span class="greenColor">S</span>tud<span class="greenColor">e</span>nts</h1>
+    <p>
+        <a class="btn btn-outline-success" asp-controller="Account" asp-action="RegisterStudent">Register New</a>
+    </p>
+</div>
 
-<h1 style="text-align: center;"><span class="greenColor">S</span>tud<span class="greenColor">e</span>nts</h1>
+<section class="container pt-3">
+    <div class="row active-with-click">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <article class="material-card Teal">
+                    <h2>
+                        <span class="fullName-card d-flex justify-content-center">@item.FullName</span>
+                        <span class="title-card  d-flex justify-content-center">
+                            @item.BirthDate.Day/@item.BirthDate.Month/@item.BirthDate.Year
+                        </span>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-responsive img-fluid" style="border-radius:1rem;" src="~/media/studentpic/@item.StudentImage">
+                        </div>
 
-<p>
-    <a  class="btn btn-outline-success" asp-controller="Account" asp-action="RegisterStudent">Register New</a>
-</p>
-<table class="table table-responsive-sm table-striped my-4">
-    <thead class="table-dark">
-        <tr>
-            <th>
-                Image
-            </th>
-            <th>
-                Full Name
-            </th>
-            <th>
-                Birth Date
-            </th>
-            <th>
-                Assigned to
-            </th>
-            <th>
-                 @Html.DisplayNameFor(model => model.Email)
-            </th>
+                        <div class="mc-description bio-text overflow-auto">
+                            <table>
+                                <tr>
+                                    <td class="p-2">
+                                        Email
+                                    </td>
+                                    <td class="font-weight-bold pl-3">
+                                        @item.Email
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2">
+                                        Phone
+                                    </td>
+                                    <td class="font-weight-bold pl-3">
+                                        @item.PhoneNumber
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2">
+                                        Teacher
+                                    </td>
+                                    <td class="font-weight-bold pl-3">
+                                        <select disabled style="-webkit-appearance: none; background-color: transparent; border: none; font-weight:bold; color:black" asp-for="@item.TeacherName" asp-items="@ViewBag.TeacherName" class="form-control">
+                                            <option value=" ">Choose a teacher</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
 
+                        </div>
 
-            <th>
-               Contact
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                <img src="~/media/studentpic/@item.StudentImage" width="50" height="50" style="border-radius: 100%;" />
-            </td>
-            <td>
-                @item.FullName
-            </td>
-            <td>
-                @item.BirthDate.Day/@item.BirthDate.Month/@item.BirthDate.Year
-            </td>
-            <td>
-                <div class="form-group">
-                    <select disabled style="-webkit-appearance: none; background-color: transparent; border: none" asp-for="@item.TeacherName" asp-items="@ViewBag.TeacherName" class="form-control">
-                        <option value=" ">Choose a teacher</option>
-                    </select>
-                </div>
-            </td>
-
-            <td>
-                @item.Email
-            </td>
-            <td>
-                @item.PhoneNumber
-            </td>
-            <td>
-                <a class="btn btn-primary mr-2" asp-action="AdminStudentEdit" asp-route-id="@item.Id">Edit</a>
-                <a class="btn btn-info mr-2" asp-action="StudentDetails" asp-route-id="@item.Id">Details</a>
-            <a class="btn btn-danger confirmDeletion" asp-action="StudentDelete" asp-route-Id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                    <div class="mc-footer d-flex justify-content-center">
+                        <a class="btn btn-primary mr-2" asp-action="AdminStudentEdit" asp-route-id="@item.Id"><i class="fa-solid fa-pen"></i></a>
+                        <a class="btn btn-warning mr-2" asp-action="StudentDetails" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i></a>
+                        <a class="btn btn-danger confirmDeletion" asp-action="StudentDelete" asp-route-Id="@item.Id"><i class="fa-solid fa-trash-can"></i></a>
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+</section>
 
 @if (ViewBag.TotalPages > 1)
 {
     <div class="d-flex w-100 justify-content-center">
         <pagination page-count="@ViewBag.TotalPages" page-target="/admin/users/students"
-            page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+                    page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
         </pagination>
     </div>
 }
+
+

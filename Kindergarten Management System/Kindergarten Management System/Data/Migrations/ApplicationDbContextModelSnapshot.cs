@@ -127,59 +127,6 @@ namespace Kindergarten_Management_System.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("Kindergarten_Management_System.Models.Application", b =>
-                {
-                    b.Property<Guid>("ApplicationId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime>("BirthDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ContactNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(12)")
-                        .HasMaxLength(12);
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Gender")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1)");
-
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LegalGuardian")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LegalGuardianOcupation")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Offer")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("Order")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PersonalNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(10)")
-                        .HasMaxLength(10);
-
-                    b.HasKey("ApplicationId");
-
-                    b.ToTable("Applications");
-                });
-
             modelBuilder.Entity("Kindergarten_Management_System.Models.Briefing", b =>
                 {
                     b.Property<Guid>("BriefingId")

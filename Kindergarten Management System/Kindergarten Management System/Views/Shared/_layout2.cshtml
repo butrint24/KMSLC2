@@ -28,16 +28,13 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-                    <img src="~/try/images/lgogoogog.png" width="100" height="40" />
+                    <img src="~/media/Images/logo.png" width="150" height="40" />
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="#pricing">Offers</a></li>
-                    <li>
-                        <a asp-area="" asp-controller="Applications" asp-action="Index">Applications</a>
-                    </li>
                     @if (User?.Identity?.IsAuthenticated ?? false)
                     {
                         @if (User.IsInRole("Admin"))
@@ -103,7 +100,7 @@
                 <li><a href="#link"><i class="fa fa-facebook fa-fw"></i></a></li>
                 <li><a href="#link"><i class="fa fa-linkedin fa-fw"></i></a></li>
             </ul>
-            ©2021 - @DateTime.Now.Year All rights reserved
+            @DateTime.Now.Year All rights reserved
             <div class="credits">
                 Designed by <b>ASGARD</b> TEAM
             </div>

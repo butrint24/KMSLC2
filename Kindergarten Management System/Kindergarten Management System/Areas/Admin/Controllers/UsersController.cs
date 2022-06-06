@@ -32,6 +32,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         //GET admin/users
         public async Task<IActionResult> Index(int p = 1)
         {
+            ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
             int pageSize = 6;
             var users = context.Users.OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
@@ -50,7 +51,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         public async Task<IActionResult> Students(int p = 1)
         {
             ViewBag.TeacherName = new SelectList(context.Users.Where(x => x.IsEmployee == true), "Id", "FullName");
-            int pageSize = 6;
+            int pageSize = 3;
             var users = context.Users.OrderByDescending(x => x.Order)
                                      .Where(x => x.IsEmployee == false)
                                      .Skip((p - 1) * pageSize)
@@ -67,7 +68,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         //GET admin/users/employees
         public async Task<IActionResult> Employees(int p = 1)
         {
-            int pageSize = 6;
+            int pageSize = 3;
             var users = context.Users.OrderByDescending(x => x.Order)
                                      .Where(x => x.IsEmployee == true)
                                      .Skip((p - 1) * pageSize)
