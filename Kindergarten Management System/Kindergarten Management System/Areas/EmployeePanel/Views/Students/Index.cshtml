@@ -3,62 +3,98 @@
 @{
     ViewData["Title"] = "My Students";
 }
+<h1 style="text-align: center;"> <span style="color:#6287a2;">My</span> Students</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
-<h1>My Students</h1>
+<section class="container pt-3">
+    <div class="row active-with-click">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <article class="material-card Teal">
+                    <h2>
+                        <span class="fullName-card d-flex justify-content-center">@item.FullName</span>
+                        <span class="title-card  d-flex justify-content-center">
+                            @item.BirthDate.Day/@item.BirthDate.Month/@item.BirthDate.Year
+                        </span>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-responsive img-fluid" style="border-radius:1rem;" src="~/media/studentpic/@item.StudentImage">
+                        </div>
 
+                        <div class="mc-description bio-text overflow-auto" style="text-align:center;">
+                            <table class="d-flex justify-content-center pt-5">
+                                <tr >
+                                    <td class="p-3">
+                                        Email
+                                    </td>
+                                    <td class="font-weight-bold ">
+                                        @item.Email
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">
+                                        Phone
+                                    </td>
+                                    <td class="font-weight-bold">
+                                        @item.PhoneNumber
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">
+                                        Guardian
+                                    </td>
+                                    <td class="font-weight-bold ">
+                                        @item.LegalGuardian
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">
+                                        City
+                                    </td>
+                                    <td class="font-weight-bold">
+                                        @item.City
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3">
+                                        Gender
+                                    </td>
+                                    <td class="font-weight-bold pl-3 pt-3">
+                                        @if (item.Gender == 'M')
+                                        {
+                                            <p>Male</p>
+                                        }
+                                        else
+                                        {
+                                            <p>Female</p>
+                                        }
+                                </tr>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                Full Name
-            </th>
+                            </table>
 
-            <th>
-                Student Image
-            </th>
+                        </div>
 
-            <th>
-                Email
-            </th>
-            <th>
-                Contact Number
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FullName)
-            </td>
-
-            <td>
-                <img src="~/media/studentpic//@item.StudentImage" width="50" height="50" style="border-radius: 100%;" />
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhoneNumber)
-            </td>
-
-            <td>
-                <a class="btn btn-outline-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                    <div class="mc-footer d-flex justify-content-center">
+                        <a class="btn btn-warning mr-2" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info"></i></a>
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+</section>
 
 @if (ViewBag.TotalPages > 1)
 {
     <div class="d-flex w-100 justify-content-center">
         <pagination page-count="@ViewBag.TotalPages" page-target="/EmployeePanel/Students"
-            page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+                    page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
         </pagination>
     </div>
 }
+

@@ -4,40 +4,55 @@
     ViewData["Title"] = "Teacher";
 }
 
-<h1>Teacher</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<h1 style="text-align: center;"><span style="color: #6287a2">My</span> Teacher</h1>
+
+<section class="container pt-3">
+    <div class="row active-with-click d-flex justify-content-center ">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-6 col-lg-8 col-md-8 col-sm-12  col-xs-12 ">
+                <article class="material-card Indigo">
+                    <h2>
+                        <span class="fullName-card d-flex justify-content-center">@item.FullName</span>
+                        <span class="title-card  d-flex justify-content-center">
+                            @item.Title
+                        </span>
+                    </h2>
+                    <div class="mc-content">
+                        <div class="img-container">
+                            <img class="img-responsive img-fluid" style="border-radius:1rem;" src="~/media/employeepic/@item.TeacherImage">
+                        </div>
+
+                        <div class="mc-description bio-text overflow-auto text-center">
+
+                            <span class="font-weight-bold d-flex justify-content-center pb-3 "> - Teacher Biography - </span>  @Html.Raw(item.Bio)
+                            <span class="font-weight-bold d-flex justify-content-center pt-2 "> Birthdate: </span>@item.BirthDate.Day/@item.BirthDate.Month/@item.BirthDate.Year
+                            <span class="font-weight-bold d-flex justify-content-center pt-2 "> City:  </span> @item.City
+                            <span class="font-weight-bold d-flex justify-content-center pt-2 "> Gender: </span>
+                            @if (item.Gender == 'M')
+                            {
+                                <p>Gender: Male</p>
+                            }
+                            else
+                            {
+                                <p>Gender: Female</p>
+                            }
+                        </div>
+
+                    </div>
+                    <a class="mc-btn-action">
+                        <i class="fa-solid fa-bars"></i>
+                    </a>
+                    <div class="mc-footer d-flex justify-content-between">
+                        <a style="pointer-events: none;font-weight: 500;display: flex;justify-content: center;align-items: center;" class="btn mx-auto pl-3"><i style="color:dodgerblue; font-size:1.5rem;" class="fa-solid fa-envelope pr-2"></i>@item.Email</a>
+                        <a style="pointer-events: none;font-weight: 500;display: flex;justify-content: center;align-items: center;" class="btn mx-auto  pr-3"><i style="color:dodgerblue; font-size:1.5rem;" class="fa-solid fa-square-phone pr-2"></i> @item.PhoneNumber</a>
+
+                    </div>
+                </article>
+            </div>
+        }
+    </div>
+</section>
 
 
-<div class="card" style="width: 100%">
-    @foreach (var item in Model)
-    {
-      
-      <div class="d-flex justify-content-center">
-          <img class="card-img-top" style="width: 18rem;" src="~/media/employeepic/@item.TeacherImage" alt="Card image cap">
-      </div>
-      <div class="card-body">
-        <h5 class="card-title"> @item.FullName</h5>
-        <h3 class="card-title">Title: <i>@item.Title</i></h3>
-        <p class="card-text">About: @Html.Raw(item.Bio)</p>
-      </div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Birthdate: @item.BirthDate.Day/@item.BirthDate.Month/@item.BirthDate.Year</li>
-        <li class="list-group-item">City: @item.City</li>
-            <li class="list-group-item">
-                @if (item.Gender == 'M')
-                { 
-                    <p>Gender: Male</p> 
-                }
-                else
-                {
-                    <p>Gender: Female</p>
-                }
-                </li>
-        </ul>
-      <div class="card-body">
-        <a href="#" class="card-link">@item.Email</a>
-        <a href="#" class="card-link">@item.PhoneNumber</a>
-      </div>
-    }
-
-
-</div>

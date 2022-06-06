@@ -4,25 +4,55 @@
     ViewData["Title"] = "Details Briefing";
 }
 
-<h1>Details Briefing</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
 
-<div class="card my-5">
-  <div class="card-header d-flex justify-content-center">
-    @Model.Title
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
-      <p>@Html.Raw(Model.Content)</p>
-      <hr />
-      <div class="d-flex">
-          <div style="width:50%;" class="d-flex">
-              <footer class="blockquote-footer mr-2 mt-2">Date: <cite title="Source Title">@Model.Order.Day/@Model.Order.Month/@Model.Order.Year</cite></footer>
-          </div>
-          <div style="width:50%;" class="d-flex justify-content-end">
-              <a class="btn btn-outline-secondary" asp-action="Index">Back</a>
-          </div>
-          
-      </div>
-    </blockquote>
-  </div>
-</div>
+
+
+<section class=" mx-5" style="border-radius:1rem;">
+    <div class="container p-1  ">
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-12 col-xl-12 ">
+                <div class="card bgg" style="border-radius: 1rem; ">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Briefing </span>
+                            <span class="title-word title-word-2">Details </span>
+                        </h4>
+                    </div>
+                    <div class="card-bodyy little-profile text-center mt-3">
+                        
+                        <hr />
+                        <p class="under-textt pt-3">Funside Title</p>
+                        <h3 style=" font-weight:bold;" class=" pb-4 txtt ">@Html.DisplayFor(model => model.Title)</h3>
+
+                        <div class="responsive-photo pb-2"> @Html.Raw(Model.Content)</div>
+
+                        <p class=" txtt" style="font-size:1.3rem;"><i class="far fa-clock"></i> @Model.Order.Day/@Model.Order.Month/@Model.Order.Year</p>
+                        <p class="under-textt ">Date Created</p>
+                        <hr>
+                        
+                        <a class="btn btn-primary my-3 p-2" asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2"></i></a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<style>
+    .bgg {
+        background: #e6e6fa;
+    }
+    .txtt {
+        color: #5a283d;
+    }
+    .under-textt {
+        font-size: 12px;
+        color: darkslategrey;
+    }
+</style>

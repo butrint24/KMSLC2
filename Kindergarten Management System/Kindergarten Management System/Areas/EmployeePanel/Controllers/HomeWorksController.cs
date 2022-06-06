@@ -22,7 +22,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         public async Task<IActionResult> Index(int p = 1)
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            int pageSize = 6;
+            int pageSize = 3;
             var homeWorks = context.HomeWorks.Where(x => x.TeacherId == userId).OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);
@@ -71,7 +71,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         //GET employeepnael/homeworks/details/id
         public async Task<IActionResult> Details(Guid? id)
         {
-            HomeWork homeWork = await context.HomeWorks.FirstOrDefaultAsync(x => x.HomeWorkId == id);
+            HomeWork homeWork = await context.HomeWorks.Include(x => x.AppUser).FirstOrDefaultAsync(x => x.HomeWorkId == id);
 
             if (homeWork == null)
             {

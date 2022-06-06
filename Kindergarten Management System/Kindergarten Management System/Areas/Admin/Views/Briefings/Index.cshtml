@@ -4,46 +4,38 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="~/css/briefing.css" />
 
-<p>
-    <a asp-action="Create">Create New</a>
+<p class="d-flex justify-content-center">
+    <a class="btn btn-success" asp-action="Create">Create New Briefing</a>
 </p>
-<table class="table table-responsive-sm table-striped my-4">
-    <thead class="table-dark">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                Date Created
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @item.Title
-            </td>
-            <td>
-                @item.Order.Day/@item.Order.Month/@item.Order.Year
-            </td>
-            <td>
-                <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@item.BriefingId">Edit</a>
-                <a class="btn btn-info mr-2" asp-action="Details" asp-route-id="@item.BriefingId">Details</a>
-                <a class="btn btn-danger confirmDeletion" asp-action="Delete" asp-route-Id="@item.BriefingId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-@if (ViewBag.TotalPages > 1)
-{
-    <div class="d-flex w-100 justify-content-center">
-        <pagination page-count="@ViewBag.TotalPages" page-target="/admin/briefings"
-            page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
-        </pagination>
+
+<div class="container bootstrap snippets bootdeys">
+    <div class="row d-flex justify-content-center">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-6 col-xs-12 content-card ">
+                <div class="card-big-shadow">
+                    <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
+                        <div class="content">
+                            <div class="date p-2">@item.Order.Day/@item.Order.Month/@item.Order.Year</div>
+                            <div class="title p-2 pb-4">@item.Title</div>
+                            <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@item.BriefingId"><i class="fa-solid fa-pen"></i></a>
+                            <a class="btn btn-success mr-2" asp-action="Details" asp-route-id="@item.BriefingId"><i class="fa-solid fa-circle-info"></i></a>
+                            <a class="btn btn-danger confirmDeletion" asp-action="Delete" asp-route-Id="@item.BriefingId"><i class="fa-solid fa-trash-can"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
     </div>
-}
+    @if (ViewBag.TotalPages > 1)
+    {
+<div class="d-flex w-100 justify-content-center">
+    <pagination page-count="@ViewBag.TotalPages" page-target="/admin/briefings"
+                page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+    </pagination>
+</div>
+    }
+</div>
+
