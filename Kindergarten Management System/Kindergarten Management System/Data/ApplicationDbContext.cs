@@ -17,6 +17,5 @@ namespace Kindergarten_Management_System.Data
         public DbSet<FunSide> FunSides { get; set; }
         public DbSet<HomeWork> HomeWorks { get; set; }
         public DbSet<Contact> Contacts { get; set; }
-        public DbSet<Application> Applications { get; set; }
     }
 }

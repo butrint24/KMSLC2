@@ -27,7 +27,7 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
 
             var current_user = await userManager.GetUserAsync(User);
             var getTeacherName = current_user.TeacherName;
-            int pageSize = 6;
+            int pageSize = 3;
             var funSides = context.FunSides.Include(x => x.AppUser).Where(x => x.TeacherId == getTeacherName).OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);
@@ -43,7 +43,7 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
         //GET admin/funside/details/id
         public async Task<IActionResult> Details(Guid? id)
         {
-            FunSide funside = await context.FunSides.FirstOrDefaultAsync(x => x.FunSideId == id);
+            FunSide funside = await context.FunSides.Include(x => x.AppUser).FirstOrDefaultAsync(x => x.FunSideId == id);
 
             if (funside == null)
             {

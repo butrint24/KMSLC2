@@ -4,35 +4,119 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<section class="container pt-3">
+    <div class="row ">
+        @foreach (var item in Model)
+        {
+            <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <a asp-action="Details" asp-route-id="@item.HomeWorkId">
+                    <div class="card text-white card-has-bg " style="background-image: url('https://images.pexels.com/photos/7014770/pexels-photo-7014770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Title)
-            </th>
-            <th>
-                Date Created
-            </th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @item.Order.Day/@item.Order.Month/@item.Order.Year
-            </td>
-            <td>
-             <a class="btn btn-info" asp-action="Details" asp-route-id="@item.HomeWorkId">Details</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+                        <div class="card-img-overlay d-flex flex-column">
+                            <div class="card-body">
+                                <p class="card-meta mb-2">KinderGarten</p>
+                                <p><i class="far fa-clock"></i> @item.Order.Day/@item.Order.Month/@item.Order.Year</p>
+                                <p class="card-title mt-0 "><span class="title-color7" style="font-size:1.5rem;">@Html.DisplayFor(modelItem => item.Title)</span></p>
+
+                            </div>
+                            <div class="card-footer">
+                                <div class="media">
+                                    <img class="mr-3 rounded-circle" src="~/media/employeepic/@item.AppUser.TeacherImage" alt="Generic placeholder image" style="max-width:50px">
+                                    <div class="media-body">
+                                        <h6 class="my-0 text-white d-block">@item.AppUser.FullName</h6>
+                                        <small>@item.AppUser.Title</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+
+    </div>
+    @if (ViewBag.TotalPages > 1)
+    {
+        <div class="d-flex w-100 justify-content-center">
+            <pagination page-count="@ViewBag.TotalPages" page-target="/studentpanel/homeworks"
+                        page-number="@ViewBag.PageNumber" page-range="@ViewBag.PageRange">
+            </pagination>
+        </div>
+    }
+</section>
+
+
+<style>
+
+
+    .card {
+        border: none;
+        overflow: hidden;
+        border-radius: 20px;
+        min-height: 450px;
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
+    }
+
+
+
+        .card-has-bg {
+            transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+            background-size: 120%;
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+
+            .card-has-bg:before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: inherit;
+                -webkit-filter: grayscale(1);
+                -moz-filter: grayscale(100%);
+                -ms-filter: grayscale(100%);
+                filter: grayscale(100%);
+            }
+
+           
+
+        .card .card-footer {
+            background: none;
+            border-top: none;
+        }
+
+            .card .card-footer .media img {
+                border: solid 3px rgba(234, 95, 0, 0.3);
+            }
+
+        .card .card-meta {
+            color: lightseagreen;
+            font-size: 0.8rem;
+        }
+
+        .card .card-body {
+            transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .card:hover {
+            cursor: pointer;
+            transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+            .card:hover .card-body {
+                margin-top: 30px;
+                transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+            }
+
+        .card .card-img-overlay {
+            transition: all 800ms cubic-bezier(0.19, 1, 0.22, 1);
+            background: #234f6d;
+            background: linear-gradient(300deg, rgba(35, 79, 109, 0.3785889356) 60%, #455f71 100%);
+        }
+
+    .title-color7 {
+        color: greenyellow;
+    }
+</style>

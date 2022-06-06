@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5 ">
-                    <img class="rounded-circle mt-5" width="250"
+                    <img class="rounded-circle mt-5 img-fluid" width="250"
                          src="~/media/employeepic/@Model.Image">
                     <span class="font-h3" style="font-size:2rem;">
                         @Html.DisplayFor(model => model.FullName)
@@ -17,7 +17,7 @@
 
                 </div>
             </div>
-            <div class="col-md-5 border-right">
+            <div class="col-md-5  border-right">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
                         <h4 class="text-uppercase font-h3">My Details</h4>
@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 pt-1">
+                        <div class="col-xl-6 col-lg-12 pt-1">
                             <label asp-for="PersonalNumber" class="control-label details-label ">Personal Number</label>
                             <div class="d-flex justify-content-start form-display">
                                 <span class="span-text">
@@ -62,7 +62,7 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="col-md-6 pt-1">
+                        <div class="col-xl-6 col-lg-12 pt-1">
                             <label asp-for="ContactNumber" class="control-label details-label ">Contact Number</label>
                             <div class="d-flex justify-content-start form-display">
                                 <span class="span-text">
@@ -102,7 +102,7 @@
                     <div class="mt-5 text-center"> <a class="btn btn-success mr-2" asp-area="EmployeePanel" asp-controller="Account" asp-action="Edit">Edit My Account</a></div>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 ">
                 <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center experience">
                         <span style="font-weight:bold">Account Details</span>

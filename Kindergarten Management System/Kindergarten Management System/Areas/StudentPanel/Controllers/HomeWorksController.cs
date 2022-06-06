@@ -27,7 +27,7 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
 
             var current_user = await userManager.GetUserAsync(User);
             var getTeacherName = current_user.TeacherName;
-            int pageSize = 6;
+            int pageSize = 3;
             var homeWorks = context.HomeWorks.Include(x => x.AppUser).Where(x => x.TeacherId == getTeacherName).OrderByDescending(x => x.Order)
                                       .Skip((p - 1) * pageSize)
                                       .Take(pageSize);
@@ -42,7 +42,7 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
         //GET student/homework/details/id
         public async Task<IActionResult> Details(Guid? id)
         {
-            HomeWork homeWork = await context.HomeWorks.FirstOrDefaultAsync(x => x.HomeWorkId == id);
+            HomeWork homeWork = await context.HomeWorks.Include(x => x.AppUser).FirstOrDefaultAsync(x => x.HomeWorkId == id);
 
             if (homeWork == null)
             {
