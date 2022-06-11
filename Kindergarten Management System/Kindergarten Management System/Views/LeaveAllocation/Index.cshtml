@@ -1,0 +1,30 @@
+﻿@model Kindergarten_Management_System.Models.CreateLeaveAllocationVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Leave Allocations</h2>
+<a class="btn btn-info mr-2 mb-2" asp-action="ListEmployees">List of Employees</a>
+<br />
+<table class="table">
+    <thead>
+        <tr>
+            <th>Leave types</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.LeaveType)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Allocate to Employees", "SetLeave", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
