@@ -2,7 +2,6 @@
 using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
 using System;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
