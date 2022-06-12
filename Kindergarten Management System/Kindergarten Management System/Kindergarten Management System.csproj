@@ -15,18 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Areas\Admin\Views\LeaveTypes\Create.cshtml" />
-    <None Include="Areas\Admin\Views\LeaveTypes\Details.cshtml" />
-    <None Include="Areas\Admin\Views\LeaveTypes\Edit.cshtml" />
-    <None Include="Areas\Admin\Views\LeaveTypes\Index.cshtml" />
-    <None Include="Views\LeaveAllocation\Details.cshtml" />
-    <None Include="Views\LeaveAllocation\Index.cshtml" />
-    <None Include="Views\LeaveAllocation\ListEmployees.cshtml" />
-    <None Include="Views\LeaveTypes\Create.cshtml" />
-    <None Include="Views\LeaveTypes\Delete.cshtml" />
-    <None Include="Views\LeaveTypes\Details.cshtml" />
-    <None Include="Views\LeaveTypes\Edit.cshtml" />
-    <None Include="Views\LeaveTypes\Index.cshtml" />
     <None Include="wwwroot\webfonts\fa-brands-400.svg" />
     <None Include="wwwroot\webfonts\fa-brands-400.woff2" />
     <None Include="wwwroot\webfonts\fa-regular-400.svg" />
@@ -36,8 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="11.0.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.21" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.21" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.21" />

@@ -40,7 +40,7 @@
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
 
-                        <li class="nav-item has-treeview menu-closed">
+                        <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link ">
                                 <i class="fa-solid fa-user nav-icon"></i>
                                 <p>
@@ -100,38 +100,6 @@
                         <li class="nav-item">
                             <a class="nav-link" asp-area="Admin" asp-controller="Homeworks" asp-action="Index"><i class="fa-solid fa-book nav-icon"></i>Homework</a>
                         </li>
-
-
-                        <li class="nav-item has-treeview menu-closed">
-                            <a href="#" class="nav-link ">
-                                <i class="fa-solid fa-user nav-icon"></i>
-                                <p>
-                                    Leave
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-controller="LeaveTypes" asp-action="Index">
-                                        <i class="fa-solid fa-users nav-icon"></i>
-                                        <p>Leave Types</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-controller="LeaveAllocation" asp-action="Index">
-                                        <i class="fa-solid fa-user-tie nav-icon"></i>
-                                        <p>Leave Allocation</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" asp-controller="LeaveRequest" asp-action="Index">
-                                        <i class="fa-solid fa-user-graduate nav-icon"></i>
-                                        <p>Leave Request</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-
                     </ul>
                     <ul class="nav nav-pills nav-sidebar flex-column" style="position: absolute; left: 0; width: 100%; bottom: 0; padding: 5px;">
                         @if (User?.Identity?.IsAuthenticated ?? false)
