@@ -15,6 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\LeaveTypes\Create.cshtml" />
+    <None Include="Views\LeaveTypes\Delete.cshtml" />
+    <None Include="Views\LeaveTypes\Details.cshtml" />
+    <None Include="Views\LeaveTypes\Edit.cshtml" />
+    <None Include="Views\LeaveTypes\Index.cshtml" />
     <None Include="wwwroot\webfonts\fa-brands-400.svg" />
     <None Include="wwwroot\webfonts\fa-brands-400.woff2" />
     <None Include="wwwroot\webfonts\fa-regular-400.svg" />

@@ -1,0 +1,86 @@
+﻿@model Kindergarten_Management_System.Models.LeaveRequestVM
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Review @Model.RequestingEmployee.FullName Request</h1>
+@if (Model.Approved == true)
+{
+    <div class="alert alert-success" role="alert">
+        <dt class="col-sm-2">
+            <h5 class="alert-heading">Approved by : @Model.ApprovedBy.FullName</h5>
+        </dt>
+    </div>
+}
+else if (Model.Approved == false)
+{
+    <div class="alert alert-danger">
+        <dt class="col-sm-2">
+            Rejected by :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApprovedBy.FullName)
+        </dd>
+        </div>
+        }
+            else
+            {
+
+            }
+        <div>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.RequestingEmployee.FullName)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.RequestingEmployee.FullName)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.StartDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.StartDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.EndDate)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.EndDate)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.LeaveType)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.LeaveType.Name)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.DateRequested)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.DateRequested)
+                </dd>
+                <dt class="col-sm-2">
+                    Number of days :
+                </dt>
+                <dd class="col-sm-10">
+                    <p>@(Model.EndDate.Day - Model.StartDate.Day)</p>
+                </dd>
+            </dl>
+        </div>
+        <div>
+            @if (Model.Approved == null)
+            {
+                <a class="btn btn-success" asp-action="ApproveRequest" asp-route-id="@Model.Id">
+                    <i class="fa fa-tick"></i>Approve
+                </a>
+                <a class="btn btn-danger" asp-action="RejectRequest" asp-route-id="@Model.Id">
+                    <i class="fa fa-remove"></i>Reject
+                </a>
+            }
+
+            <a class="btn btn-outline-secondary" asp-action="Index">
+                <i class="fa fa-arrow-left"></i>Back to list
+            </a>
+        </div>

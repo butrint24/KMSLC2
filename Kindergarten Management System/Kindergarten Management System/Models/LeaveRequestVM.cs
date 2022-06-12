@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -62,12 +61,10 @@ namespace Kindergarten_Management_System.Models
     {
         [Required]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime StartDate { get; set; }
 
         [Required]
         [DataType(DataType.Date)]
-        [EmployeeLeaveCreateDateValidationAttribute(ErrorMessage = "The selected date can not be current or less than the current date")]
         public DateTime EndDate { get; set; }
 
         public IEnumerable<SelectListItem> LeaveTypes { get; set; }
