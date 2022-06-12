@@ -11,8 +11,9 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Kindergarten_Management_System.Controllers
+namespace Kindergarten_Management_System.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class LeaveAllocationController : Controller
     {
         private readonly ILeaveTypeRepository _leaverepo;
