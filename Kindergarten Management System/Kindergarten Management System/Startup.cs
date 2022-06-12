@@ -1,5 +1,8 @@
+using Kindergarten_Management_System.Contracts;
 using Kindergarten_Management_System.Data;
+using Kindergarten_Management_System.Mappings;
 using Kindergarten_Management_System.Models;
+using Kindergarten_Management_System.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -31,6 +34,12 @@ namespace Kindergarten_Management_System
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddScoped<ILeaveTypeRepository, LeaveTypeRepository>();
+            services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
+            services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
+
+            services.AddAutoMapper(typeof(Maps));
 
             services.AddIdentity<AppUser, IdentityRole>(options =>
             {

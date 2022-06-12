@@ -18,5 +18,8 @@ namespace Kindergarten_Management_System.Data
         public DbSet<HomeWork> HomeWorks { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Application> Applications { get; set; }
+        public DbSet<LeaveRequest> LeaveRequests { get; set; }
+        public DbSet<LeaveType> LeaveTypes { get; set; }
+        public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
     }
 }
