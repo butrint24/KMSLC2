@@ -15,9 +15,9 @@ namespace Kindergarten_Management_System.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
-        [EmployeeDateValidationAttribute(ErrorMessage = "Ju mund te regjistroheni vetem ne listen e penzionereve")]
-        [DateValidation(ErrorMessage = "Ju lutem shenoni daten e sakt, nuk mund te jete me e madhe se data momentale")]
-        [EmployeeYearValidation(ErrorMessage = "Nuk mund te regjistrohet nje employee me i ri se 18vjet")]
+        [EmployeeDateValidationAttribute(ErrorMessage = "You have passed the age allowed to register as an employeee")]
+        [DateValidation(ErrorMessage = "Please enter the exact date, it can not be greater than the current date")]
+        [EmployeeYearValidation(ErrorMessage = "An employee younger than 18 years can not be registered")]
         public DateTime BirthDate { get; set; }
 
 

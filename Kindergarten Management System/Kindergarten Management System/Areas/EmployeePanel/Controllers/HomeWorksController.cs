@@ -1,5 +1,6 @@
 ﻿using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
 {
+    [Authorize(Roles = "Employee")]
     [Area("EmployeePanel")]
     public class HomeWorksController : Controller
     {

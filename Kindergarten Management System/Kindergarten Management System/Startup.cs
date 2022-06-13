@@ -45,8 +45,7 @@ namespace Kindergarten_Management_System
             {
             })
                 .AddEntityFrameworkStores<ApplicationDbContext>()
-                .AddDefaultTokenProviders()
-                .AddDefaultUI();
+                .AddDefaultTokenProviders();
 
 
             services.Configure<IdentityOptions>(options =>

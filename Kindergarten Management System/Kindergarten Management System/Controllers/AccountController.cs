@@ -84,5 +84,9 @@ namespace Kindergarten_Management_System.Controllers
             return Redirect("/");
         }
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
     }
 }

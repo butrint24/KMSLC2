@@ -4,27 +4,53 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Leave Allocations</h2>
-<a class="btn btn-info mr-2 mb-2" asp-action="ListEmployees">List of Employees</a>
-<br />
-<table class="table">
-    <thead>
-        <tr>
-            <th>Leave types</th>
-            <th>Action</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.LeaveType)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.ActionLink("Allocate to Employees", "SetLeave", new { id = item.Id })
-                </td>
-            </tr>
-        }
-    </tbody>
-</table>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
+
+<section class="mx-5 bg-color2" style="border-radius:1rem;">
+    <div class="container p-1  ">
+        <div class="row d-flex justify-content-center align-items-center ">
+                    <a class="btn btn-info mr-2 mb-2" style="font-weight:bold;" asp-action="ListEmployees">List of Employees</a>
+            <div class="col-12 col-xl-12 ">
+                <div class="card" style="border-radius: 1rem; background-color:#E1EBEE;">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Leave</span>
+                            <span class="title-word title-word-2">Allocations</span>
+                        </h4>
+                    </div>
+
+                    <hr>
+
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-8">
+                            <table class="table">
+                                <thead style="background-color: cadetblue; border:none;">
+                                    <tr>
+                                        <th class="pl-3" style=" border: none;">Leave types</th>
+                                        <th style=" border: none;" class="d-flex justify-content-end pr-3">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.LeaveType)
+                                    {
+                                        <tr>
+                                            <td class="mt-4" style="vertical-align:middle!important; font-weight:600; ">
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+                                            <td class="badge badge-success p-20  pr-5 mt-4" style="float:right;">
+                                                @Html.ActionLink("Allocate to Employees", "SetLeave", new { id = item.Id }, new { style = "color: white; font-size:1.1rem;text-decoration: none; align-text:center;" })
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

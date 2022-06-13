@@ -4,14 +4,17 @@
     ViewData["Title"] = "MyLeave";
 }
 
-<h1>My Leave Allocations</h1>
-<div class="jumbotron">
-    <div class="card">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
+
+<span style="font-size:2.5rem; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:darkslategray;" class="d-flex justify-content-center pb-2">My Leave Allocations</span>
+<div class="jumbotron"  style="background-color:cadetblue;">
+    <div class="cardd" >
         <ul class="list-group list-group-flush">
             @foreach (var item in Model.LeaveAllocations)
             {
-                <li class="list-group-item">
-                    <h6>@item.LeaveType.Name <span class="badge badge-secondary">@item.NumberOfDays</span>    </h6>
+                <li class="list-group-item register-form-bg2" style="border-radius:1rem;">
+                    <h6>@item.LeaveType.Name <span style="font-size:1.3rem;" class="badge badge-success p-2">@item.NumberOfDays</span>    </h6>
                 </li>
             }
         </ul>
@@ -19,10 +22,10 @@
 </div>
 
 
-<hr />
-<h1>My Leave Records</h1>
-<table id="tblData" class="table">
-    <thead>
+<span style="font-size:2.5rem; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color:darkslategray;" class=" d-flex justify-content-center">My Leave Records</span>
+
+<table id="example6" class="hover cell-border stripe">
+    <thead style="background-color:cadetblue; ">
         <tr>
             <th>
                 Leave Type
@@ -37,11 +40,11 @@
                 Date Requested
             </th>
 
-            <th>
+            <th class="no-sort">
                 Approval State
             </th>
 
-            <th>
+            <th class="no-sort">
                 Cancel Request
             </th>
         </tr>
@@ -67,21 +70,21 @@
                 <td>
                     @if (item.Approved == true)
                     {
-                        <span class="badge badge-success">Approved</span>
+                        <span class="badge badge-success p-2 ">APPROVED</span>
                     }
                     else if (item.Approved == false)
                     {
-                        <span class="badge badge-danger">Rejected</span>
+                        <span class="badge badge-danger p-2">REJECTED</span>
                     }
                     else
                     {
-                        <span class="badge badge-warning">Pending Approval</span>
+                        <span class="badge badge-warning p-2">PENDING</span>
                     }
                 </td>
 
                 <td>
 
-                    @if ( item.Approved == null)
+                    @if (item.Approved == null)
                     {
                         <a asp-action="CancelRequest" class="btn btn-danger" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to cancel this request?')">
                             <i class="fa fa-trash" aria-hidden="true"></i>

@@ -10,6 +10,7 @@
 
     <title>@ViewData["Title"] - Kindergarten</title>
 
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
     <link rel="stylesheet" href="~/css/all.min.css">
     <link rel="stylesheet" href="~/css/adminlte.min.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
@@ -29,7 +30,7 @@
         </nav>
         <aside class="main-sidebar sidebar-dark-primary elevation-4 " style="position:fixed;">
             <a asp-area="" asp-controller="Home" asp-action="Index" class="brand-link d-flex justify-content-center">
-                KMS
+                <p>Employee Panel</p>
             </a>
 
             <div class="sidebar">
@@ -69,6 +70,18 @@
                                 <p>Students</p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="EmployeePanel" asp-controller="LeaveRequest" asp-action="MyLeave">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>My Leave Application</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="EmployeePanel" asp-controller="LeaveRequest" asp-action="Create">
+                                <i class="fas fa-users nav-icon"></i>
+                                <p>Apply for Leave</p>
+                            </a>
+                        </li>
                     </ul>
                     <ul class="nav nav-pills nav-sidebar flex-column" style="position: absolute; left: 0; width: 100%; bottom: 0; padding: 5px;">
                         @if (User?.Identity?.IsAuthenticated ?? false)
@@ -91,6 +104,7 @@
             </div>
             <div class="content">
                 <div class="container-fluid">
+                    <partial name="_NotificationPartial" />
                     @RenderBody()
                 </div>
             </div>
@@ -118,6 +132,24 @@
     <script src="~/js/dataTables.bootstrap4.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#example6').DataTable({
+                "searching": false,
+                "paging": true,
+                "info": false,
+                "lengthMenu": [10, 20, 50],
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
+
+            });
+
+        });
+    </script>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

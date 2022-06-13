@@ -4,13 +4,17 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
+<span style="font-size:2.5rem; font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif" class="title-word title-word-1 d-flex justify-content-center">Leave Types</span>
 
-<p>
-    <a asp-action="Create">Create New</a>
+
+<p class="d-flex justify-content-center  p-3">
+    <a class="btn btn-primary " asp-action="Create">Create New</a>
 </p>
-<table class="table">
-    <thead>
+
+<table id="example3" class="hover cell-border stripe">
+    <thead style="background-color:cadetblue; ">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
@@ -18,24 +22,26 @@
             <th>
                 @Html.DisplayNameFor(model => model.DefaultDays)
             </th>
-            <th></th>
+            <th class="no-sort pr-5 d-flex justify-content-end"> Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DefaultDays)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('are you sure?')" >Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DefaultDays)
+                </td>
+                <td class="pr-5 d-flex justify-content-end">
+                    <a class="btn btn-primary mr-2" asp-action="Edit" asp-route-id="@item.Id"><i class="fa-solid fa-pen pr-2"></i>Edit</a>
+                    <a class="btn btn-success mr-2" asp-action="Details" asp-route-id="@item.Id"><i class="fa-solid fa-circle-info pr-2"></i>Details</a>
+                    <a class="btn btn-danger confirmDeletion" asp-action="Delete" asp-route-Id="@item.Id"><i class="fa-solid fa-trash-can pr-2"></i>Delete</a>
+                
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

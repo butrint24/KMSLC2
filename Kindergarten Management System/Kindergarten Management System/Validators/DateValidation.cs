@@ -48,3 +48,12 @@ public class StudentMonthValidationAttribute : ValidationAttribute
 
     }
 }
+public class EmployeeLeaveCreateDateValidationAttribute : ValidationAttribute
+{
+    public override bool IsValid(object value)
+    {
+        DateTime todayDate = Convert.ToDateTime(value);
+        return todayDate >= DateTime.Now;
+
+    }
+}
