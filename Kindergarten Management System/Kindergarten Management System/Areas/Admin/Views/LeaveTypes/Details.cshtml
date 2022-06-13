@@ -4,33 +4,52 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
 
-<div>
-    <h4>LeaveTypeVM</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DefaultDays)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DefaultDays)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.DateCreated)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.DateCreated)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+<section class="mx-5 leave-bg" style="border-radius:1rem;">
+    <div class="container p-1  ">
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-12 col-xl-12 ">
+                <div class="card" style="border-radius: 1rem; background-color:#F6FFD6; ">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">LeaveDays </span>
+                            <span class="title-word title-word-2">Details </span>
+                        </h4>
+                    </div>
+                    <div class="card-bodyy little-profile  mt-3">
+                        <hr />
+                        <dl class="row p-2">
+                            <dt class="col-12 col-sm-6  darkGreen  ">
+                                Name:
+                            </dt>
+                            <dd class="col-12 col-sm-6  dd-text">
+                                @Html.DisplayFor(model => model.Name)
+                            </dd>
+                            <dt class="col-12 col-sm-6   darkGreen ">
+                                Default Days:
+                            </dt>
+                            <dd class="col-12 col-sm-6  dd-text">
+                                @Html.DisplayFor(model => model.DefaultDays)
+                            </dd>
+                            <dt class="col-12 col-sm-6   darkGreen">
+                               Date Created:
+                            </dt>
+                            <dd class="col-12 col-sm-6 dd-text">
+                                @Html.DisplayFor(model => model.DateCreated)
+                            </dd>
+                        </dl>
+                        <hr>
+                        <div class="d-flex justify-content-center">
+                            <a class="btn btn-success mr-2" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa-solid fa-pen pr-2"></i>Edit</a>
+                            <a class="btn btn-secondary " asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2"></i></a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

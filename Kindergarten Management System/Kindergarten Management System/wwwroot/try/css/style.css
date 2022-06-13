@@ -809,36 +809,38 @@ Responsive media queries
 span {
     margin: auto;
     font-size: 2rem;
+    color: white;
 }
 
 
+
 .carousel__face:nth-child(1) {
-    background-image: url("?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/1001914/pexels-photo-1001914.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     transform: rotateY( 0deg) translateZ(430px);
 }
 
 .carousel__face:nth-child(2) {
-    background-image: url("?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/3662668/pexels-photo-3662668.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     transform: rotateY( 40deg) translateZ(430px);
 }
 
 .carousel__face:nth-child(3) {
-    background-image: url("?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/6941450/pexels-photo-6941450.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     transform: rotateY( 80deg) translateZ(430px);
 }
 
 .carousel__face:nth-child(4) {
-    background-image: url("?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/8613319/pexels-photo-8613319.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     transform: rotateY(120deg) translateZ(430px);
 }
 
 .carousel__face:nth-child(5) {
-    background-image: url("?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/8612992/pexels-photo-8612992.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     transform: rotateY(160deg) translateZ(430px);
 }
 
 .carousel__face:nth-child(6) {
-    background-image: url("?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/8612990/pexels-photo-8612990.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     transform: rotateY(200deg) translateZ(430px);
 }
 
@@ -848,12 +850,12 @@ span {
 }
 
 .carousel__face:nth-child(8) {
-    background-image: url("?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/8613121/pexels-photo-8613121.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     transform: rotateY(280deg) translateZ(430px);
 }
 
 .carousel__face:nth-child(9) {
-    background-image: url("?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+    background-image: url("https://images.pexels.com/photos/8613054/pexels-photo-8613054.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
     transform: rotateY(320deg) translateZ(430px);
 }
 

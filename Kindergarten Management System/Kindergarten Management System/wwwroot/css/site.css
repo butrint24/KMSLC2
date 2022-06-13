@@ -505,3 +505,12 @@ table.dataTable thead .sorting, table.dataTable thead .sorting_asc, table.dataTa
         padding: 18px;
     }
 }
+
+.leave-bg {
+    background: rgb(231,218,32);
+    background: linear-gradient(49deg, rgba(231,218,32,1) 12%, rgba(93,221,78,1) 22%, rgba(237,234,24,1) 36%, rgba(19,147,68,1) 73%, rgba(237,255,0,1) 100%);
+}
+
+.darkGreen {
+    color: #139344;
+}

@@ -2,6 +2,7 @@
 using Kindergarten_Management_System.Contracts;
 using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,6 +10,7 @@ using System.Linq;
 
 namespace Kindergarten_Management_System.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class LeaveTypesController : Controller
     {

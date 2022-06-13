@@ -53,13 +53,25 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="form-outline mb-2">
+                                        <label asp-for="GuardianOccupation" class="control-label label-font">Guardian Occupation</label>
+                                        <input asp-for="GuardianOccupation" class="form-control form-border-radius" />
+                                        <span asp-validation-for="GuardianOccupation" class="text-danger"></span>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-6 mb-2">
-                                            <div class="form-outline">
-                                                <label asp-for="GuardianOccupation" class="control-label label-font">Legal Guardian Occupation</label>
-                                                <input asp-for="GuardianOccupation" class="form-control form-border-radius" />
-                                                <span asp-validation-for="GuardianOccupation" class="text-danger"></span>
+                                            <label asp-for="Gender" class="control-label label-font">Student Gender</label>
+                                            <div class="form-group d-flex offset-1">
+
+                                                <div class="mr-5">
+                                                    <input class="form-check-input " type="radio" asp-for="Gender" value="M" id="G-M"><p id="input-male">Male</p>
+                                                </div>
+
+                                                <div>
+                                                    <input class="form-check-input " type="radio" asp-for="Gender" value="F" id="G-F"><p id="input-female">Female</p>
+                                                </div>
                                             </div>
+
                                         </div>
                                         <div class="col-md-6 mb-2">
                                             <div class="form-outline">
@@ -80,16 +92,7 @@
                                         </div>
                                     </div>
 
-                                    <label asp-for="Gender" class="control-label label-font">Student Gender</label>
-                                    <div class="form-group d-flex offset-1">
-                                        <div class="mr-5">
-                                            <input class="form-check-input " type="radio" asp-for="Gender" value="M" id="G-M"><p id="input-male">Male</p>
-                                        </div>
 
-                                        <div>
-                                            <input class="form-check-input " type="radio" asp-for="Gender" value="F" id="G-F"><p id="input-female">Female</p>
-                                        </div>
-                                    </div>
 
                                     <div class="row">
                                         <div class="col-md-6 mb-4">

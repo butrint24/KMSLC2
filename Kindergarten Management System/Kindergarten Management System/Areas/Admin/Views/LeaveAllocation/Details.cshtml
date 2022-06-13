@@ -4,51 +4,76 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-<hr />
-<div>
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.FullName)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.FullName)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.Email)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.Email)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.PhoneNumber)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.PhoneNumber)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Employee.BirthDate)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Employee.BirthDate.Date)
-        </dd>
-    </dl>
-</div>
-<hr />
-<h2>@Model.Employee.FullName -  Leave allocations</h2>
-<div class="card" style="width: 18rem;">
-    <ul class="list-group list-group-flush">
-        @foreach (var item in Model.LeaveAllocations)
-        {
-            <li class="list-group-item">
-                <h6>
-                    @item.LeaveType.Name <span class="badge badge-secondary">@item.NumberOfDays</span>
-                </h6>
-            </li>
-        }
-    </ul>
-</div>
-<br />
-<div>
-    <a class="btn btn-info" asp-action="ListEmployees">Back to List</a>
-</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
+
+<section class="mx-5 login-bg" style="border-radius:1rem;">
+    <div class="container p-1  ">
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-12 col-xl-12 ">
+                <div class="card" style="border-radius: 1rem; background-color:#E1EBEE; ">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1"> Details -  </span>
+                            <span class="title-word title-word-2">@Model.Employee.FullName </span>
+                        </h4>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <dl class="row m-3">
+                                <dt class="col-12 col-sm-6  greenColor  ">
+                                    @Html.DisplayNameFor(model => model.Employee.FullName)
+                                </dt>
+                                <dd class="col-12 col-sm-6  dd-text ">
+                                    @Html.DisplayFor(model => model.Employee.FullName)
+                                </dd>
+                                <dt class="col-12 col-sm-6  greenColor">
+                                    @Html.DisplayNameFor(model => model.Employee.Email)
+                                </dt>
+                                <dd class="col-12 col-sm-6  dd-text">
+                                    @Html.DisplayFor(model => model.Employee.Email)
+                                </dd>
+                                <dt class="col-12 col-sm-6  greenColor">
+                                    @Html.DisplayNameFor(model => model.Employee.PhoneNumber)
+                                </dt>
+                                <dd class="col-12 col-sm-6  dd-text">
+                                    @Html.DisplayFor(model => model.Employee.PhoneNumber)
+                                </dd>
+                                <dt class="col-12 col-sm-6  greenColor">
+                                    @Html.DisplayNameFor(model => model.Employee.BirthDate)
+                                </dt>
+                                <dd class="col-12 col-sm-6  dd-text">
+                                    @Model.Employee.BirthDate.Day/@Model.Employee.BirthDate.Month/@Model.Employee.BirthDate.Year
+                                </dd>
+                            </dl>
+                        </div>
+                        <div class="col-xl-6 col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                                <h2 class="greenColor text-center p-2 "> Leave allocations</h2>
+                            <div class="d-flex justify-content-center">
+                                <div class="cardd " style="width: 18rem; ">
+                                    <ul class="list-group list-group-flush">
+                                        @foreach (var item in Model.LeaveAllocations)
+                                        {
+                                            <li class="list-group-item" style="border-radius: 1rem;">
+                                                <h6>
+                                                    @item.LeaveType.Name <span class="badge badge-info ml-3 p-1" style="font-size:1.08rem;">@item.NumberOfDays</span>
+                                                </h6>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                                <br />
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="d-flex justify-content-center p-5">
+                        <a class="btn btn-secondary" asp-action="ListEmployees"><i class="fa-solid fa-arrow-left-long pr-2"></i>Back to List</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

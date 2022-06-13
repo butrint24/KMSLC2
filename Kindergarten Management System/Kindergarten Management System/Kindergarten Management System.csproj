@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\LeaveTypes\**" />
+    <Content Remove="Views\LeaveTypes\**" />
+    <EmbeddedResource Remove="Views\LeaveTypes\**" />
+    <None Remove="Views\LeaveTypes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Data\Migrations\20220223122814_briefingCreate.cs" />
     <Compile Remove="Data\Migrations\20220223122814_briefingCreate.Designer.cs" />
     <Compile Remove="Data\Migrations\20220223123234_briefingCreate1.cs" />
@@ -15,11 +22,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\LeaveTypes\Create.cshtml" />
-    <None Include="Views\LeaveTypes\Delete.cshtml" />
-    <None Include="Views\LeaveTypes\Details.cshtml" />
-    <None Include="Views\LeaveTypes\Edit.cshtml" />
-    <None Include="Views\LeaveTypes\Index.cshtml" />
+    <None Include="Areas\Admin\Views\LeaveTypes\Create.cshtml" />
+    <None Include="Areas\Admin\Views\LeaveTypes\Details.cshtml" />
+    <None Include="Areas\Admin\Views\LeaveTypes\Edit.cshtml" />
+    <None Include="Areas\Admin\Views\LeaveTypes\Index.cshtml" />
+    <None Include="Views\LeaveAllocation\Details.cshtml" />
+    <None Include="Views\LeaveAllocation\Index.cshtml" />
+    <None Include="Views\LeaveAllocation\ListEmployees.cshtml" />
     <None Include="wwwroot\webfonts\fa-brands-400.svg" />
     <None Include="wwwroot\webfonts\fa-brands-400.woff2" />
     <None Include="wwwroot\webfonts\fa-regular-400.svg" />

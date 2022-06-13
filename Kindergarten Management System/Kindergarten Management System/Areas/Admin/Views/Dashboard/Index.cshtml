@@ -2,72 +2,86 @@
     ViewData["Title"] = "Admin Dashboard";
 }
 
-<div class="d-flex justify-content-center">
-    <h1><span class="greenColor">D</span>ash<span class="greenColor">b</span>oard</h1>
+<link rel="stylesheet" href="~/css/briefing.css" />
+
+<div class="container bootstrap snippets bootdeys">
+    <div class="row">
+
+        <div class="col-md-4 col-sm-6 content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="purple" data-radius="none">
+                    <div class="content">
+                        <div class="date p-2"><i class="fa-solid fa-puzzle-piece nav-icon pr-2"></i>Funside</div>
+                        <p class="Button pt-4"><a asp-area="Admin" asp-controller="Funsides" asp-action="Index" class="btn btn-outline-secondary">View Details</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="blue" data-radius="none">
+                    <div class="content">
+                        <div class="date p-2"><i class="fa-solid fa-bell nav-icon pr-2"></i>Briefings</div>
+                        <p class="Button pt-4"><a asp-area="Admin" asp-controller="Briefings" asp-action="Index" class="btn btn-outline-info">View Details</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="yellow" data-radius="none">
+                    <div class="content">
+                        <div class="date p-2"><i class="fa-solid fa-book nav-icon pr-2"></i>Homeworks</div>
+                        <p class="Button pt-4"><a asp-area="Admin" asp-controller="Homeworks" asp-action="Index" class="btn btn-outline-warning">View Details</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="brown" data-radius="none">
+                    <div class="content">
+                        <div class="date p-2"><i class="fa-solid fa-address-book nav-icon pr-2"></i>Applications</div>
+                        <p class="Button pt-4"><a asp-area="Admin" asp-controller="Applications" asp-action="Index" class="btn btn-outline-secondary">View Details</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="green" data-radius="none">
+                    <div class="content">
+                        <div class="date p-2"><i class="fa-solid fa-message nav-icon pr-2"></i>Contacts</div>
+                        <p class="Button pt-4"><a asp-area="Admin" asp-controller="Contacts" asp-action="Index" class="btn btn-outline-success">View Details</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 content-card">
+            <div class="card-big-shadow">
+                <div class="card card-just-text" data-background="color" data-color="orange" data-radius="none">
+                    <div class="content">
+                        <div class="date p-2"><i class="fa-solid fa-user-gear nav-icon pr-2"></i>Roles</div>
+                        <p class="Button pt-4 text-black"><a asp-area="Admin" asp-controller="Roles" asp-action="Index" class="btn btn-outline-danger">View Details</a> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
+<style>
+    .title {
+        font-size: 0.4rem;
+        color: black !important;
+    }
 
-
-<div class="row my-4">
-  <div class="col-sm-4">
-    <div class="card makeRadius "   >
-      <div class="card-body">
-        <h5 class="card-title">Briefing</h5>
-        <p class="card-text">Brief your staff</p>
-        <a asp-controller="Briefings" asp-action="Index" class="btn " style="border-color:black; border:dashed; border-radius:25px;  ">  Briefings</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4">
-    <div class="card makeRadius">
-      <div class="card-body">
-        <h5 class="card-title">Fun Side </h5>
-        <p class="card-text"> Fun activities for kids to enjoy on spare time. Created by their teachers </p>
-         <a asp-controller="FunSides" asp-action="Index" class="btn " style="border-color:black; border:dashed; border-radius:25px;  "> Fun Side</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4 my-2">
-    <div class="card makeRadius">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="row my-2">
-  <div class="col-sm-4">
-    <div class="card makeRadius">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4">
-    <div class="card makeRadius">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-4">
-    <div class="card makeRadius">
-      <div class="card-body">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
-    </div>
-  </div>
-</div>
+    .date {
+        font-size: 1.5rem;
+    }
+</style>

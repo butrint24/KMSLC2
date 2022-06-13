@@ -15,9 +15,9 @@ namespace Kindergarten_Management_System.Models
         [Required]
         [DataType(DataType.Date)]
         [DisplayFormat(ApplyFormatInEditMode = false, DataFormatString = "{0:MM/dd/yyyy}")]
-        [StudentDateValidationAttribute(ErrorMessage = "Ky student e ka kaluar moshen e lejuar per regjistrim ne qerdhe")]
-        [DateValidation(ErrorMessage = "Ju lutem shenoni daten e sakt, nuk mund te jete me e madhe se data momentale")]
-        [StudentMonthValidation(ErrorMessage = " Nuk lejohet me i ri se 5 muaj")]
+        [StudentDateValidationAttribute(ErrorMessage = "This student has passed the age allowed for enrollment in Kindergarten")]
+        [DateValidation(ErrorMessage = "Please enter the exact date, it can not be greater than the current date")]
+        [StudentMonthValidation(ErrorMessage = "Not allowed younger than 5 months")]
         public DateTime BirthDate { get; set; }
 
         [Required, MinLength(4, ErrorMessage = "Minimum length is 4")]

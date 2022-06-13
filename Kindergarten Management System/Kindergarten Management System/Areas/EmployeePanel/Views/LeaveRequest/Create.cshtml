@@ -3,47 +3,64 @@
 @{
     ViewData["Title"] = "create";
 }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/homework.css" />
 
-<h1>create</h1>
 
-<div class="row">
-    <div class="col-md-10">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<section class="mx-5" style="border-radius:1rem;">
+    <div class="container p-1">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-xl-12">
+                <div class="card " style="border-radius: 1rem; background-color:#E1EBEE; ">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Request </span>
+                            <span class="title-word title-word-2">Leave </span>
+                        </h4>
+                    </div>
+                    <hr>
+                        <div class="col-md-12 px-5 ">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="LeaveTypeId" class="control-label"></label>
-                    @Html.DropDownListFor(q => q.LeaveTypeId, new SelectList(Model.LeaveTypes, "Value", "Text"), "Select Leave Type", new { @class = "form-control" })
-                    <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
-                </div>
+                                <div class="col-md-12 ">
+                                    <div class="form-group">
+                                        <label asp-for="LeaveTypeId" class="control-label label-font pl-4"> Leave Type</label>
+                                        @Html.DropDownListFor(q => q.LeaveTypeId, new SelectList(Model.LeaveTypes, "Value", "Text"), "Select Leave Type", new { @class = "form-control" })
+                                        <span asp-validation-for="LeaveTypeId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group ">
+                                        <label asp-for="StartDate" class="control-label label-font pl-4">Start Date</label>
+                                        <input type="text" asp-for="StartDate" class="form-control" id="startdate" />
+                                        <span asp-validation-for="StartDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label asp-for="EndDate" class="control-label label-font pl-4"> End Date</label>
+                                        <input type="text" asp-for="EndDate" class="form-control" id="datepicker" />
+                                        <span asp-validation-for="EndDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex justify-content-center">
+                                    <input type="submit" value="Request Leave" class="btn btn-primary" />
+                                </div>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="StartDate" class="control-label"></label>
-                    <input asp-for="StartDate" class="form-control datepicker" />
-                    <span asp-validation-for="StartDate" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="EndDate" class="control-label"></label>
-                    <input asp-for="EndDate" class="form-control datepicker" />
-                    <span asp-validation-for="EndDate" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Reqeust Leave" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
-@section Scripts{ 
+</section>
+
+
+@section Scripts{
     <script>
-  $( function() {
-      $("#datepicker").datepicker({
-          dateFormat: "yy-mm-dd"
-      });
-  } );
+        $(function () {
+            $("#startdate").datepicker({ dateFormat: "yy/mm/dd" }).datepicker("setDate", new Date());
+            $("#datepicker").datepicker({ dateFormat: "yy/mm/dd" }).datepicker("setDate", new Date());
+        });
     </script>
 }

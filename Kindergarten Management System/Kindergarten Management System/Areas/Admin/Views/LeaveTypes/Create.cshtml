@@ -4,32 +4,50 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DefaultDays" class="control-label"></label>
-                <input asp-for="DefaultDays" class="form-control" />
-                <span asp-validation-for="DefaultDays" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary btn-block" />
-            </div>
-        </form>
-    </div>
-</div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+<section class="mx-5 leave-bg" style="border-radius:1rem;">
+    <div class="container p-1  ">
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-12 col-xl-12 ">
+                <div class="card" style="border-radius: 1rem; background-color:#F6FFD6 ; ">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Create</span>
+                            <span class="title-word title-word-2">Leave Type</span>
+                        </h4>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-10">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group p-3">
+                                    <label asp-for="Name" class="control-label darkGreen pl-3"> Name</label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                <div class="form-group p-3">
+                                    <label asp-for="DefaultDays" class="control-label darkGreen pl-3"> Default Days</label>
+                                    <input asp-for="DefaultDays" class="form-control" />
+                                    <span asp-validation-for="DefaultDays" class="text-danger"></span>
+                                </div>
+
+                                <div class="d-flex justify-content-center">
+                                    <input type="submit" value="Create" class="btn btn-success my-3 p-2 mr-2" />
+                                    <a class="btn btn-secondary my-3 p-2 " asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2"></i></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

@@ -2,6 +2,7 @@
 using Kindergarten_Management_System.Contracts;
 using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
 {
+    [Authorize(Roles = "Employee")]
     [Area("EmployeePanel")]
     public class LeaveRequestController : Controller
     {
@@ -86,7 +88,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
         {
             try
             {
-                var startDate = Convert.ToDateTime(model.StartDate.Date);
+                var startDate = Convert.ToDateTime(model.StartDate);
                 var endDate = Convert.ToDateTime(model.EndDate);
                 var leaveTypes = _leaveTypeRepo.FindAll();
                 var leaveTypesItems = leaveTypes.Select(q => new SelectListItem

@@ -39,7 +39,9 @@
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-
+                        <li class="nav-item">
+                            <a class="nav-link " asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="fa-solid fa-clipboard-list nav-icon"></i>Dashboard</a>
+                        </li>
                         <li class="nav-item has-treeview menu-open">
                             <a href="#" class="nav-link ">
                                 <i class="fa-solid fa-user nav-icon"></i>
@@ -82,24 +84,39 @@
                             </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Admin" asp-controller="Roles" asp-action="Index"><i class="fa-solid fa-user-gear nav-icon"></i>Roles</a>
+                   
+
+                        <li class="nav-item has-treeview menu-closed">
+                            <a href="#" class="nav-link ">
+                                <i class="fa-solid fa-calendar-days nav-icon"></i>
+                                
+                                <p>
+                                    Leave
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="LeaveTypes" asp-action="Index">
+                                        <i class="fa-solid fa-business-time nav-icon"></i>
+                                        <p>Leave Types</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="LeaveAllocation" asp-action="Index">
+                                        <i class="fa-solid fa-calendar-check nav-icon"></i>
+                                        <p>Leave Allocation</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-controller="LeaveRequest" asp-action="Index">
+                                        <i class="fa-solid fa-door-open nav-icon"></i>
+                                        <p>Leave Applications</p>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Admin" asp-controller="Contacts" asp-action="Index"><i class="fa-solid fa-message nav-icon"></i>Messages</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " asp-area="Admin" asp-controller="Applications" asp-action="Index"><i class="fa-solid fa-address-book nav-icon"></i>Applications</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="Admin" asp-controller="Briefings" asp-action="Index"><i class="fa-solid fa-bell nav-icon"></i>Briefings</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="Admin" asp-controller="Funsides" asp-action="Index"><i class="fa-solid fa-puzzle-piece nav-icon"></i>Funside</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-area="Admin" asp-controller="Homeworks" asp-action="Index"><i class="fa-solid fa-book nav-icon"></i>Homework</a>
-                        </li>
+
                     </ul>
                     <ul class="nav nav-pills nav-sidebar flex-column" style="position: absolute; left: 0; width: 100%; bottom: 0; padding: 5px;">
                         @if (User?.Identity?.IsAuthenticated ?? false)
@@ -122,6 +139,7 @@
             </div>
             <div class="content">
                 <div class="container-fluid">
+                    <partial name="_NotificationPartial" />
                     @RenderBody()
                 </div>
             </div>
@@ -156,6 +174,51 @@
             $('#example').DataTable({
                 "lengthMenu": [5, 10, 15],
                 "order": [[6, "desc"]],
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
+
+            });
+
+        });
+        $(document).ready(function () {
+            $('#example2').DataTable({
+                "lengthMenu": [5, 10, 15],
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
+
+            });
+
+        });
+
+        $(document).ready(function () {
+            $('#example3').DataTable({
+                "lengthMenu": [3, 5, 10],
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
+
+            });
+
+        });
+        $(document).ready(function () {
+            $('#example4').DataTable({
+                "lengthMenu": [5, 10, 15],
+                "columnDefs": [{
+                    "targets": 'no-sort',
+                    "orderable": false,
+                }]
+
+            });
+
+        });
+             $(document).ready(function () {
+            $('#example5').DataTable({
+                "lengthMenu": [10, 20, 30],
                 "columnDefs": [{
                     "targets": 'no-sort',
                     "orderable": false,
