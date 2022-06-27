@@ -146,7 +146,7 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
                 context.Update(homeWork);
                 await context.SaveChangesAsync();
 
-                TempData["Success"] = "Homework has been edited!";
+                TempData["Success"] = "Homework submission has been edited!";
 
                 return RedirectToAction("Edit", new { id = homeWork.Id });
             }
