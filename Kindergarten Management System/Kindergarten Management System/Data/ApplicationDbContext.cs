@@ -21,5 +21,6 @@ namespace Kindergarten_Management_System.Data
         public DbSet<LeaveRequest> LeaveRequests { get; set; }
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<LeaveAllocation> LeaveAllocations { get; set; }
+        public DbSet<HomeWorkSub> HomeWorkSubs { get; set; }
     }
 }
