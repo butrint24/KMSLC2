@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class RolesController : Controller
     {

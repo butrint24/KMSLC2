@@ -1,0 +1,136 @@
+﻿@model Kindergarten_Management_System.Models.HomeWorkSub
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/homework.css" />
+
+
+<section class=" login-bg mx-5" style="border-radius:1rem;">
+    <div class="container p-1  ">
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-12 col-xl-12 ">
+                <div class="card register-form-bg2" style="border-radius: 1rem;">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Homework Submission</span>
+                            <span class="title-word title-word-2">Details </span>
+                        </h4>
+                    </div>
+                    <div class="card-bodyy little-profile text-center  pt-5 mt-5">
+                        @*<div class="pro-img"><img src="~/media/employeepic/@Model.AppUser.TeacherImage"></div>*@
+                        <hr />
+                        <p class="under-text pt-3">Subject</p>
+                        <h3 style=" font-weight:bold;" class=" pb-4 label-font ">@Html.DisplayFor(model => model.Subject)</h3>
+
+                        <p class="under-text pt-3">Homework Title</p>
+                        <h4 style=" font-weight:bold;" class=" pb-4 label-font ">@Html.DisplayFor(model => model.HomeworkName)</h4>
+
+
+                        <hr />
+                        <p class="under-text pt-3">Homework Content</p>
+                        <div class="responsive-photo pb-2"> @Html.Raw(Model.Description)</div>
+
+                        <hr />
+                        <div class="d-flex">
+                            <div class="mr-5">
+                                <p class="label-font" style="font-size:1.3rem;"><i class="far fa-clock"></i> @Model.Order.Day/@Model.Order.Month/@Model.Order.Year</p>
+                            </div>
+
+                            <div class="mr-5">
+                                <p class="label-font justify-content-end" style="font-size:1.3rem;"><i class="fa-solid fa-graduation-cap"></i> @Model.StudentName</p>
+                            </div>
+                            
+
+                            <div class="ml-5">
+                                @if(Model.Grade == "0")
+                                {
+                                    <div class="d-flex">
+                                        <p class="under-text pt-1 mr-2">Grade</p>
+                                        <p class="label-font badge badge-warning" style="font-size:1.3rem;">UNGRADED</p>
+                                    </div>
+                                }
+                                
+                                @if(Model.Grade == "1" )
+                                {
+                                    <div class="d-flex">
+                                        <p class="under-text pt-1 mr-2">Grade</p>
+                                        <p class="label-font badge badge-danger" style="font-size:1.3rem;">@Model.Grade / Fail</p>
+                                    </div>
+                                }
+
+                                @if(Model.Grade != "1" && Model.Grade != "0")
+                                {
+                                    <div class="d-flex">
+                                        <p class="under-text pt-1 mr-2">Grade</p>
+                                        <p class="label-font badge badge-success" style="font-size:1.3rem;">@Model.Grade</p>
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        
+                        <hr>
+                        <a class="btn btn-primary  my-3 p-2 mr-2" asp-action="Edit" asp-route-id="@Model.Id">Grade<i class="fa-solid fa-pen pl-2"></i></a>
+                        <a class="btn btn-info my-3 p-2" asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2"></i></a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*<div>
+    <h4>HomeWorkSub</h4>
+    <hr />
+    <dl class="row">
+
+        <dt class = "col-sm-2">
+            Student Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StudentName)
+        </dd>
+
+>
+        <dt class = "col-sm-2">
+            Homework Name
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.HomeworkName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Subject)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Subject)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.Raw(Model.Description)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Grade)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Grade)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Order)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Order)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+*@

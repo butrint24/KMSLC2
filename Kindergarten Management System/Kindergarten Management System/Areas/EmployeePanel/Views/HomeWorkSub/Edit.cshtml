@@ -1,0 +1,62 @@
+﻿@model Kindergarten_Management_System.Models.HomeWorkSub
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/homework.css" />
+
+
+<section class=" login-bg  mx-5" style="border-radius:1rem;">
+    <div class="container p-1">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-xl-12">
+                <div class="card register-form-bg2" style="border-radius: 1rem;">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Homework Submission</span>
+                            <span class="title-word title-word-2">Edit </span>
+                        </h4>
+                    </div>
+                    <hr>
+                    <div class="card-bodyy little-profile text-center px-5">
+
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="StudentId" />
+                            <input type="hidden" asp-for="TeacherId" />
+                            <input type="hidden" asp-for="HomeworkId" />
+                            <input type="hidden" asp-for="StudentName" />
+                            <input type="hidden" asp-for="HomeworkName" />
+                            <input type="hidden" asp-for="Order" />
+                            <input type="hidden" asp-for="Subject" />
+                            <input type="hidden" asp-for="Description" />
+
+                            <div class="form-group">
+                                <label asp-for="Grade" class="control-label label-font" style="font-size:1.4rem;"></label><br />
+                                <input class="form-check-input " type="radio" asp-for="Grade" value="1" id="G-M"><p class="ml-3" id="input-male">1</p>
+                                <input class="form-check-input " type="radio" asp-for="Grade" value="2" id="G-M"><p class="ml-3" id="input-male">2</p>
+                                <input class="form-check-input " type="radio" asp-for="Grade" value="3" id="G-M"><p class="ml-3" id="input-male">3</p>
+                                <input class="form-check-input " type="radio" asp-for="Grade" value="4" id="G-M"><p class="ml-3" id="input-male">4</p>
+                                <input class="form-check-input " type="radio" asp-for="Grade" value="5" id="G-M"><p class="ml-3" id="input-male">5</p>
+                                <span asp-validation-for="Grade" class="text-danger"></span>
+                            </div>
+      
+                            <div class="form-group d-flex justify-content-center">
+                                <input type="submit" value="Save" class="btn btn-primary my-3 p-2 mr-2" />
+                                <a class="btn btn-info my-3 p-2" asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2 "></i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
