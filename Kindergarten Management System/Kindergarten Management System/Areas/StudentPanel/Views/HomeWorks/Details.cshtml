@@ -24,6 +24,10 @@
                         <p class="under-text ">Date Created</p>
                         <hr>
 
+                        @if(@Model.Order.Date == @DateTime.Today.Date)
+                        {
+                            <a class="btn btn-success" asp-action="Create" asp-controller="HomeWorkSub">Submit</a>
+                        }
                         <a class="btn btn-primary" asp-action="Index">Back to List</a>
 
                     </div>

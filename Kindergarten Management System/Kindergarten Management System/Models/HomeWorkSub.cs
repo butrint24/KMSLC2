@@ -12,10 +12,11 @@ namespace Kindergarten_Management_System.Models
         public string StudentName { get; set; }
         public string TeacherId { get; set; }
         public string HomeworkId { get; set; }
+        public string HomeworkName { get; set; }
         public string Subject { get; set; }
         public string Description { get; set; }
         
-        public string FileName { get; set; }
+        public string Grade { get; set; }
         public DateTime Order { get; set; }
 
         public virtual AppUser AppUser { get; set; }

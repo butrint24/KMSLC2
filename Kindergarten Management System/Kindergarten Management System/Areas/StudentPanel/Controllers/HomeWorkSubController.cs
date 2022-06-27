@@ -27,23 +27,27 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
             this.userManager = userManager;
         }
 
-        //GET admin/funsides
+        //GET studnepanel/homewroksub
         public async Task<IActionResult> Index(int p = 1)
         {
+            var current_user = await userManager.GetUserAsync(User);
+            var currentUserId = current_user.Id;
 
-            var homeWorkSub = context.HomeWorkSubs.Include(x => x.AppUser).OrderByDescending(x => x.Order);
+            var homeWorkSub = context.HomeWorkSubs.Include(x => x.AppUser)
+                                                  .Where(x => x.StudentId == currentUserId)
+                                                  .OrderByDescending(x => x.Order);
 
             return View(await homeWorkSub.ToListAsync());
         }
 
 
-        //GET employeepnael/Funside/create
+        //GET studenpanel/homeworksub/create
         public IActionResult Create() => View();
 
-        //POST employeepnael/Funside/create
+        //POST studenpanel/homeworksub/create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Models.HomeWorkSub homeWorkSub, List<IFormFile> files)
+        public async Task<IActionResult> Create(Models.HomeWorkSub homeWorkSub)
         {     
 
             if (ModelState.IsValid)
@@ -51,42 +55,50 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
                 homeWorkSub.Id = Guid.NewGuid();
                 homeWorkSub.Order = DateTime.Now;
 
-                var size = files.Sum(f => f.Length);
-
-                var filePaths = new List<string>();
-                foreach (var formFile in files)
-                {
-                    if (formFile.Length > 0)
-                    {
-                        var filePath = Path.Combine(Directory.GetCurrentDirectory(), formFile.FileName);
-                        filePaths.Add(filePath);
-
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            await formFile.CopyToAsync(stream);
-                        }
-                    }
-                }
-
+                ///<summary>
+                ///Get Last Homework
+                ///</summary>
                 var lastItem = context.HomeWorks
                        .OrderByDescending(p => p.Order)
                        .FirstOrDefault();
 
-                var homeWorkId = lastItem.Title;
+                ///<summary>
+                ///Get Homework Id
+                ///</summary>
+                var homeWorkId = lastItem.HomeWorkId;
+                homeWorkSub.HomeworkId = homeWorkId.ToString();
 
-                homeWorkSub.HomeworkId = homeWorkId;
+                ///<summary>
+                ///Get Homework Name
+                ///</summary>
+                var homeWorkName = lastItem.Title;
+                homeWorkSub.HomeworkName = homeWorkName;
 
-
+                ///<summary>
+                ///Get Student Username
+                ///</summary>
                 var UserName = this.User.Identity.Name;
                 homeWorkSub.StudentName = UserName;
 
+                ///<summary>
+                ///Get Logged in user prop
+                ///</summary>
                 var currentUser = await userManager.GetUserAsync(User);
-                
+
+                ///<summary>
+                ///Get Teacher Id
+                ///</summary>
                 var teacherName = currentUser.TeacherName;
                 homeWorkSub.TeacherId = teacherName;
 
+
+                ///<summary>
+                ///Get Student Id
+                ///</summary>
                 var studnetId = currentUser.Id;
                 homeWorkSub.StudentId = studnetId;
+
+                homeWorkSub.Grade = "0";
 
                 context.Add(homeWorkSub);
                 await context.SaveChangesAsync();
