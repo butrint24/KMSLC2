@@ -4,42 +4,56 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/funside.css" />
 
-<h4>HomeWorkSub</h4>
-<hr />
-<div class="row">
-    <div class="col-md-10">
-        <form asp-action="Create"  enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<section class=" login-bg mx-5" style="border-radius:1rem;">
+    <div class="container p-1  ">
+        <div class="row d-flex justify-content-center align-items-center ">
+            <div class="col-12 col-xl-12 ">
+                <div class="card register-form-bg2" style="border-radius: 1rem;">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Create </span>
+                            <span class="title-word title-word-2">Homework Submission </span>
+                        </h4>
+                    </div>
+                    <hr>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-md-10">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <div class="form-group">
-                <label asp-for="Subject" class="control-label"></label>
-                <input asp-for="Subject" class="form-control" />
-                <span asp-validation-for="Subject" class="text-danger"></span>
+                                <div class="form-group">
+                                    <label asp-for="Subject" class="control-label label-font p-2"></label>
+                                    <input asp-for="Subject" class="form-control" />
+                                    <span asp-validation-for="Subject" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="Description" class="control-label label-font p-2"></label>
+                                    <textarea asp-for="Description" class="form-control"></textarea>
+                                    <span asp-validation-for="Description" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group  d-flex justify-content-center">
+                                    <input type="submit" value="Create" class="btn btn-primary my-3 p-2 mr-2" />
+                                    <a class="btn btn-info my-3 p-2" asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2 "></i></a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
 @section Scripts {
+
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
     <script>
         CKEDITOR.replace("Description");
-
     </script>
 }

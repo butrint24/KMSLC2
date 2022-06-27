@@ -11,7 +11,7 @@
 
 
 
-<table id="example3" class="hover cell-border stripe table">
+<table id="example3" class="hover cell-border stripe table table-responsive-sm">
     <thead style="background-color:cadetblue; ">
         <tr>
             <th>
@@ -21,15 +21,12 @@
                 @Html.DisplayNameFor(model => model.Subject)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.Grade)
             </th>
             <th>
                 Date Delivered
             </th>
-            <th class="no-sort pr-5 d-flex justify-content-end"> Actions</th>
+            <th class="no-sort  d-flex justify-content-center"> Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -41,9 +38,6 @@
             </td>
             <td>
                 @item.Subject
-            </td>
-            <td>
-                @item.Description
             </td>
 
             @if(item.Grade == "0")
