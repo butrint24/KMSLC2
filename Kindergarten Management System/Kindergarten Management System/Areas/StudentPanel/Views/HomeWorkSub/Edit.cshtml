@@ -1,0 +1,64 @@
+﻿@model Kindergarten_Management_System.Models.HomeWorkSub
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="~/css/homework.css" />
+
+
+<section class=" login-bg  mx-5" style="border-radius:1rem;">
+    <div class="container p-1">
+        <div class="row d-flex justify-content-center align-items-center">
+            <div class="col-12 col-xl-12">
+                <div class="card register-form-bg2" style="border-radius: 1rem;">
+                    <div class="col-md-12 text-center pt-5">
+                        <h4 class="title">
+                            <span class="title-word title-word-1">Homework Submission</span>
+                            <span class="title-word title-word-2">Edit </span>
+                        </h4>
+                    </div>
+                    <hr>
+                    <div class="card-bodyy little-profile text-center px-5">
+
+                        <form asp-action="Edit">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />
+                            <input type="hidden" asp-for="StudentId" />
+                            <input type="hidden" asp-for="TeacherId" />
+                            <input type="hidden" asp-for="HomeworkId" />
+                            <input type="hidden" asp-for="StudentName" />
+                            <input type="hidden" asp-for="HomeworkName" />
+                            <input type="hidden" asp-for="Order" />
+                            <input type="hidden" asp-for="Grade" />
+
+                            <div class="form-group">
+                                <label asp-for="Subject" class="control-label label-font" style="font-size:1.4rem;"></label>
+                                <input asp-for="Subject" class="form-control" />
+                                <span asp-validation-for="Subject" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Description" class="control-label label-font" style="font-size:1.4rem;"></label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+                            <div class="form-group d-flex justify-content-center">
+                                <input type="submit" value="Save" class="btn btn-primary my-3 p-2 mr-2" />
+                                <a class="btn btn-info my-3 p-2" asp-action="Index">Go Back<i class="fa-solid fa-circle-arrow-left pl-2 "></i></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        CKEDITOR.replace("Description");
+    </script>
+}
