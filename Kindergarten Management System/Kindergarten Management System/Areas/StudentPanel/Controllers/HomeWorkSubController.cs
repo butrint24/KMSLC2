@@ -32,14 +32,12 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
         {
             var current_user = await userManager.GetUserAsync(User);
             var currentUserId = current_user.Id;
-
             var homeWorkSub = context.HomeWorkSubs.Include(x => x.AppUser)
                                                   .Where(x => x.StudentId == currentUserId)
                                                   .OrderByDescending(x => x.Order);
 
             return View(await homeWorkSub.ToListAsync());
         }
-
 
         //GET studenpanel/homeworksub/create
         public IActionResult Create() => View();
@@ -116,9 +114,7 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
             HomeWorkSub homeworkSub = await context.HomeWorkSubs.Include(x => x.AppUser).FirstOrDefaultAsync(x => x.Id == id);
 
             if (homeworkSub == null)
-            {
                 return NotFound();
-            }
 
             return View(homeworkSub);
         }
@@ -129,9 +125,8 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
             HomeWorkSub homeworkSub = await context.HomeWorkSubs.FindAsync(id);
 
             if (homeworkSub == null)
-            {
                 return NotFound();
-            }
+                
             return View(homeworkSub);
         }
 
@@ -142,7 +137,6 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
         {
             if (ModelState.IsValid)
             {
-
                 context.Update(homeWork);
                 await context.SaveChangesAsync();
 
@@ -160,9 +154,8 @@ namespace Kindergarten_Management_System.Areas.StudentPanel.Controllers
             HomeWorkSub homeWorkSub = await context.HomeWorkSubs.FindAsync(id);
 
             if (homeWorkSub == null)
-            {
                 TempData["Error"] = "This homework does not exist!";
-            }
+                
             else
             {
                 context.HomeWorkSubs.Remove(homeWorkSub);
