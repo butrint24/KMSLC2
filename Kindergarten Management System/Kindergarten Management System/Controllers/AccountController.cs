@@ -61,9 +61,7 @@ namespace Kindergarten_Management_System.Controllers
                     await signInManager.SignOutAsync();
                     Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(appUser, login.Password, false, true);
                     if (result.Succeeded)
-                    {
                         return Redirect(login.ReturnUrl ?? "/");
-                    }
 
 
                     if (result.IsLockedOut)
@@ -85,8 +83,6 @@ namespace Kindergarten_Management_System.Controllers
         }
 
         public IActionResult AccessDenied()
-        {
             return View();
-        }
     }
 }
