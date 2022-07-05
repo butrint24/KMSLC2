@@ -1,13 +1,8 @@
 ﻿using Kindergarten_Management_System.Data;
 using Kindergarten_Management_System.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
-using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Controllers
@@ -45,8 +40,6 @@ namespace Kindergarten_Management_System.Controllers
             return View(login);
         }
 
-
-
         // Post /account/login
         [HttpPost]
         [AllowAnonymous]
@@ -78,11 +71,12 @@ namespace Kindergarten_Management_System.Controllers
         public async Task<IActionResult> Logout()
         {
             await signInManager.SignOutAsync();
-
             return Redirect("/");
         }
 
         public IActionResult AccessDenied()
+        {
             return View();
+        }
     }
 }
