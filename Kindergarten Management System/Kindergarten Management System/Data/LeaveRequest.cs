@@ -20,6 +20,8 @@ namespace Kindergarten_Management_System.Data
 
         public string RequestingEmployeeId { get; set; }
 
+        public string RequestingEmployeeEmail { get; set; }
+
         public DateTime StartDate { get; set; }
 
         public DateTime EndDate { get; set; }

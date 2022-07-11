@@ -46,6 +46,11 @@ namespace Kindergarten_Management_System.Repository
             throw new NotImplementedException();
         }
 
+        public ICollection<LeaveType> GetEmployeesByLeaveType(int id, string email)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool isExists(int id)
         {
             var exists = _db.LeaveTypes.Any(q => q.Id == id);

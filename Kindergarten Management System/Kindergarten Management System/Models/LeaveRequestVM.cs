@@ -17,6 +17,7 @@ namespace Kindergarten_Management_System.Models
         public AppUserVM RequestingEmployee { get; set; }
 
         public string RequestingEmployeeId { get; set; }
+        public string RequestingEmployeeEmail { get; set; }
         [Required]
         [DataType(DataType.Date)]
 
