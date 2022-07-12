@@ -23,5 +23,6 @@ namespace Kindergarten_Management_System.Models
         public string TeacherImage { get; set; }
 
         public bool IsEmployee { get; set; }
+        public bool Status { get; set; }
     }
 }

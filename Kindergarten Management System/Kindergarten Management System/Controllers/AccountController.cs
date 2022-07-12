@@ -3,6 +3,7 @@ using Kindergarten_Management_System.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Controllers
@@ -46,37 +47,48 @@ namespace Kindergarten_Management_System.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(Login login)
         {
-            if (ModelState.IsValid)
+            try
             {
-                AppUser appUser = await userManager.FindByEmailAsync(login.Email);
-                if (appUser != null)
+                
+                if (ModelState.IsValid)
                 {
-                    await signInManager.SignOutAsync();
-                    Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(appUser, login.Password, false, true);
-                    if (result.Succeeded)
-                        return Redirect(login.ReturnUrl ?? "/");
+                    AppUser appUser = await userManager.FindByEmailAsync(login.Email);
+                    if (appUser != null)
+                    {
+                        await signInManager.SignOutAsync();
+                        Microsoft.AspNetCore.Identity.SignInResult result = await signInManager.PasswordSignInAsync(appUser, login.Password, false, true);
+                        if (appUser.Status == false)
+                        {
+                            ModelState.AddModelError("", "Your account is locked, try to contact an admin.");
+                            throw new ArgumentNullException();
+                        }
 
+                        if (result.Succeeded)
+                            return Redirect(login.ReturnUrl ?? "/");
 
-                    if (result.IsLockedOut)
-                        ModelState.AddModelError("", "Your account is locked out try again later.");
+                        if (result.IsLockedOut)
+                            ModelState.AddModelError("", "Your account is locked out try again later.");
+                    }
                 }
+                return View();
+            }
+            catch (Exception e)
+            {
                 ModelState.AddModelError("", "Login failed, wrong credentials.");
+                return View();
+            }
+        }
+            // GET /account/logout
+            public async Task<IActionResult> Logout()
+            {
+                await signInManager.SignOutAsync();
+                return Redirect("/");
             }
 
-            return View(login);
-        }
-
-
-        // GET /account/logout
-        public async Task<IActionResult> Logout()
-        {
-            await signInManager.SignOutAsync();
-            return Redirect("/");
-        }
-
-        public IActionResult AccessDenied()
-        {
-            return View();
+            public IActionResult AccessDenied()
+            {
+                return View();
+            }
         }
     }
-}
+

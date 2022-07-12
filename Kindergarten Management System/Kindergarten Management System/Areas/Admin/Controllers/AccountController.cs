@@ -16,7 +16,6 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class AccountController : Controller
     {
@@ -190,6 +189,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
                     TeacherImage = employee.Image,
                     IsEmployee = true,
                     Order = DateTime.Now,
+                    Status = true
                 };
 
                 IdentityResult result = await userManager.CreateAsync(appUser, employee.Password);
