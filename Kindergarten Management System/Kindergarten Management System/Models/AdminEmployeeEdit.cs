@@ -55,7 +55,7 @@ namespace Kindergarten_Management_System.Models
         [FileExtension]
         public IFormFile ImageUpload { get; set; }
 
-
+        public bool Status { get; set; }
 
         public AdminEmployeeEdit() { }
 
@@ -74,6 +74,7 @@ namespace Kindergarten_Management_System.Models
             Image = appUser.StudentImage;
             IsEmployee = appUser.IsEmployee;
             ContactNumber = appUser.PhoneNumber;
+            Status = appUser.Status;
         }
     }
 }

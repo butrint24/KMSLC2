@@ -13,7 +13,6 @@ using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class UsersController : Controller
     {
@@ -171,6 +170,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
                 appUser.Email = adminEmployeeEdit.Email;
                 appUser.TeacherImage = adminEmployeeEdit.Image;
                 appUser.PhoneNumber = adminEmployeeEdit.ContactNumber;
+                appUser.Status = adminEmployeeEdit.Status;
 
                 if (adminEmployeeEdit.Password != null)
                 {
