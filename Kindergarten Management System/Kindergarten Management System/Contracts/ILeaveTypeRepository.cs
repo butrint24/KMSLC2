@@ -8,6 +8,6 @@ namespace Kindergarten_Management_System.Contracts
 {
     public interface ILeaveTypeRepository : IRepositoryBase<LeaveType>
     {
-        ICollection<LeaveType> GetEmployeesByLeaveType(int id);
+        ICollection<LeaveType> GetEmployeesByLeaveType(int id, string email);
     }
 }

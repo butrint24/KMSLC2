@@ -3,11 +3,15 @@ using Kindergarten_Management_System.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.WebUtilities;
 using System;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 
 namespace Kindergarten_Management_System.Areas.Admin.Controllers
@@ -21,6 +25,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
         private readonly SignInManager<AppUser> signInManager;
         private IPasswordHasher<AppUser> passwordHasher;
         private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IEmailSender emailSender;
 
         public AccountController
             (
@@ -28,7 +33,8 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             UserManager<AppUser> userManager,
             SignInManager<AppUser> signInManager,
             IPasswordHasher<AppUser> passwordHasher,
-            IWebHostEnvironment webHostEnvironment
+            IWebHostEnvironment webHostEnvironment,
+            IEmailSender emailSender
             )
         {
             this.context = context;
@@ -36,6 +42,7 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
             this.signInManager = signInManager;
             this.passwordHasher = passwordHasher;
             this.webHostEnvironment = webHostEnvironment;
+            this.emailSender = emailSender;
         }
 
         //Get /Account/RegisterStudent
@@ -65,7 +72,6 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-
                 string imageName = "noimage.png";
                 if (student.ImageUpload != null)
                 {
@@ -106,6 +112,10 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
                 IdentityResult result = await userManager.AddToRoleAsync(appUser, "Student");
                 if (result.Succeeded)
                 {
+                    await emailSender.SendEmailAsync(appUser.Email, "Welcome to Kindergarten Management System", 
+                        $"Dear " + appUser.FullName +
+                        " -  We are all really excited to welcome you to KinderGarten Management System!"+
+                        "Please do not reply to this message. Replies to this message are routed to an unmonitored mailbox. If you have questions please contact us : kindergartenmanagement@outlook.com");
                     return RedirectToAction("Students", "Users", new { area = "Admin" });
                 }
                 else
@@ -186,6 +196,13 @@ namespace Kindergarten_Management_System.Areas.Admin.Controllers
                 IdentityResult assignToRole = await userManager.AddToRoleAsync(appUser, "Employee");
                 if (result.Succeeded)
                 {
+                    await emailSender.SendEmailAsync(appUser.Email, "Welcome to Kindergarten Management System",
+                        $"Dear " + appUser.FullName +
+                        " -  We are all really excited to welcome you to our team! We expect you to be in our offices by time and our dress code is business casual." +
+                        "" +
+                        " * Remember you need to bring your ID at office at the first day of work to get your School ID. " +
+                        "" +
+                        "Please do not reply to this message. Replies to this message are routed to an unmonitored mailbox. If you have questions please contact us : kindergartenmanagement@outlook.com");
                     return RedirectToAction("Employees", "Users", new { area = "Admin"});
                 }
                 else

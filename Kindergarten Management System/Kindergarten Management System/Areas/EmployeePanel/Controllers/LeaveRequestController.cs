@@ -119,6 +119,7 @@ namespace Kindergarten_Management_System.Areas.EmployeePanel.Controllers
                 var leaveRequestModel = new LeaveRequestVM
                 {
                     RequestingEmployeeId = employee.Id,
+                    RequestingEmployeeEmail = employee.Email,
                     StartDate = startDate,
                     EndDate = endDate,
                     Approved = null,

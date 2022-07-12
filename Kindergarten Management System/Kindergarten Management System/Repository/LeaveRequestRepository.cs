@@ -48,6 +48,14 @@ namespace Kindergarten_Management_System.Repository
             return leaveHistories;
         }
 
+        //public ICollection<LeaveRequest> GetLeaveRequestsByEmployee(string employeeid)
+        //{
+        //    var leaveRequests = FindAll()
+        //        .Where(q => q.RequestingEmployeeId == employeeid)
+        //        .ToList();
+        //    return leaveRequests;
+        //}
+
         public ICollection<LeaveRequest> GetLeaveRequestsByEmployee(string employeeid)
         {
             var leaveRequests = FindAll()
